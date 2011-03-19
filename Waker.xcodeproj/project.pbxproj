@@ -1,0 +1,709 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		845767A80ADC471400D69CBB /* SampleTool.c in Sources */ = {isa = PBXBuildFile; fileRef = 845767000ADC312500D69CBB /* SampleTool.c */; };
+		845767A90ADC471D00D69CBB /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */; };
+		845767AA0ADC471D00D69CBB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D6DDDB0AD302A2001E6F67 /* Security.framework */; };
+		845767B00ADC4AF500D69CBB /* BetterAuthorizationSampleLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 84D6DD960AD2F84F001E6F67 /* BetterAuthorizationSampleLib.c */; };
+		AE0EF22F111DA83E00BF7528 /* menu_item_inverted.png in Resources */ = {isa = PBXBuildFile; fileRef = AE0EF22D111DA83E00BF7528 /* menu_item_inverted.png */; };
+		AE0EF230111DA83E00BF7528 /* menu_item.png in Resources */ = {isa = PBXBuildFile; fileRef = AE0EF22E111DA83E00BF7528 /* menu_item.png */; };
+		AE0EF232111DA85700BF7528 /* waker.icns in Resources */ = {isa = PBXBuildFile; fileRef = AE0EF231111DA85700BF7528 /* waker.icns */; };
+		AE0EF256111DAD5100BF7528 /* Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE0EF255111DAD5100BF7528 /* Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3 */; };
+		AE14D535105581C100A21E6F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14D534105581C100A21E6F /* IOKit.framework */; };
+		AE14D55D1055927100A21E6F /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = AE14D55C1055927100A21E6F /* main.py */; };
+		AE14D56D1055930D00A21E6F /* Waker_AppDelegate.py in Resources */ = {isa = PBXBuildFile; fileRef = AE14D56C1055930D00A21E6F /* Waker_AppDelegate.py */; };
+		AE14D575105594BE00A21E6F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE14D574105594BE00A21E6F /* MainMenu.xib */; };
+		AE14D57B105595BF00A21E6F /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14D57A105595BF00A21E6F /* Python.framework */; };
+		AE14D57F1055967300A21E6F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14D57E1055967300A21E6F /* AppKit.framework */; };
+		AE14D6941056D30900A21E6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE14D6931056D30900A21E6F /* main.m */; };
+		AE14D69D1056D3F200A21E6F /* ObjcBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AE14D69C1056D3F200A21E6F /* ObjcBridge.m */; };
+		AE1D0CB710584A5D00ABD45A /* waker.py in Resources */ = {isa = PBXBuildFile; fileRef = AE1D0CB610584A5D00ABD45A /* waker.py */; };
+		AE2276D7107FD376000751A1 /* NSBezierPath_BLTRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2276CA107FD376000751A1 /* NSBezierPath_BLTRExtensions.m */; };
+		AE2276D8107FD376000751A1 /* NSColor_QSModifications.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2276CC107FD376000751A1 /* NSColor_QSModifications.m */; };
+		AE2276D9107FD376000751A1 /* NSUserDefaults_BLTRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2276CE107FD376000751A1 /* NSUserDefaults_BLTRExtensions.m */; };
+		AE2276DA107FD376000751A1 /* QSBezelBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2276D0107FD376000751A1 /* QSBezelBackgroundView.m */; };
+		AE2276DB107FD376000751A1 /* QSGlobalSelectionProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2276D2107FD376000751A1 /* QSGlobalSelectionProvider.m */; };
+		AE2276DC107FD376000751A1 /* QSLargeTypeDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2276D4107FD376000751A1 /* QSLargeTypeDisplay.m */; };
+		AE2276DD107FD376000751A1 /* QSShading.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2276D6107FD376000751A1 /* QSShading.m */; };
+		AE2276F9107FD4D7000751A1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2276F8107FD4D7000751A1 /* AudioToolbox.framework */; };
+		AE385CD512E38B00007DC86A /* alarm_close.png in Resources */ = {isa = PBXBuildFile; fileRef = AE385CD412E38B00007DC86A /* alarm_close.png */; };
+		AE385CE712E38DE9007DC86A /* alarm_close_pushed.png in Resources */ = {isa = PBXBuildFile; fileRef = AE385CE612E38DE9007DC86A /* alarm_close_pushed.png */; };
+		AE3B0D1012E4E4310064BCB1 /* AppleRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3B0D0B12E4E4300064BCB1 /* AppleRemote.m */; };
+		AE3B0D1112E4E4310064BCB1 /* HIDRemoteControlDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3B0D0D12E4E4300064BCB1 /* HIDRemoteControlDevice.m */; };
+		AE3B0D1212E4E4310064BCB1 /* RemoteControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3B0D0F12E4E4300064BCB1 /* RemoteControl.m */; };
+		AE3F8DBE105C2FF9006B64F8 /* from_curia.py in Resources */ = {isa = PBXBuildFile; fileRef = AE3F8DBD105C2FF8006B64F8 /* from_curia.py */; };
+		AE430DFA12BE0BF000D1F8C3 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14D534105581C100A21E6F /* IOKit.framework */; };
+		AE53EBCC12D7B92600CE0181 /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE53EBCB12D7B92600CE0181 /* left_arrow.png */; };
+		AE53EBCE12D7B9F400CE0181 /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE53EBCD12D7B9F400CE0181 /* right_arrow.png */; };
+		AE53F0C312D9D8C200CE0181 /* RoundCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AE53F0C212D9D8C200CE0181 /* RoundCloseButton.m */; };
+		AE53F0CC12D9D95200CE0181 /* hud_titlebar-close-dark.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AE53F0CA12D9D95200CE0181 /* hud_titlebar-close-dark.tiff */; };
+		AE53F14D12D9E48C00CE0181 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AE53F14C12D9E48C00CE0181 /* MAAttachedWindow.m */; };
+		AE85845A108668550094157B /* transformers.py in Resources */ = {isa = PBXBuildFile; fileRef = AE858459108668550094157B /* transformers.py */; };
+		AE9C9E1510925D1800F05042 /* fuzzy_dict.py in Resources */ = {isa = PBXBuildFile; fileRef = AE9C9E1410925D1800F05042 /* fuzzy_dict.py */; };
+		AEBA34C912DBCEED00ECE48E /* FullScreenWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBA34C812DBCEED00ECE48E /* FullScreenWindow.m */; };
+		AEBA352A12DBD63100ECE48E /* white waker.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA352912DBD63100ECE48E /* white waker.png */; };
+		AEBA353612DBD8F600ECE48E /* shading.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA353512DBD8F600ECE48E /* shading.png */; };
+		AECCB0A610B0BC9D007F9A32 /* CalendarView.py in Resources */ = {isa = PBXBuildFile; fileRef = AECCB0A510B0BC9D007F9A32 /* CalendarView.py */; };
+		AEFD66381081276F004D71CE /* waker.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = AEFD66371081276F004D71CE /* waker.xcdatamodel */; };
+		E42F4A740B13443B00A50F72 /* SampleAuthorizationPrompts.strings in Resources */ = {isa = PBXBuildFile; fileRef = E42F4A730B13443B00A50F72 /* SampleAuthorizationPrompts.strings */; };
+		E449EC830B619E4B009E190A /* BetterAuthorizationSampleLibInstallTool.c in Sources */ = {isa = PBXBuildFile; fileRef = E449EC820B619E4B009E190A /* BetterAuthorizationSampleLibInstallTool.c */; };
+		E4BBC2760B69194B00DC1BB6 /* InstallTool in CopyFiles */ = {isa = PBXBuildFile; fileRef = E449EC6E0B619E02009E190A /* InstallTool */; };
+		E4F1F1960B0DD65D003CDB5F /* SampleCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = E4F1F1940B0DD65D003CDB5F /* SampleCommon.c */; };
+		E4F1F2FE0B0DED0C003CDB5F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F1F2FD0B0DED0C003CDB5F /* Cocoa.framework */; };
+		E4F1F3560B0DED94003CDB5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D6DDDB0AD302A2001E6F67 /* Security.framework */; };
+		E4F1F3580B0DED9F003CDB5F /* BetterAuthorizationSampleLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 84D6DD960AD2F84F001E6F67 /* BetterAuthorizationSampleLib.c */; };
+		E4F1F4BB0B0E11EE003CDB5F /* SampleCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = E4F1F1940B0DD65D003CDB5F /* SampleCommon.c */; };
+		E4F1F56A0B0E17D5003CDB5F /* HelperTool in CopyFiles */ = {isa = PBXBuildFile; fileRef = 845767A60ADC470900D69CBB /* HelperTool */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E4BBC26E0B69192100DC1BB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E449EC630B619E02009E190A;
+			remoteInfo = InstallTool;
+		};
+		E4F1F4CB0B0E1218003CDB5F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 845767A50ADC470900D69CBB;
+			remoteInfo = Tool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E4F1F5640B0E17C8003CDB5F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				E4F1F56A0B0E17D5003CDB5F /* HelperTool in CopyFiles */,
+				E4BBC2760B69194B00DC1BB6 /* InstallTool in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		845767000ADC312500D69CBB /* SampleTool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SampleTool.c; sourceTree = "<group>"; };
+		845767A60ADC470900D69CBB /* HelperTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelperTool; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D6DD950AD2F84F001E6F67 /* BetterAuthorizationSampleLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetterAuthorizationSampleLib.h; sourceTree = "<group>"; };
+		84D6DD960AD2F84F001E6F67 /* BetterAuthorizationSampleLib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BetterAuthorizationSampleLib.c; sourceTree = "<group>"; };
+		84D6DDDB0AD302A2001E6F67 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		AE0EF22D111DA83E00BF7528 /* menu_item_inverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_item_inverted.png; sourceTree = "<group>"; };
+		AE0EF22E111DA83E00BF7528 /* menu_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_item.png; sourceTree = "<group>"; };
+		AE0EF231111DA85700BF7528 /* waker.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = waker.icns; sourceTree = "<group>"; };
+		AE0EF255111DAD5100BF7528 /* Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3"; sourceTree = "<group>"; };
+		AE14D534105581C100A21E6F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		AE14D55C1055927100A21E6F /* main.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
+		AE14D56C1055930D00A21E6F /* Waker_AppDelegate.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Waker_AppDelegate.py; sourceTree = "<group>"; };
+		AE14D574105594BE00A21E6F /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		AE14D57A105595BF00A21E6F /* Python.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; name = Python.framework; path = /System/Library/Frameworks/Python.framework; sourceTree = "<absolute>"; };
+		AE14D57E1055967300A21E6F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		AE14D6931056D30900A21E6F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AE14D69B1056D3F200A21E6F /* ObjcBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcBridge.h; sourceTree = "<group>"; };
+		AE14D69C1056D3F200A21E6F /* ObjcBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcBridge.m; sourceTree = "<group>"; };
+		AE1D0CB610584A5D00ABD45A /* waker.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = waker.py; sourceTree = "<group>"; };
+		AE2276C9107FD376000751A1 /* NSBezierPath_BLTRExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBezierPath_BLTRExtensions.h; sourceTree = "<group>"; };
+		AE2276CA107FD376000751A1 /* NSBezierPath_BLTRExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBezierPath_BLTRExtensions.m; sourceTree = "<group>"; };
+		AE2276CB107FD376000751A1 /* NSColor_QSModifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColor_QSModifications.h; sourceTree = "<group>"; };
+		AE2276CC107FD376000751A1 /* NSColor_QSModifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColor_QSModifications.m; sourceTree = "<group>"; };
+		AE2276CD107FD376000751A1 /* NSUserDefaults_BLTRExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaults_BLTRExtensions.h; sourceTree = "<group>"; };
+		AE2276CE107FD376000751A1 /* NSUserDefaults_BLTRExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaults_BLTRExtensions.m; sourceTree = "<group>"; };
+		AE2276CF107FD376000751A1 /* QSBezelBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSBezelBackgroundView.h; sourceTree = "<group>"; };
+		AE2276D0107FD376000751A1 /* QSBezelBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSBezelBackgroundView.m; sourceTree = "<group>"; };
+		AE2276D1107FD376000751A1 /* QSGlobalSelectionProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSGlobalSelectionProvider.h; sourceTree = "<group>"; };
+		AE2276D2107FD376000751A1 /* QSGlobalSelectionProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSGlobalSelectionProvider.m; sourceTree = "<group>"; };
+		AE2276D3107FD376000751A1 /* QSLargeTypeDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSLargeTypeDisplay.h; sourceTree = "<group>"; };
+		AE2276D4107FD376000751A1 /* QSLargeTypeDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSLargeTypeDisplay.m; sourceTree = "<group>"; };
+		AE2276D5107FD376000751A1 /* QSShading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSShading.h; sourceTree = "<group>"; };
+		AE2276D6107FD376000751A1 /* QSShading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSShading.m; sourceTree = "<group>"; };
+		AE2276F8107FD4D7000751A1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		AE385CD412E38B00007DC86A /* alarm_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_close.png; sourceTree = "<group>"; };
+		AE385CE612E38DE9007DC86A /* alarm_close_pushed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_close_pushed.png; sourceTree = "<group>"; };
+		AE3B0D0A12E4E4300064BCB1 /* AppleRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleRemote.h; sourceTree = "<group>"; };
+		AE3B0D0B12E4E4300064BCB1 /* AppleRemote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleRemote.m; sourceTree = "<group>"; };
+		AE3B0D0C12E4E4300064BCB1 /* HIDRemoteControlDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIDRemoteControlDevice.h; sourceTree = "<group>"; };
+		AE3B0D0D12E4E4300064BCB1 /* HIDRemoteControlDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIDRemoteControlDevice.m; sourceTree = "<group>"; };
+		AE3B0D0E12E4E4300064BCB1 /* RemoteControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteControl.h; sourceTree = "<group>"; };
+		AE3B0D0F12E4E4300064BCB1 /* RemoteControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteControl.m; sourceTree = "<group>"; };
+		AE3F8DBD105C2FF8006B64F8 /* from_curia.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = from_curia.py; sourceTree = "<group>"; };
+		AE53EBCB12D7B92600CE0181 /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
+		AE53EBCD12D7B9F400CE0181 /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
+		AE53F0C112D9D8C200CE0181 /* RoundCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundCloseButton.h; sourceTree = "<group>"; };
+		AE53F0C212D9D8C200CE0181 /* RoundCloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundCloseButton.m; sourceTree = "<group>"; };
+		AE53F0CA12D9D95200CE0181 /* hud_titlebar-close-dark.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "hud_titlebar-close-dark.tiff"; sourceTree = "<group>"; };
+		AE53F14B12D9E48C00CE0181 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
+		AE53F14C12D9E48C00CE0181 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
+		AE858459108668550094157B /* transformers.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = transformers.py; sourceTree = "<group>"; };
+		AE9C9E1410925D1800F05042 /* fuzzy_dict.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = fuzzy_dict.py; sourceTree = "<group>"; };
+		AEBA34C712DBCEED00ECE48E /* FullScreenWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenWindow.h; sourceTree = "<group>"; };
+		AEBA34C812DBCEED00ECE48E /* FullScreenWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenWindow.m; sourceTree = "<group>"; };
+		AEBA352912DBD63100ECE48E /* white waker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white waker.png"; sourceTree = "<group>"; };
+		AEBA353512DBD8F600ECE48E /* shading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shading.png; sourceTree = "<group>"; };
+		AECCB0A510B0BC9D007F9A32 /* CalendarView.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = CalendarView.py; sourceTree = "<group>"; };
+		AEFD66371081276F004D71CE /* waker.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = waker.xcdatamodel; sourceTree = "<group>"; };
+		E42F4C260B13656200A50F72 /* en */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SampleAuthorizationPrompts.strings; sourceTree = "<group>"; };
+		E449EC6E0B619E02009E190A /* InstallTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InstallTool; sourceTree = BUILT_PRODUCTS_DIR; };
+		E449EC820B619E4B009E190A /* BetterAuthorizationSampleLibInstallTool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BetterAuthorizationSampleLibInstallTool.c; sourceTree = "<group>"; };
+		E4F1F1940B0DD65D003CDB5F /* SampleCommon.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = SampleCommon.c; sourceTree = "<group>"; };
+		E4F1F1950B0DD65D003CDB5F /* SampleCommon.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SampleCommon.h; sourceTree = "<group>"; };
+		E4F1F2BE0B0DECA3003CDB5F /* Waker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4F1F2C00B0DECA3003CDB5F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4F1F2FD0B0DED0C003CDB5F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		845767A40ADC470900D69CBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845767A90ADC471D00D69CBB /* CoreFoundation.framework in Frameworks */,
+				845767AA0ADC471D00D69CBB /* Security.framework in Frameworks */,
+				AE14D535105581C100A21E6F /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E449EC680B619E02009E190A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4F1F2BC0B0DECA3003CDB5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4F1F3560B0DED94003CDB5F /* Security.framework in Frameworks */,
+				E4F1F2FE0B0DED0C003CDB5F /* Cocoa.framework in Frameworks */,
+				AE14D57B105595BF00A21E6F /* Python.framework in Frameworks */,
+				AE14D57F1055967300A21E6F /* AppKit.framework in Frameworks */,
+				AE2276F9107FD4D7000751A1 /* AudioToolbox.framework in Frameworks */,
+				AE430DFA12BE0BF000D1F8C3 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* BetterAuthorizationSample */ = {
+			isa = PBXGroup;
+			children = (
+				AEBA34C712DBCEED00ECE48E /* FullScreenWindow.h */,
+				AEBA34C812DBCEED00ECE48E /* FullScreenWindow.m */,
+				AECCB0A510B0BC9D007F9A32 /* CalendarView.py */,
+				AE9C9E1410925D1800F05042 /* fuzzy_dict.py */,
+				AE3F8DBD105C2FF8006B64F8 /* from_curia.py */,
+				AEFD66371081276F004D71CE /* waker.xcdatamodel */,
+				AE14D55C1055927100A21E6F /* main.py */,
+				AE14D6931056D30900A21E6F /* main.m */,
+				AE14D69B1056D3F200A21E6F /* ObjcBridge.h */,
+				AE14D69C1056D3F200A21E6F /* ObjcBridge.m */,
+				845767000ADC312500D69CBB /* SampleTool.c */,
+				E4F1F1950B0DD65D003CDB5F /* SampleCommon.h */,
+				E4F1F1940B0DD65D003CDB5F /* SampleCommon.c */,
+				AE858459108668550094157B /* transformers.py */,
+				AE1D0CB610584A5D00ABD45A /* waker.py */,
+				AE14D56C1055930D00A21E6F /* Waker_AppDelegate.py */,
+				AE53F0C112D9D8C200CE0181 /* RoundCloseButton.h */,
+				AE53F0C212D9D8C200CE0181 /* RoundCloseButton.m */,
+				AE53F14B12D9E48C00CE0181 /* MAAttachedWindow.h */,
+				AE53F14C12D9E48C00CE0181 /* MAAttachedWindow.m */,
+				AE3B0D0912E4E4300064BCB1 /* remote */,
+				AE2276C8107FD376000751A1 /* QuickSilver */,
+				AE14D576105594D100A21E6F /* Resources */,
+				08FB7795FE84155DC02AAC07 /* Reusable Library */,
+				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
+				19C28FBDFE9D53C911CA2CBB /* Products */,
+				AE14D534105581C100A21E6F /* IOKit.framework */,
+				AE2276F8107FD4D7000751A1 /* AudioToolbox.framework */,
+			);
+			name = BetterAuthorizationSample;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Reusable Library */ = {
+			isa = PBXGroup;
+			children = (
+				84D6DD950AD2F84F001E6F67 /* BetterAuthorizationSampleLib.h */,
+				84D6DD960AD2F84F001E6F67 /* BetterAuthorizationSampleLib.c */,
+				E449EC820B619E4B009E190A /* BetterAuthorizationSampleLibInstallTool.c */,
+			);
+			name = "Reusable Library";
+			sourceTree = "<group>";
+		};
+		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */,
+				84D6DDDB0AD302A2001E6F67 /* Security.framework */,
+				AE14D57A105595BF00A21E6F /* Python.framework */,
+				AE14D57E1055967300A21E6F /* AppKit.framework */,
+				E4F1F2FD0B0DED0C003CDB5F /* Cocoa.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		19C28FBDFE9D53C911CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				845767A60ADC470900D69CBB /* HelperTool */,
+				E4F1F2BE0B0DECA3003CDB5F /* Waker.app */,
+				E449EC6E0B619E02009E190A /* InstallTool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE14D576105594D100A21E6F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AE385CD412E38B00007DC86A /* alarm_close.png */,
+				AE385CE612E38DE9007DC86A /* alarm_close_pushed.png */,
+				AEBA353512DBD8F600ECE48E /* shading.png */,
+				AEBA352912DBD63100ECE48E /* white waker.png */,
+				AE53F0CA12D9D95200CE0181 /* hud_titlebar-close-dark.tiff */,
+				AE53EBCD12D7B9F400CE0181 /* right_arrow.png */,
+				AE53EBCB12D7B92600CE0181 /* left_arrow.png */,
+				AE0EF255111DAD5100BF7528 /* Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3 */,
+				AE0EF231111DA85700BF7528 /* waker.icns */,
+				AE0EF22D111DA83E00BF7528 /* menu_item_inverted.png */,
+				AE0EF22E111DA83E00BF7528 /* menu_item.png */,
+				AE14D574105594BE00A21E6F /* MainMenu.xib */,
+				E42F4A730B13443B00A50F72 /* SampleAuthorizationPrompts.strings */,
+				E4F1F2C00B0DECA3003CDB5F /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		AE2276C8107FD376000751A1 /* QuickSilver */ = {
+			isa = PBXGroup;
+			children = (
+				AE2276C9107FD376000751A1 /* NSBezierPath_BLTRExtensions.h */,
+				AE2276CA107FD376000751A1 /* NSBezierPath_BLTRExtensions.m */,
+				AE2276CB107FD376000751A1 /* NSColor_QSModifications.h */,
+				AE2276CC107FD376000751A1 /* NSColor_QSModifications.m */,
+				AE2276CD107FD376000751A1 /* NSUserDefaults_BLTRExtensions.h */,
+				AE2276CE107FD376000751A1 /* NSUserDefaults_BLTRExtensions.m */,
+				AE2276CF107FD376000751A1 /* QSBezelBackgroundView.h */,
+				AE2276D0107FD376000751A1 /* QSBezelBackgroundView.m */,
+				AE2276D1107FD376000751A1 /* QSGlobalSelectionProvider.h */,
+				AE2276D2107FD376000751A1 /* QSGlobalSelectionProvider.m */,
+				AE2276D3107FD376000751A1 /* QSLargeTypeDisplay.h */,
+				AE2276D4107FD376000751A1 /* QSLargeTypeDisplay.m */,
+				AE2276D5107FD376000751A1 /* QSShading.h */,
+				AE2276D6107FD376000751A1 /* QSShading.m */,
+			);
+			path = QuickSilver;
+			sourceTree = "<group>";
+		};
+		AE3B0D0912E4E4300064BCB1 /* remote */ = {
+			isa = PBXGroup;
+			children = (
+				AE3B0D0A12E4E4300064BCB1 /* AppleRemote.h */,
+				AE3B0D0B12E4E4300064BCB1 /* AppleRemote.m */,
+				AE3B0D0C12E4E4300064BCB1 /* HIDRemoteControlDevice.h */,
+				AE3B0D0D12E4E4300064BCB1 /* HIDRemoteControlDevice.m */,
+				AE3B0D0E12E4E4300064BCB1 /* RemoteControl.h */,
+				AE3B0D0F12E4E4300064BCB1 /* RemoteControl.m */,
+			);
+			path = remote;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		845767A50ADC470900D69CBB /* HelperTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 845767AC0ADC474C00D69CBB /* Build configuration list for PBXNativeTarget "HelperTool" */;
+			buildPhases = (
+				845767A30ADC470900D69CBB /* Sources */,
+				845767A40ADC470900D69CBB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelperTool;
+			productName = com.apple.dts.BetterAuthorizationSample.tool;
+			productReference = 845767A60ADC470900D69CBB /* HelperTool */;
+			productType = "com.apple.product-type.tool";
+		};
+		E449EC630B619E02009E190A /* InstallTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E449EC6B0B619E02009E190A /* Build configuration list for PBXNativeTarget "InstallTool" */;
+			buildPhases = (
+				E449EC640B619E02009E190A /* Sources */,
+				E449EC680B619E02009E190A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InstallTool;
+			productName = com.apple.dts.BetterAuthorizationSample.tool;
+			productReference = E449EC6E0B619E02009E190A /* InstallTool */;
+			productType = "com.apple.product-type.tool";
+		};
+		E4F1F2BD0B0DECA3003CDB5F /* Waker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4F1F2C10B0DECA3003CDB5F /* Build configuration list for PBXNativeTarget "Waker" */;
+			buildPhases = (
+				E4F1F2BA0B0DECA3003CDB5F /* Resources */,
+				E4F1F2BB0B0DECA3003CDB5F /* Sources */,
+				E4F1F2BC0B0DECA3003CDB5F /* Frameworks */,
+				E4F1F5640B0E17C8003CDB5F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4F1F4CC0B0E1218003CDB5F /* PBXTargetDependency */,
+				E4BBC26F0B69192100DC1BB6 /* PBXTargetDependency */,
+			);
+			name = Waker;
+			productName = App;
+			productReference = E4F1F2BE0B0DECA3003CDB5F /* Waker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB924B08733DCA0010E9CD /* Build configuration list for PBXProject "Waker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* BetterAuthorizationSample */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E4F1F2BD0B0DECA3003CDB5F /* Waker */,
+				845767A50ADC470900D69CBB /* HelperTool */,
+				E449EC630B619E02009E190A /* InstallTool */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E4F1F2BA0B0DECA3003CDB5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E42F4A740B13443B00A50F72 /* SampleAuthorizationPrompts.strings in Resources */,
+				AE14D55D1055927100A21E6F /* main.py in Resources */,
+				AE14D56D1055930D00A21E6F /* Waker_AppDelegate.py in Resources */,
+				AE14D575105594BE00A21E6F /* MainMenu.xib in Resources */,
+				AE1D0CB710584A5D00ABD45A /* waker.py in Resources */,
+				AE3F8DBE105C2FF9006B64F8 /* from_curia.py in Resources */,
+				AE85845A108668550094157B /* transformers.py in Resources */,
+				AE9C9E1510925D1800F05042 /* fuzzy_dict.py in Resources */,
+				AECCB0A610B0BC9D007F9A32 /* CalendarView.py in Resources */,
+				AE0EF22F111DA83E00BF7528 /* menu_item_inverted.png in Resources */,
+				AE0EF230111DA83E00BF7528 /* menu_item.png in Resources */,
+				AE0EF232111DA85700BF7528 /* waker.icns in Resources */,
+				AE0EF256111DAD5100BF7528 /* Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3 in Resources */,
+				AE53EBCC12D7B92600CE0181 /* left_arrow.png in Resources */,
+				AE53EBCE12D7B9F400CE0181 /* right_arrow.png in Resources */,
+				AE53F0CC12D9D95200CE0181 /* hud_titlebar-close-dark.tiff in Resources */,
+				AEBA352A12DBD63100ECE48E /* white waker.png in Resources */,
+				AEBA353612DBD8F600ECE48E /* shading.png in Resources */,
+				AE385CD512E38B00007DC86A /* alarm_close.png in Resources */,
+				AE385CE712E38DE9007DC86A /* alarm_close_pushed.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		845767A30ADC470900D69CBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845767A80ADC471400D69CBB /* SampleTool.c in Sources */,
+				845767B00ADC4AF500D69CBB /* BetterAuthorizationSampleLib.c in Sources */,
+				E4F1F1960B0DD65D003CDB5F /* SampleCommon.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E449EC640B619E02009E190A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E449EC830B619E4B009E190A /* BetterAuthorizationSampleLibInstallTool.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4F1F2BB0B0DECA3003CDB5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4F1F3580B0DED9F003CDB5F /* BetterAuthorizationSampleLib.c in Sources */,
+				E4F1F4BB0B0E11EE003CDB5F /* SampleCommon.c in Sources */,
+				AE14D6941056D30900A21E6F /* main.m in Sources */,
+				AE14D69D1056D3F200A21E6F /* ObjcBridge.m in Sources */,
+				AE2276D7107FD376000751A1 /* NSBezierPath_BLTRExtensions.m in Sources */,
+				AE2276D8107FD376000751A1 /* NSColor_QSModifications.m in Sources */,
+				AE2276D9107FD376000751A1 /* NSUserDefaults_BLTRExtensions.m in Sources */,
+				AE2276DA107FD376000751A1 /* QSBezelBackgroundView.m in Sources */,
+				AE2276DB107FD376000751A1 /* QSGlobalSelectionProvider.m in Sources */,
+				AE2276DC107FD376000751A1 /* QSLargeTypeDisplay.m in Sources */,
+				AE2276DD107FD376000751A1 /* QSShading.m in Sources */,
+				AEFD66381081276F004D71CE /* waker.xcdatamodel in Sources */,
+				AE53F0C312D9D8C200CE0181 /* RoundCloseButton.m in Sources */,
+				AE53F14D12D9E48C00CE0181 /* MAAttachedWindow.m in Sources */,
+				AEBA34C912DBCEED00ECE48E /* FullScreenWindow.m in Sources */,
+				AE3B0D1012E4E4310064BCB1 /* AppleRemote.m in Sources */,
+				AE3B0D1112E4E4310064BCB1 /* HIDRemoteControlDevice.m in Sources */,
+				AE3B0D1212E4E4310064BCB1 /* RemoteControl.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4BBC26F0B69192100DC1BB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E449EC630B619E02009E190A /* InstallTool */;
+			targetProxy = E4BBC26E0B69192100DC1BB6 /* PBXContainerItemProxy */;
+		};
+		E4F1F4CC0B0E1218003CDB5F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 845767A50ADC470900D69CBB /* HelperTool */;
+			targetProxy = E4F1F4CB0B0E1218003CDB5F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E42F4A730B13443B00A50F72 /* SampleAuthorizationPrompts.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E42F4C260B13656200A50F72 /* en */,
+			);
+			name = SampleAuthorizationPrompts.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB924C08733DCA0010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_POSTPROCESSING = NO;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+				VALID_ARCHS = "i386 x86_64";
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Debug;
+		};
+		1DEB924D08733DCA0010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Anders Hovmoller";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_POSTPROCESSING = YES;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				PREBINDING = NO;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx10.5;
+				VALID_ARCHS = "i386 x86_64";
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Release;
+		};
+		845767AD0ADC474C00D69CBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = HelperTool;
+			};
+			name = Debug;
+		};
+		845767AE0ADC474C00D69CBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				PRODUCT_NAME = HelperTool;
+			};
+			name = Release;
+		};
+		E449EC6C0B619E02009E190A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = InstallTool;
+			};
+			name = Debug;
+		};
+		E449EC6D0B619E02009E190A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				PRODUCT_NAME = InstallTool;
+			};
+			name = Release;
+		};
+		E48AC8210C72046E000ED1FA /* Debug64 */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = HelperTool;
+			};
+			name = Debug64;
+		};
+		E48AC8220C72046E000ED1FA /* Debug64 */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = InstallTool;
+			};
+			name = Debug64;
+		};
+		E48AC8230C72046E000ED1FA /* Debug64 */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = Waker;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug64;
+		};
+		E48AC8240C72046E000ED1FA /* Debug64 */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc64,
+					x86_64,
+				);
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_POSTPROCESSING = NO;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+				VALID_ARCHS = "i386 x86_64";
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Debug64;
+		};
+		E4F1F2C20B0DECA3003CDB5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = Waker;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E4F1F2C30B0DECA3003CDB5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = Waker;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB924B08733DCA0010E9CD /* Build configuration list for PBXProject "Waker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB924C08733DCA0010E9CD /* Debug */,
+				E48AC8240C72046E000ED1FA /* Debug64 */,
+				1DEB924D08733DCA0010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		845767AC0ADC474C00D69CBB /* Build configuration list for PBXNativeTarget "HelperTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				845767AD0ADC474C00D69CBB /* Debug */,
+				E48AC8210C72046E000ED1FA /* Debug64 */,
+				845767AE0ADC474C00D69CBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E449EC6B0B619E02009E190A /* Build configuration list for PBXNativeTarget "InstallTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E449EC6C0B619E02009E190A /* Debug */,
+				E48AC8220C72046E000ED1FA /* Debug64 */,
+				E449EC6D0B619E02009E190A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E4F1F2C10B0DECA3003CDB5F /* Build configuration list for PBXNativeTarget "Waker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4F1F2C20B0DECA3003CDB5F /* Debug */,
+				E48AC8230C72046E000ED1FA /* Debug64 */,
+				E4F1F2C30B0DECA3003CDB5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

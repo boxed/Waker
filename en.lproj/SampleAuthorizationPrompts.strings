@@ -1,0 +1,2 @@
+/* prompt included in authorization dialog for the wake command */
+"WakeAuthorizationPrompt" = "You must be authorized to wake the machine.";
