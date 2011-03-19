@@ -125,11 +125,10 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 322261562;
-			PBXWorkspaceStateSaveDate = 322261562;
+			PBXPerProjectTemplateStateSaveDate = 322265287;
+			PBXWorkspaceStateSaveDate = 322265287;
 		};
 		perUserProjectItems = {
-			AE0EE4DD133556A50086ADEE /* PBXTextBookmark */ = AE0EE4DD133556A50086ADEE /* PBXTextBookmark */;
 			AE0EE4DE133556A50086ADEE /* PBXTextBookmark */ = AE0EE4DE133556A50086ADEE /* PBXTextBookmark */;
 			AE0EE4DF133556A50086ADEE /* PBXTextBookmark */ = AE0EE4DF133556A50086ADEE /* PBXTextBookmark */;
 			AE0EE4E0133556A50086ADEE /* PBXTextBookmark */ = AE0EE4E0133556A50086ADEE /* PBXTextBookmark */;
@@ -159,11 +158,11 @@
 			AE0EE51813355A010086ADEE /* PBXTextBookmark */ = AE0EE51813355A010086ADEE /* PBXTextBookmark */;
 			AE14D4841055811F00A21E6F /* PBXTextBookmark */ = AE14D4841055811F00A21E6F /* PBXTextBookmark */;
 			AE3F8E3B105E1576006B64F8 /* PBXTextBookmark */ = AE3F8E3B105E1576006B64F8 /* PBXTextBookmark */;
-			AE430DE912BE0B6700D1F8C3 /* PBXTextBookmark */ = AE430DE912BE0B6700D1F8C3 /* PBXTextBookmark */;
 			AE4D14F4109C6B9A003661DA /* PBXTextBookmark */ = AE4D14F4109C6B9A003661DA /* PBXTextBookmark */;
 			AE53ECFB12D8802900CE0181 /* PBXTextBookmark */ = AE53ECFB12D8802900CE0181 /* PBXTextBookmark */;
 			AE53F01D12D8DE0400CE0181 /* XDModelBookmark */ = AE53F01D12D8DE0400CE0181 /* XDModelBookmark */;
 			AE55F1DA11F1FF34000C607B /* PBXTextBookmark */ = AE55F1DA11F1FF34000C607B /* PBXTextBookmark */;
+			AE62F29A133560F30019B681 /* PBXTextBookmark */ = AE62F29A133560F30019B681 /* PBXTextBookmark */;
 			AE8B8B3A12C6A3DC000CFA05 /* PBXTextBookmark */ = AE8B8B3A12C6A3DC000CFA05 /* PBXTextBookmark */;
 			AE97510612EC453900B31907 /* PBXTextBookmark */ = AE97510612EC453900B31907 /* PBXTextBookmark */;
 			AEA5F16212F2AC1E002B1739 /* PBXTextBookmark */ = AEA5F16212F2AC1E002B1739 /* PBXTextBookmark */;
@@ -217,16 +216,6 @@
 			sepNavSelRange = "{19026, 0}";
 			sepNavVisRange = "{18370, 1007}";
 		};
-	};
-	AE0EE4DD133556A50086ADEE /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE14D56C1055930D00A21E6F /* Waker_AppDelegate.py */;
-		name = "Waker_AppDelegate.py: 3";
-		rLen = 45;
-		rLoc = 69;
-		rType = 0;
-		vrLen = 1976;
-		vrLoc = 0;
 	};
 	AE0EE4DE133556A50086ADEE /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -427,7 +416,7 @@
 		);
 		name = /Users/boxed/Projects/Waker/Info.plist;
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 9223372036854775808;
 	};
 	AE0EE51813355A010086ADEE /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -542,7 +531,7 @@
 	};
 	AE14D56C1055930D00A21E6F /* Waker_AppDelegate.py */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1297, 10224}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1297, 10256}}";
 			sepNavSelRange = "{20838, 0}";
 			sepNavVisRange = "{19630, 2388}";
 			sepNavWindowFrame = "{{15, 284}, {1047, 739}}";
@@ -801,23 +790,6 @@
 		vrLen = 142;
 		vrLoc = 0;
 	};
-	AE430DE912BE0B6700D1F8C3 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE430DEA12BE0B6700D1F8C3 /* idler.c */;
-		name = "idler.c: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 1162;
-		vrLoc = 1608;
-	};
-	AE430DEA12BE0B6700D1F8C3 /* idler.c */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.c;
-		name = idler.c;
-		path = /Users/boxed/Projects/Waker/idler.c;
-		sourceTree = "<absolute>";
-	};
 	AE4D14F4109C6B9A003661DA /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = AE2276D2107FD376000751A1 /* QSGlobalSelectionProvider.m */;
@@ -910,6 +882,16 @@
 		name = NSPersistentStoreCoordinator.h;
 		path = /System/Library/Frameworks/CoreData.framework/Versions/A/Headers/NSPersistentStoreCoordinator.h;
 		sourceTree = "<absolute>";
+	};
+	AE62F29A133560F30019B681 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AE14D56C1055930D00A21E6F /* Waker_AppDelegate.py */;
+		name = "Waker_AppDelegate.py: 484";
+		rLen = 0;
+		rLoc = 20838;
+		rType = 0;
+		vrLen = 2388;
+		vrLoc = 19630;
 	};
 	AE858459108668550094157B /* transformers.py */ = {
 		uiCtxt = {
