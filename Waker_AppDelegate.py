@@ -113,14 +113,14 @@ class Waker_AppDelegate(NSObject, kvc):
     
     def awakeFromNib(self):
         self.rules_controller.setSortDescriptors_([NSSortDescriptor.alloc().initWithKey_ascending_("priority", YES)])
+        NSUserDefaults.standardUserDefaults().registerDefaults_({'system_volume':0.7, 'first_run':True, 'snooze_minutes':10})
+        NSWorkspace.sharedWorkspace().notificationCenter().addObserver_selector_name_object_(self, self.onSleep_, NSWorkspaceWillSleepNotification, NSWorkspace.sharedWorkspace())
+        self.newRuleTipWindow = MAAttachedWindow.alloc().initWithContentView_attachedToView_onSide_(self.newRuleTipView, self.newRuleButton, 3).retain()
 
     def applicationDidFinishLaunching_(self, sender):
         #self.init_speech()
         self.disableModelChangedUpdates = False
         self.managedObjectContext() # init context
-        NSUserDefaults.standardUserDefaults().registerDefaults_({'system_volume':0.7, 'first_run':True, 'snooze_minutes':10})
-
-        NSWorkspace.sharedWorkspace().notificationCenter().addObserver_selector_name_object_(self, self.onSleep_, NSWorkspaceWillSleepNotification, NSWorkspace.sharedWorkspace())
         self.setup_menu()
         self.bridge.initRights()
         # set up the global timer to call us every 5 seconds
@@ -133,7 +133,6 @@ class Waker_AppDelegate(NSObject, kvc):
         if self.next_alarm is None or datetime.datetime.now() > self.next_alarm:
             self.set_next_alarm()
         NSNotificationCenter.defaultCenter().addObserver_selector_name_object_(self, self.calendarChanged_, CalEventsChangedExternallyNotification, CalCalendarStore.defaultCalendarStore())
-        self.newRuleTipWindow = MAAttachedWindow.alloc().initWithContentView_attachedToView_onSide_(self.newRuleTipView, self.newRuleButton, 3).retain()
         if get_user_default('first_run'):
             self.showFirstRunWindow()
         self.bridge.testAbsoluteTimeConversion_(datetimeToCFAbsoluteTime(datetime.datetime.now()))

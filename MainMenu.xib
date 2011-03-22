@@ -3736,11 +3736,12 @@ dG8gd29ycnkgYWJvdXQgaGF2aW5nIHRvIHJlbWVtYmVyIHRvIHNldCBpdCBiYWNrIGFnYWluLg</stri
 			<object class="NSWindowTemplate" id="792950910">
 				<int key="NSWindowStyleMask">7</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{195, 631}, {599, 280}}</string>
+				<string key="NSWindowRect">{{38, 462}, {599, 280}}</string>
 				<int key="NSWTFlags">-461897728</int>
 				<string key="NSWindowTitle">About Waker</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
+				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<object class="NSView" key="NSWindowView" id="352467342">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -3825,7 +3826,7 @@ IiBmcm9tIG11c29wZW4uY29tA</string>
 					<string key="NSFrameSize">{599, 280}</string>
 					<reference key="NSSuperview"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
 		</object>
@@ -7866,9 +7867,9 @@ IiBmcm9tIG11c29wZW4uY29tA</string>
 						<bytes key="NSTransformStruct">P4AAAL+AAABDcAAAwbgAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{393, 142}, {599, 280}}</string>
+					<string>{{74, 142}, {599, 280}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{393, 142}, {599, 280}}</string>
+					<string>{{74, 142}, {599, 280}}</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -8081,7 +8082,7 @@ IiBmcm9tIG11c29wZW4uY29tA</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{602, 80}, {157, 163}}</string>
+					<string>{{516, 80}, {157, 163}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
