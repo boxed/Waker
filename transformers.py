@@ -67,7 +67,7 @@ def test():
     print '------------'
 #test()
 
-class DateTransformer(NSValueTransformer):
+class DateTransformer(NSValueTransformer): 
     def transformedValueClass(self):
         return NSString
     transformedValueClass = classmethod(transformedValueClass)
@@ -81,13 +81,11 @@ class DateTransformer(NSValueTransformer):
         if value is None:
             return 'n/a'
         return value
-        #return value.descriptionWithCalendarFormat_timeZone_locale_('%H:%M', NSTimeZone.timeZoneWithAbbreviation_('GMT'), None)
         
     def reverseTransformedValue_(self, value):
         # string in, string out
         if value == 'n/a':
             return None
-        #return NSDateFromString(value)
         return value
 
 class NumberTransformer(NSValueTransformer):
@@ -178,14 +176,16 @@ class DisableAlarmTransformer(NSValueTransformer):
     allowsReverseTransformation = classmethod(allowsReverseTransformation)
     
     def transformedValue_(self, value):
+        print 'disable1', value, type(value)
         # NSDate in, string out
         if value is None:
             return True
         return False
         
     def reverseTransformedValue_(self, value):
+        print 'disable2', value, type(value)
         if value == False:
-            return NSDateFromString('8:00')
+            return '8:00'
         return None
 
 class EnableAlarmTransformer(NSValueTransformer):
