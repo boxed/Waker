@@ -126,8 +126,12 @@ class Waker_AppDelegate(NSObject, kvc):
         # set up the global timer to call us every 5 seconds
         NSTimer.scheduledTimerWithTimeInterval_target_selector_userInfo_repeats_(5, self, self.timer, None, YES)
         
-        self.next_alarm = datetime.datetime.strptime(get_user_default('next_alarm'), '%Y-%m-%d %H:%M:%S')
-        self.next_alarm_rule = get_user_default('next_alarm_rule')
+        try:
+            self.next_alarm = datetime.datetime.strptime(get_user_default('next_alarm'), '%Y-%m-%d %H:%M:%S')
+            self.next_alarm_rule = get_user_default('next_alarm_rule')
+        except:
+            self.next_alarm = None
+            self.next_alarm_rule = None
         NSLog('previous alarm set: %@', self.next_alarm)
         
         if self.next_alarm is None or datetime.datetime.now() > self.next_alarm:
