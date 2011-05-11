@@ -277,8 +277,14 @@ class Waker_AppDelegate(NSObject, kvc):
         try:
             masterplaylist.play()
         except reference.CommandError:
-            masterplaylist = itunes.playlists()[13]
-            masterplaylist.play()
+            try:
+                masterplaylist = itunes.playlists()[13]
+                masterplaylist.play()
+            except Exception, e:
+                NSLog('Exception: %s', str(e))
+                NSLog('iTunes thread failed')
+                # Something has gone really bad, let's just let the backup alarm play.
+                return
         # I need to turn shuffle off, then skip, then turn it on again and skip again to make it re-shuffle.
         # If you just set shuffle and skip a track you'll get the same song every time. Ugh.
         itunes.set(masterplaylist.shuffle, to=0)
