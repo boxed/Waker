@@ -116,6 +116,7 @@ class Waker_AppDelegate(NSObject, kvc):
         NSUserDefaults.standardUserDefaults().registerDefaults_({'system_volume':0.7, 'first_run':True, 'snooze_minutes':10})
         NSWorkspace.sharedWorkspace().notificationCenter().addObserver_selector_name_object_(self, self.onSleep_, NSWorkspaceWillSleepNotification, NSWorkspace.sharedWorkspace())
         self.newRuleTipWindow = MAAttachedWindow.alloc().initWithContentView_attachedToView_onSide_(self.newRuleTipView, self.newRuleButton, 3).retain()
+        assert self.newRuleTipWindow
 
     def applicationDidFinishLaunching_(self, sender):
         #self.init_speech()
@@ -362,7 +363,7 @@ class Waker_AppDelegate(NSObject, kvc):
         self.alarmWindow.setBackgroundColor_(NSColor.blackColor())
         if self.alarmWindow.isVisible():
             NSLog('Warning! alarm already active but tried to start it anyway')
-        self.alarmWindow.goFullscreen()
+        self.alarmWindow.toggleFullscreen_(self)
         # TODO: update the day titles and texts
         def events_as_string(calendar):
             return '\n'.join([x.title() for x in events_of_day(calendar.year, calendar.month, calendar.day)])
@@ -390,7 +391,7 @@ class Waker_AppDelegate(NSObject, kvc):
     
     @IBAction
     def closeAlarmWindow_(self, sender):
-        self.alarmWindow.exitFullscreen_(sender)
+        self.alarmWindow.toggleFullscreen_(sender)
 
     def setup_menu(self):
         statusBar = NSStatusBar.systemStatusBar()
