@@ -29,7 +29,7 @@
     [self setAlphaValue:1.0];
     [self setStyleMask:NSBorderlessWindowMask];
     [self setFrame:[[NSScreen mainScreen] frame] display:NO];
-    [self setLevel:[bridge captureDisplayAndGetShieldingLevel]];
+    //[self setLevel:[bridge captureDisplayAndGetShieldingLevel]];
     [bridge releaseDisplay];
     [self makeKeyAndOrderFront:self];
     [self orderFrontRegardless];

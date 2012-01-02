@@ -176,14 +176,14 @@ class DisableAlarmTransformer(NSValueTransformer):
     allowsReverseTransformation = classmethod(allowsReverseTransformation)
     
     def transformedValue_(self, value):
-        print 'disable1', value, type(value)
+        #print 'disable1', value, type(value)
         # NSDate in, string out
         if value is None:
             return True
         return False
         
     def reverseTransformedValue_(self, value):
-        print 'disable2', value, type(value)
+        #print 'disable2', value, type(value)
         if value == False:
             return '8:00'
         return None

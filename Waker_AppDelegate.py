@@ -268,42 +268,45 @@ class Waker_AppDelegate(NSObject, kvc):
     @IBAction
     def playAlarmThread_(self, param):
         pool = NSAutoreleasePool.alloc().init()
-        NSThread.currentThread().setName_('playAlarmThread')
-        self.iTunes_thread = NSThread.currentThread()
-        NSLog('attempting to play iTunes alarm')
-        from appscript import app, reference
-        itunes = app('itunes')
-        masterplaylist = itunes.playlists()[1]
         try:
-            masterplaylist.play()
-        except reference.CommandError:
+            NSThread.currentThread().setName_('playAlarmThread')
+            self.iTunes_thread = NSThread.currentThread()
+            NSLog('attempting to play iTunes alarm')
+            from appscript import app, reference
+            itunes = app('itunes')
+            masterplaylist = itunes.playlists()[1]
             try:
-                masterplaylist = itunes.playlists()[13]
                 masterplaylist.play()
-            except Exception, e:
-                NSLog('Exception: %s', str(e))
-                NSLog('iTunes thread failed')
-                # Something has gone really bad, let's just let the backup alarm play.
-                return
-        # I need to turn shuffle off, then skip, then turn it on again and skip again to make it re-shuffle.
-        # If you just set shuffle and skip a track you'll get the same song every time. Ugh.
-        itunes.set(masterplaylist.shuffle, to=0)
-        itunes.next_track()
-        itunes.set(masterplaylist.shuffle, to=1)
-        itunes.next_track()
-        import datetime
-        ref = datetime.datetime.now()
-        # check if alarm was started with a 5 seconds timeout
-        while (datetime.datetime.now()-ref).seconds < 5:
-            sleep(0.5)
-            if is_playing():
-                # timer successfully evaluated
-                NSLog('iTunes is playing!')
-                self.get_backup_alarm().stop()
-                self.iTunes_is_playing = True
-                break
-        if self.next_alarm_rule != NowExceptionRule:
-            self.skipAlarm_(self)
+            except reference.CommandError:
+                try:
+                    masterplaylist = itunes.playlists()[13]
+                    masterplaylist.play()
+                except Exception, e:
+                    NSLog('Exception: %s', str(e))
+                    NSLog('iTunes thread failed')
+                    # Something has gone really bad, let's just let the backup alarm play.
+                    return
+            # I need to turn shuffle off, then skip, then turn it on again and skip again to make it re-shuffle.
+            # If you just set shuffle and skip a track you'll get the same song every time. Ugh.
+            itunes.set(masterplaylist.shuffle, to=0)
+            itunes.next_track()
+            itunes.set(masterplaylist.shuffle, to=1)
+            itunes.next_track()
+            import datetime
+            ref = datetime.datetime.now()
+            # check if alarm was started with a 5 seconds timeout
+            while (datetime.datetime.now()-ref).seconds < 5:
+                sleep(0.5)
+                if is_playing():
+                    # timer successfully evaluated
+                    NSLog('iTunes is playing!')
+                    self.get_backup_alarm().stop()
+                    self.iTunes_is_playing = True
+                    break
+            if self.next_alarm_rule != NowExceptionRule:
+                self.skipAlarm_(self)
+        except:
+            print 'failed to play alarm'
         
         # Wait 1.5 hours. If the computer has been idle for between an hour and an hour and 30 seconds, pause music and sleep.
         # If we've had the screen up for more than 1.5 hours but we didn't hit the 30 second window to sleep the system, exit the loop
