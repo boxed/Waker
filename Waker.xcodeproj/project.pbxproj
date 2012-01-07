@@ -46,6 +46,7 @@
 		AE53F14D12D9E48C00CE0181 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AE53F14C12D9E48C00CE0181 /* MAAttachedWindow.m */; };
 		AE85845A108668550094157B /* transformers.py in Resources */ = {isa = PBXBuildFile; fileRef = AE858459108668550094157B /* transformers.py */; };
 		AE9C9E1510925D1800F05042 /* fuzzy_dict.py in Resources */ = {isa = PBXBuildFile; fileRef = AE9C9E1410925D1800F05042 /* fuzzy_dict.py */; };
+		AEA1A04314B25683002E00D5 /* appscript-1.0.0-py2.7-macosx-10.7-intel.egg in Resources */ = {isa = PBXBuildFile; fileRef = AEA1A04214B25683002E00D5 /* appscript-1.0.0-py2.7-macosx-10.7-intel.egg */; };
 		AEBA352A12DBD63100ECE48E /* white waker.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA352912DBD63100ECE48E /* white waker.png */; };
 		AEBA353612DBD8F600ECE48E /* shading.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA353512DBD8F600ECE48E /* shading.png */; };
 		AECCB0A610B0BC9D007F9A32 /* CalendarView.py in Resources */ = {isa = PBXBuildFile; fileRef = AECCB0A510B0BC9D007F9A32 /* CalendarView.py */; };
@@ -146,6 +147,7 @@
 		AE53F14C12D9E48C00CE0181 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		AE858459108668550094157B /* transformers.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = transformers.py; sourceTree = "<group>"; };
 		AE9C9E1410925D1800F05042 /* fuzzy_dict.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = fuzzy_dict.py; sourceTree = "<group>"; };
+		AEA1A04214B25683002E00D5 /* appscript-1.0.0-py2.7-macosx-10.7-intel.egg */ = {isa = PBXFileReference; lastKnownFileType = file; path = "appscript-1.0.0-py2.7-macosx-10.7-intel.egg"; sourceTree = "<group>"; };
 		AEBA352912DBD63100ECE48E /* white waker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white waker.png"; sourceTree = "<group>"; };
 		AEBA353512DBD8F600ECE48E /* shading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shading.png; sourceTree = "<group>"; };
 		AECCB0A510B0BC9D007F9A32 /* CalendarView.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = CalendarView.py; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		AE14D576105594D100A21E6F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AEA1A04214B25683002E00D5 /* appscript-1.0.0-py2.7-macosx-10.7-intel.egg */,
 				AE385CD412E38B00007DC86A /* alarm_close.png */,
 				AE385CE612E38DE9007DC86A /* alarm_close_pushed.png */,
 				AEBA353512DBD8F600ECE48E /* shading.png */,
@@ -421,6 +424,7 @@
 				AEBA353612DBD8F600ECE48E /* shading.png in Resources */,
 				AE385CD512E38B00007DC86A /* alarm_close.png in Resources */,
 				AE385CE712E38DE9007DC86A /* alarm_close_pushed.png in Resources */,
+				AEA1A04314B25683002E00D5 /* appscript-1.0.0-py2.7-macosx-10.7-intel.egg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

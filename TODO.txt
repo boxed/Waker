@@ -1,0 +1,3 @@
+- BUG: initial rule "vacation" created with "title contains ''"
+- Preferences should be renamed "Set Rules..."
+- FEATURE REQUEST: should ask to add itself as a startup item

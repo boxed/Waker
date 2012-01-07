@@ -13,7 +13,5 @@
 - (NSWindow*)QSShowLargeType:(NSString*)inString;
 - (AudioDeviceID)defaultOutputDeviceID;
 - (long)idleTimeSeconds;
-- (int32_t)captureDisplayAndGetShieldingLevel;
-- (bool)releaseDisplay;
 - (void)testAbsoluteTimeConversion:(double)t;
 @end

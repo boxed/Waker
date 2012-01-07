@@ -269,6 +269,8 @@ class Waker_AppDelegate(NSObject, kvc):
     @IBAction
     def playAlarmThread_(self, param):
         pool = NSAutoreleasePool.alloc().init()
+        import datetime
+        ref = datetime.datetime.now()
         try:
             NSThread.currentThread().setName_('playAlarmThread')
             self.iTunes_thread = NSThread.currentThread()
@@ -293,8 +295,6 @@ class Waker_AppDelegate(NSObject, kvc):
             itunes.next_track()
             itunes.set(masterplaylist.shuffle, to=1)
             itunes.next_track()
-            import datetime
-            ref = datetime.datetime.now()
             # check if alarm was started with a 5 seconds timeout
             while (datetime.datetime.now()-ref).seconds < 5:
                 sleep(0.5)
@@ -363,7 +363,8 @@ class Waker_AppDelegate(NSObject, kvc):
         self.alarmWindow.setBackgroundColor_(NSColor.blackColor())
         if self.alarmWindow.isVisible():
             NSLog('Warning! alarm already active but tried to start it anyway')
-        self.alarmWindow.toggleFullscreen_(self)
+        self.alarmWindow.orderFrontRegardless()
+        self.alarmWindow.toggleFullScreen_(self)
         # TODO: update the day titles and texts
         def events_as_string(calendar):
             return '\n'.join([x.title() for x in events_of_day(calendar.year, calendar.month, calendar.day)])
@@ -391,7 +392,8 @@ class Waker_AppDelegate(NSObject, kvc):
     
     @IBAction
     def closeAlarmWindow_(self, sender):
-        self.alarmWindow.toggleFullscreen_(sender)
+        self.alarmWindow.close()
+        self.alarmWindow.orderOut_(self)
 
     def setup_menu(self):
         statusBar = NSStatusBar.systemStatusBar()
@@ -639,7 +641,6 @@ class Waker_AppDelegate(NSObject, kvc):
             NSApp().presentError_(error)
     
     def applicationShouldTerminate_(self, sender):
-        self.bridge.releaseDisplay()
         NSUserDefaultsController.sharedUserDefaultsController().save_(self)
     
         if not self._managedObjectContext:

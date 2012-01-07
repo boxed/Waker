@@ -540,28 +540,6 @@ static AuthorizationRef gAuth = NULL;
 	return tHandle;
 }
 
-- (int32_t)captureDisplayAndGetShieldingLevel
-{
-    if (CGDisplayCapture(kCGDirectMainDisplay) != kCGErrorSuccess) 
-    {
-        NSLog(@"Couldn't capture the main display!");
-    }
-    return CGShieldingWindowLevel();
-}
-
-- (bool)releaseDisplay
-{
-    if (CGDisplayRelease(kCGDirectMainDisplay) != kCGErrorSuccess) 
-    {
-        NSLog(@"Couldn't release the display(s)!");
-        // Note: if you display an error dialog here, make sure you set
-        // its window level to the same one as the shield window level,
-        // or the user won't see anything.
-        return NO;
-    }
-    return YES;
-}
-
 - (void)testAbsoluteTimeConversion:(double)t
 {
     double diff = CFAbsoluteTimeGetCurrent()-t;
