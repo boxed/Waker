@@ -51,7 +51,7 @@
 		AEBA353612DBD8F600ECE48E /* shading.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA353512DBD8F600ECE48E /* shading.png */; };
 		AECCB0A610B0BC9D007F9A32 /* CalendarView.py in Resources */ = {isa = PBXBuildFile; fileRef = AECCB0A510B0BC9D007F9A32 /* CalendarView.py */; };
 		AEFD66381081276F004D71CE /* waker.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = AEFD66371081276F004D71CE /* waker.xcdatamodel */; };
-		E42F4A740B13443B00A50F72 /* SampleAuthorizationPrompts.strings in Resources */ = {isa = PBXBuildFile; fileRef = E42F4A730B13443B00A50F72 /* SampleAuthorizationPrompts.strings */; };
+		E42F4A740B13443B00A50F72 /* WakerPrompts.strings in Resources */ = {isa = PBXBuildFile; fileRef = E42F4A730B13443B00A50F72 /* WakerPrompts.strings */; };
 		E449EC830B619E4B009E190A /* BetterAuthorizationSampleLibInstallTool.c in Sources */ = {isa = PBXBuildFile; fileRef = E449EC820B619E4B009E190A /* BetterAuthorizationSampleLibInstallTool.c */; };
 		E4BBC2760B69194B00DC1BB6 /* InstallTool in CopyFiles */ = {isa = PBXBuildFile; fileRef = E449EC6E0B619E02009E190A /* InstallTool */; };
 		E4F1F1960B0DD65D003CDB5F /* SampleCommon.c in Sources */ = {isa = PBXBuildFile; fileRef = E4F1F1940B0DD65D003CDB5F /* SampleCommon.c */; };
@@ -152,7 +152,7 @@
 		AEBA353512DBD8F600ECE48E /* shading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shading.png; sourceTree = "<group>"; };
 		AECCB0A510B0BC9D007F9A32 /* CalendarView.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = CalendarView.py; sourceTree = "<group>"; };
 		AEFD66371081276F004D71CE /* waker.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = waker.xcdatamodel; sourceTree = "<group>"; };
-		E42F4C260B13656200A50F72 /* en */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SampleAuthorizationPrompts.strings; sourceTree = "<group>"; };
+		E42F4C260B13656200A50F72 /* en */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/WakerPrompts.strings; sourceTree = "<group>"; };
 		E449EC6E0B619E02009E190A /* InstallTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InstallTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		E449EC820B619E4B009E190A /* BetterAuthorizationSampleLibInstallTool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BetterAuthorizationSampleLibInstallTool.c; sourceTree = "<group>"; };
 		E4F1F1940B0DD65D003CDB5F /* SampleCommon.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = SampleCommon.c; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 				AE0EF22D111DA83E00BF7528 /* menu_item_inverted.png */,
 				AE0EF22E111DA83E00BF7528 /* menu_item.png */,
 				AE14D574105594BE00A21E6F /* MainMenu.xib */,
-				E42F4A730B13443B00A50F72 /* SampleAuthorizationPrompts.strings */,
+				E42F4A730B13443B00A50F72 /* WakerPrompts.strings */,
 				E4F1F2C00B0DECA3003CDB5F /* Info.plist */,
 			);
 			name = Resources;
@@ -404,7 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E42F4A740B13443B00A50F72 /* SampleAuthorizationPrompts.strings in Resources */,
+				E42F4A740B13443B00A50F72 /* WakerPrompts.strings in Resources */,
 				AE14D55D1055927100A21E6F /* main.py in Resources */,
 				AE14D56D1055930D00A21E6F /* Waker_AppDelegate.py in Resources */,
 				AE14D575105594BE00A21E6F /* MainMenu.xib in Resources */,
@@ -489,12 +489,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E42F4A730B13443B00A50F72 /* SampleAuthorizationPrompts.strings */ = {
+		E42F4A730B13443B00A50F72 /* WakerPrompts.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E42F4C260B13656200A50F72 /* en */,
 			);
-			name = SampleAuthorizationPrompts.strings;
+			name = WakerPrompts.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -520,9 +520,9 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -549,10 +549,10 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -638,9 +638,9 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 				WARNING_CFLAGS = "-Wall";
 			};

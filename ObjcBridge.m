@@ -42,123 +42,125 @@ static AuthorizationRef gAuth = NULL;
 					   gAuth, 
 					   kWakerCommandSet, 
 					   CFBundleGetIdentifier(CFBundleGetMainBundle()), 
-					   CFSTR("SampleAuthorizationPrompts")
+					   CFSTR("WakerPrompts")
 					   );
 }
 
 - (bool)setWakeup:(CFAbsoluteTime)inAbsoluteTime
 {
-    OSStatus        err;
-    NSString *      bundleID;
-    NSDictionary *  request;
-    CFDictionaryRef response;
-    BASFailCode     failCode;
+    OSStatus        err = !noErr;
+    @synchronized(self)
+    {
+        NSString *      bundleID;
+        NSDictionary *  request;
+        CFDictionaryRef response;
+        BASFailCode     failCode;
 
-    response = NULL;
-	
-	/*printf("%f\n%f\n%f\n", 
-		   CFAbsoluteTimeGetCurrent()+60, 
-		   inAbsoluteTime, 
-		   CFAbsoluteTimeGetCurrent()+60-inAbsoluteTime);
-	*/
-	CFDateRef targetDate = CFDateCreate(NULL, inAbsoluteTime); // in one mins
-    NSDate* foo = (NSDate*)targetDate;
-    NSLog(@"Wake computer at: %@", [foo description]);
-    
-    // Create our request.  Note that NSDictionary is toll-free bridged to CFDictionary, so 
-    // we can use an NSDictionary as our request.  Also, if the "Force failure" checkbox is 
-    // checked, we use the wrong command ID to deliberately cause an "unknown command" error 
-    // so that we can test that code path.
-    
-	request = [NSDictionary dictionaryWithObjectsAndKeys:
-				@kWakerSetWakeupEventCommand, @kBASCommandKey,
-				targetDate,	@kWakerSetWakeupEventKeyDate,     
-				nil];
+        response = NULL;
+        
+        /*printf("%f\n%f\n%f\n", 
+               CFAbsoluteTimeGetCurrent()+60, 
+               inAbsoluteTime, 
+               CFAbsoluteTimeGetCurrent()+60-inAbsoluteTime);
+        */
+        CFDateRef targetDate = CFDateCreate(NULL, inAbsoluteTime); // in one mins
+        NSDate* foo = (NSDate*)targetDate;
+        NSLog(@"Wake computer at: %@", [foo description]);
+        
+        // Create our request.  Note that NSDictionary is toll-free bridged to CFDictionary, so 
+        // we can use an NSDictionary as our request.  Also, if the "Force failure" checkbox is 
+        // checked, we use the wrong command ID to deliberately cause an "unknown command" error 
+        // so that we can test that code path.
+        
+        request = [NSDictionary dictionaryWithObjectsAndKeys:
+                    @kWakerSetWakeupEventCommand, @kBASCommandKey,
+                    targetDate,	@kWakerSetWakeupEventKeyDate,     
+                    nil];
 
-    assert(request != NULL);
-    
-    bundleID = [[NSBundle mainBundle] bundleIdentifier];
-    assert(bundleID != NULL);
-    
-    // Execute it.
-    
-	err = BASExecuteRequestInHelperTool(
-        gAuth, 
-        kWakerCommandSet, 
-        (CFStringRef) bundleID, 
-        (CFDictionaryRef) request, 
-        &response
-    );
-	
-    // If it failed, try to recover.
-    
-    if ( (err != noErr) && (err != userCanceledErr) ) {
-        int alertResult;
+        assert(request != NULL);
         
-        failCode = BASDiagnoseFailure(gAuth, (CFStringRef) bundleID);
-		
-        // At this point we tell the user that something has gone wrong and that we need 
-        // to authorize in order to fix it.  Ideally we'd use failCode to describe the type of 
-        // error to the user.
-		
-        alertResult = NSRunAlertPanel(@"Needs Install", @"Waker needs to install the wake up tool", nil, nil, nil);
+        bundleID = [[NSBundle mainBundle] bundleIdentifier];
+        assert(bundleID != NULL);
         
-        if ( alertResult == NSAlertDefaultReturn ) {
-            // Try to fix things.
+        // Execute it.
+        
+        err = BASExecuteRequestInHelperTool(
+            gAuth, 
+            kWakerCommandSet, 
+            (CFStringRef) bundleID, 
+            (CFDictionaryRef) request, 
+            &response
+        );
+        
+        // If it failed, try to recover.
+        
+        if ( (err != noErr) && (err != userCanceledErr) ) {
+            int alertResult;
             
-            err = BASFixFailure(gAuth, (CFStringRef) bundleID, CFSTR("InstallTool"), CFSTR("HelperTool"), failCode);
-			if (err != noErr)
-			{
-				NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to fix failure: %ld.\n", (long) err], nil, nil, nil);
-			}
-			
-            // If the fix went OK, retry the request.
+            failCode = BASDiagnoseFailure(gAuth, (CFStringRef) bundleID);
             
-            if (err == noErr) {
-                err = BASExecuteRequestInHelperTool(
-													gAuth, 
-													kWakerCommandSet, 
-													(CFStringRef) bundleID, 
-													(CFDictionaryRef) request, 
-													&response
-													);
-				if (err != noErr)
-				{
-					NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to execute request in helper: %ld.\n", (long) err], nil, nil, nil);
-				}
+            // At this point we tell the user that something has gone wrong and that we need 
+            // to authorize in order to fix it.  Ideally we'd use failCode to describe the type of 
+            // error to the user.
+            
+            alertResult = NSRunAlertPanel(@"Needs Install", @"Waker needs to install the wake up tool", nil, nil, nil);
+            
+            if ( alertResult == NSAlertDefaultReturn ) {
+                // Try to fix things.
+                
+                err = BASFixFailure(gAuth, (CFStringRef) bundleID, CFSTR("InstallTool"), CFSTR("HelperTool"), failCode);
+                if (err != noErr)
+                {
+                    NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to fix failure: %ld.\n", (long) err], nil, nil, nil);
+                }
+                
+                // If the fix went OK, retry the request.
+                
+                if (err == noErr) {
+                    err = BASExecuteRequestInHelperTool(
+                                                        gAuth, 
+                                                        kWakerCommandSet, 
+                                                        (CFStringRef) bundleID, 
+                                                        (CFDictionaryRef) request, 
+                                                        &response
+                                                        );
+                    if (err != noErr)
+                    {
+                        NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to execute request in helper: %ld.\n", (long) err], nil, nil, nil);
+                    }
+                }
+            } else {
+                err = userCanceledErr;
             }
-        } else {
-            err = userCanceledErr;
+        }	
+        
+        // If the above went OK, it means that the IPC to the helper tool worked.  We 
+        // now have to check the response dictionary to see if the command's execution 
+        // within the helper tool was successful.  For the GetVersion command, this 
+        // is unlikely to ever fail, but we should still check. 
+        
+        if (err == noErr) {
+            err = BASGetErrorFromResponse(response);
+            if (err != noErr)
+            {
+                NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to get response error: %ld.\n", (long) err], nil, nil, nil);
+            }
         }
-    }	
-    
-    // If the above went OK, it means that the IPC to the helper tool worked.  We 
-    // now have to check the response dictionary to see if the command's execution 
-    // within the helper tool was successful.  For the GetVersion command, this 
-    // is unlikely to ever fail, but we should still check. 
-    
-    if (err == noErr) {
-        err = BASGetErrorFromResponse(response);
-		if (err != noErr)
-		{
-			NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to get response error: %ld.\n", (long) err], nil, nil, nil);
-		}
+        else
+        {
+        }
+        
+        // Log our results.
+        if (err == noErr) {
+        } else {
+            NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed with error %ld.\n", (long) err], nil, nil, nil);
+        }
+        
+        if (response != NULL) {
+            CFRelease(response);
+        }        
     }
-	else
-	{
-	}
-    
-    // Log our results.
-    if (err == noErr) {
-    } else {
-		NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed with error %ld.\n", (long) err], nil, nil, nil);
-    }
-    
-    if (response != NULL) {
-        CFRelease(response);
-    }
-	
-	return err == noErr;
+    return err == noErr;
 }
 
 - (void)sleepSystem
@@ -571,7 +573,7 @@ static AuthorizationRef gAuth = NULL;
 		gAuth, 
 		kWakerCommandSet, 
 		CFBundleGetIdentifier(CFBundleGetMainBundle()), 
-		CFSTR("SampleAuthorizationPrompts")
+		CFSTR("WakerPrompts")
 	);
     
     // And now, the miracle that is Cocoa...
