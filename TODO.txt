@@ -1,3 +1,25 @@
+- FEATURE: Wake up light
+	Black out screen on the "next alarm at..." screen to avoid waking the computer with full brightness
+	Show the alarm window first, then hide the "next alarm at..." window as to not blink full brightness
+	Slowly fade the alarm window from black to white, somewhere along the line switching text color etc
+	Should start screen brightness fade before the alarm starts
 - BUG: initial rule "vacation" created with "title contains ''"
 - Preferences should be renamed "Set Rules..."
 - FEATURE REQUEST: should ask to add itself as a startup item
+
+- Competition parity
+    Select playlist per alarm
+    "Go to sleep" mode: plays a playlist and fades out after some time to finally sleep the computer
+- iPhone port
+- Warning when you should to go to bed. Maybe just set how many hours advanced notice you need and it'll warn based on your next alarm?
+- Some system to read overriding alarm times from the calendar. Useful for exceptions that you know far in advance, like a plane you need to catch in several weeks
+- Should show both exact and relative time for coming alarms
+- Should detect if lid is being closed and not delay on that
+    http://www.cocoabuilder.com/archive/cocoa/182563-lid-opened-notification.html
+
+Feedback from Gunnar:
+    click on preview: activate corresponding rule. Scroll to it and blink it by fading in/out twice?
+    cmd-T moves to today
+    date?
+    birthdays? match the actual calendar. maybe have an "all" rule?
+    preview: fill the gaps at the edges of the calendar with days

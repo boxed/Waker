@@ -50,6 +50,7 @@
 		AEBA352A12DBD63100ECE48E /* white waker.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA352912DBD63100ECE48E /* white waker.png */; };
 		AEBA353612DBD8F600ECE48E /* shading.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA353512DBD8F600ECE48E /* shading.png */; };
 		AECCB0A610B0BC9D007F9A32 /* CalendarView.py in Resources */ = {isa = PBXBuildFile; fileRef = AECCB0A510B0BC9D007F9A32 /* CalendarView.py */; };
+		AECDA00814F92664006CA324 /* NSButton+TextColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AECDA00714F92664006CA324 /* NSButton+TextColor.m */; };
 		AEFD66381081276F004D71CE /* waker.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = AEFD66371081276F004D71CE /* waker.xcdatamodel */; };
 		E42F4A740B13443B00A50F72 /* WakerPrompts.strings in Resources */ = {isa = PBXBuildFile; fileRef = E42F4A730B13443B00A50F72 /* WakerPrompts.strings */; };
 		E449EC830B619E4B009E190A /* BetterAuthorizationSampleLibInstallTool.c in Sources */ = {isa = PBXBuildFile; fileRef = E449EC820B619E4B009E190A /* BetterAuthorizationSampleLibInstallTool.c */; };
@@ -151,6 +152,8 @@
 		AEBA352912DBD63100ECE48E /* white waker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white waker.png"; sourceTree = "<group>"; };
 		AEBA353512DBD8F600ECE48E /* shading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shading.png; sourceTree = "<group>"; };
 		AECCB0A510B0BC9D007F9A32 /* CalendarView.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = CalendarView.py; sourceTree = "<group>"; };
+		AECDA00614F92664006CA324 /* NSButton+TextColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSButton+TextColor.h"; sourceTree = "<group>"; };
+		AECDA00714F92664006CA324 /* NSButton+TextColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSButton+TextColor.m"; sourceTree = "<group>"; };
 		AEFD66371081276F004D71CE /* waker.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = waker.xcdatamodel; sourceTree = "<group>"; };
 		E42F4C260B13656200A50F72 /* en */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/WakerPrompts.strings; sourceTree = "<group>"; };
 		E449EC6E0B619E02009E190A /* InstallTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InstallTool; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +202,8 @@
 		08FB7794FE84155DC02AAC07 /* BetterAuthorizationSample */ = {
 			isa = PBXGroup;
 			children = (
+				AECDA00614F92664006CA324 /* NSButton+TextColor.h */,
+				AECDA00714F92664006CA324 /* NSButton+TextColor.m */,
 				AECCB0A510B0BC9D007F9A32 /* CalendarView.py */,
 				AE9C9E1410925D1800F05042 /* fuzzy_dict.py */,
 				AE3F8DBD105C2FF8006B64F8 /* from_curia.py */,
@@ -470,6 +475,7 @@
 				AE3B0D1012E4E4310064BCB1 /* AppleRemote.m in Sources */,
 				AE3B0D1112E4E4310064BCB1 /* HIDRemoteControlDevice.m in Sources */,
 				AE3B0D1212E4E4310064BCB1 /* RemoteControl.m in Sources */,
+				AECDA00814F92664006CA324 /* NSButton+TextColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

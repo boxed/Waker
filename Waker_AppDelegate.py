@@ -91,6 +91,7 @@ class Waker_AppDelegate(NSObject, kvc):
     alarmWindowDay6Text = IBOutlet()
     alarmWindowDay7Title = IBOutlet()
     alarmWindowDay7Text = IBOutlet()
+    alarmWindowStopAlarmButton = IBOutlet()
     
     large_type_window = None
 
@@ -389,6 +390,8 @@ class Waker_AppDelegate(NSObject, kvc):
         self.alarmWindowDay7Text.setStringValue_(events_as_string(calendar))
         self.alarmWindowDay7Title.setStringValue_(weekdays[calendar.weekday()])
         self.alarmWindowMatchedRule.setStringValue_(self.next_alarm_rule)
+        self.alarmWindowStopAlarmButton.cell().setBackgroundColor_(NSColor.colorWithDeviceWhite_alpha_(0.2, 1.0))
+        self.alarmWindowStopAlarmButton.setTextColor_(NSColor.whiteColor())
     
     @IBAction
     def closeAlarmWindow_(self, sender):
@@ -532,6 +535,7 @@ class Waker_AppDelegate(NSObject, kvc):
     
     @IBAction
     def stopAlarm_(self, sender):
+        self.closeAlarmWindow_(self)
         self.get_backup_alarm().stop()
         from appscript import app
         itunes = app('itunes')
