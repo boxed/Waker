@@ -94,6 +94,7 @@ class Waker_AppDelegate(NSObject, kvc):
     alarmWindowStopAlarmButton = IBOutlet()
     
     large_type_window = None
+    just_woke = False
 
     _backup_alarm = None
     def get_backup_alarm(self):
@@ -116,6 +117,7 @@ class Waker_AppDelegate(NSObject, kvc):
         self.rules_controller.setSortDescriptors_([NSSortDescriptor.alloc().initWithKey_ascending_("priority", YES)])
         NSUserDefaults.standardUserDefaults().registerDefaults_({'system_volume':0.7, 'first_run':True, 'snooze_minutes':10})
         NSWorkspace.sharedWorkspace().notificationCenter().addObserver_selector_name_object_(self, self.onSleep_, NSWorkspaceWillSleepNotification, NSWorkspace.sharedWorkspace())
+        NSWorkspace.sharedWorkspace().notificationCenter().addObserver_selector_name_object_(self, self.onWake_, NSWorkspaceDidWakeNotification, NSWorkspace.sharedWorkspace())
         self.newRuleTipWindow = MAAttachedWindow.alloc().initWithContentView_attachedToView_onSide_(self.newRuleTipView, self.newRuleButton, 3).retain()
         assert self.newRuleTipWindow
 
@@ -413,14 +415,25 @@ class Waker_AppDelegate(NSObject, kvc):
             next_alarm_description = 'No alarm set'
         self.statusBarMenuPreviewItem.setTitle_(next_alarm_description)
 
+    def onWake_(self, notification):
+        self.just_woke = True
+        NSLog('onWake')
+    
     def onSleep_(self, notification):
         if self.next_alarm != None:
             # display next alarm time and delay some time to allow the user to see the message
+            self.just_woke = False
             from datetime import timedelta, datetime
             foo = self.bridge.QSShowLargeType_('Next alarm: %s' % str(relative_date_formatting(self.next_alarm)))
-            NSRunLoop.currentRunLoop().runUntilDate_(datetime.now()+timedelta(seconds=5))
+            NSLog('delaying sleep...')
+            for x in xrange(5):
+                if self.just_woke:
+                    NSLog('just woke!')
+                    break
+                NSRunLoop.currentRunLoop().runUntilDate_(datetime.now()+timedelta(seconds=1))
             self.large_type_window = foo
-        
+            NSLog('done with onSleep')        
+    
     def new_rule(self):
         self.managedObjectContext().lock()
         self.managedObjectContext().undoManager().beginUndoGrouping()
