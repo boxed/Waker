@@ -1,0 +1,13 @@
+Kodare
+======
+
+Waker is the alarm program that knows what you're up to and sets the time intelligently. Just fill in your *calendar*, set some *rules* so Waker knows how to interpret your wishes and now you can have the alarm know that you're on vacation and not bug you with an alarm at all. But as soon as you get back to work it jumps automatically back to your old schedule.
+
+*Exceptions* allow you to change the behavior of just the next alarm but keep the rules intact. Had a late night at the office? Set an exception to sleep in tomorrow without having to worry about having to remember to set it back again.
+Features
+
+* Alarms based on your calendar
+* Simple exceptions so you don't have to remember to reset the alarm
+* Full screen alarm with a quick update on your calendar
+* Remote control support
+* Open source!
