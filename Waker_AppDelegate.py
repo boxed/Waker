@@ -41,9 +41,14 @@ def set_user_default(key, value):
         value = value.strftime('%Y-%m-%d %H:%M:%S')
     NSUserDefaultsController.sharedUserDefaultsController().values().setValue_forKey_(value, key)
 
+def get_itunes():
+    import appscript
+    import tunes
+    return appscript.app('iTunes', terms=tunes)
+
+
 def is_playing():
-    from appscript import app
-    return str(app('itunes').player_state()) == 'k.playing'
+    return str(get_itunes().player_state()) == 'k.playing'
 
 class Waker_AppDelegate(NSObject, kvc):
     _managedObjectModel = None
@@ -279,7 +284,7 @@ class Waker_AppDelegate(NSObject, kvc):
             self.iTunes_thread = NSThread.currentThread()
             NSLog('attempting to play iTunes alarm')
             from appscript import app, reference
-            itunes = app('itunes')
+            itunes = get_itunes()
             masterplaylist = itunes.playlists()[1]
             try:
                 masterplaylist.play()
@@ -321,8 +326,7 @@ class Waker_AppDelegate(NSObject, kvc):
                 break
             if timeSinceAlarmStart > 60*60 and timeSinceAlarmStart < 60*60+30 and self.alarmWindow.isVisible():
                 NSLog('itunes has been idle for too long, pausing music and sleeping system!')
-                from appscript import app
-                itunes = app('itunes')
+                itunes = get_itunes()
                 itunes.pause()
                 self.bridge.sleepSystem()
                 break
@@ -358,7 +362,7 @@ class Waker_AppDelegate(NSObject, kvc):
         minutes = float(get_user_default('snooze_minutes'))
         self.fadeOutVolume()
         from appscript import app, reference
-        itunes = app('itunes')
+        itunes = get_itunes()
         itunes.pause()
         NSTimer.scheduledTimerWithTimeInterval_target_selector_userInfo_repeats_(int(minutes*60), self, self.play_alarm, None, NO)
         
@@ -551,7 +555,7 @@ class Waker_AppDelegate(NSObject, kvc):
         self.closeAlarmWindow_(self)
         self.get_backup_alarm().stop()
         from appscript import app
-        itunes = app('itunes')
+        itunes = get_itunes()
         itunes.pause()
     
     @IBAction
@@ -584,7 +588,7 @@ class Waker_AppDelegate(NSObject, kvc):
     @IBAction
     def sendRemoteButtonEvent_pressedDown_remoteControl_(self, buttonEvent, pressedDown, remoteControl):
         from appscript import app, reference
-        itunes = app('itunes')
+        itunes = get_itunes()
         if pressedDown == 0:
             return
         if buttonEvent == remote_up:
