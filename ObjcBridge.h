@@ -14,4 +14,5 @@
 - (AudioDeviceID)defaultOutputDeviceID;
 - (long)idleTimeSeconds;
 - (void)testAbsoluteTimeConversion:(double)t;
+- (bool)lidClosed;
 @end

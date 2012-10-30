@@ -431,7 +431,7 @@ class Waker_AppDelegate(NSObject, kvc):
             foo = self.bridge.QSShowLargeType_('Next alarm: %s' % str(relative_date_formatting(self.next_alarm)))
             NSLog('delaying sleep...')
             for x in xrange(5):
-                if self.just_woke:
+                if self.just_woke or self.bridge.lidClosed():
                     NSLog('just woke!')
                     break
                 NSRunLoop.currentRunLoop().runUntilDate_(datetime.now()+timedelta(seconds=1))

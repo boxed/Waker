@@ -4,6 +4,7 @@
 #import "QuickSilver/QSLargeTypeDisplay.h"
 #import "QuickSilver/QSGlobalSelectionProvider.h"
 #include <IOKit/IOKitLib.h>
+#include <IOKit/pwr_mgt/IOPM.h>
 
 /////////////////////////////////////////////////////////////////
 #pragma mark ***** Globals
@@ -44,6 +45,41 @@ static AuthorizationRef gAuth = NULL;
 					   CFBundleGetIdentifier(CFBundleGetMainBundle()), 
 					   CFSTR("WakerPrompts")
 					   );
+}
+
+- (bool)lidClosed
+{
+    bool isClosed = false;
+    io_registry_entry_t     rootDomain;
+    mach_port_t             masterPort;
+    CFTypeRef               clamShellStateRef = NULL;
+    
+    // Retrieve the IOKit's master port so a notification port can be created
+    IOReturn ioReturn = IOMasterPort(MACH_PORT_NULL, &masterPort);
+    
+    // Check to see if the "AppleClamshellClosed" property is in the PM root domain:
+    rootDomain = IORegistryEntryFromPath(masterPort, kIOPowerPlane ":/IOPowerConnection/IOPMrootDomain");
+    
+    clamShellStateRef = IORegistryEntryCreateCFProperty( rootDomain,CFSTR(kAppleClamshellStateKey), kCFAllocatorDefault, 0);
+    if (clamShellStateRef == NULL)
+    {
+        if ( rootDomain )
+            IOObjectRelease(rootDomain);
+        ioReturn = kIOReturnNoResources;
+    }
+    
+    if ( CFBooleanGetValue( (CFBooleanRef)(clamShellStateRef) ) == true )
+    {
+        printf("closed!\n");
+        isClosed = true;
+    }
+    
+    if ( rootDomain )
+        IOObjectRelease(rootDomain);
+    
+    if (clamShellStateRef)
+        CFRelease(clamShellStateRef);
+    return isClosed;
 }
 
 - (bool)setWakeup:(CFAbsoluteTime)inAbsoluteTime
