@@ -287,24 +287,16 @@ class Waker_AppDelegate(NSObject, kvc):
             NSLog('attempting to play iTunes alarm')
             from appscript import app, reference
             itunes = get_itunes()
-            masterplaylist = itunes.playlists()[1]
             try:
-                masterplaylist.play()
-            except reference.CommandError:
-                try:
-                    masterplaylist = itunes.playlists()[13]
-                    masterplaylist.play()
-                except Exception, e:
-                    NSLog('Exception: %s', str(e))
-                    NSLog('iTunes thread failed')
-                    # Something has gone really bad, let's just let the backup alarm play.
-                    return
+                itunes.next_track()
+                itunes.play()
+            except Exception, e:
+                NSLog('Exception: %s', str(e))
+                NSLog('iTunes thread failed')
+                # Something has gone really bad, let's just let the backup alarm play.
+                return
             # I need to turn shuffle off, then skip, then turn it on again and skip again to make it re-shuffle.
             # If you just set shuffle and skip a track you'll get the same song every time. Ugh.
-            itunes.set(masterplaylist.shuffle, to=0)
-            itunes.next_track()
-            itunes.set(masterplaylist.shuffle, to=1)
-            itunes.next_track()
             # check if alarm was started with a 5 seconds timeout
             while (datetime.datetime.now()-ref).seconds < 5:
                 sleep(0.5)
@@ -373,7 +365,7 @@ class Waker_AppDelegate(NSObject, kvc):
         if self.alarmWindow.isVisible():
             NSLog('Warning! alarm already active but tried to start it anyway')
         self.alarmWindow.orderFrontRegardless()
-#self.alarmWindow.toggleFullScreen_(self)
+        self.alarmWindow.toggleFullScreen_(self)
         # TODO: update the day titles and texts
         def events_as_string(calendar):
             return '\n'.join([x.title() for x in events_of_day(calendar.year, calendar.month, calendar.day)])
