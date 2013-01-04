@@ -209,10 +209,10 @@ class Waker_AppDelegate(NSObject, kvc):
             self.setWakeup_(self)        
 
     def set_next_alarm(self, next_alarm=None, rule=None):
+        NSLog('set_next_alarm %@, %@', next_alarm, rule)
+        self.next_alarm_rule = None
+        self.next_alarm = None
         if self.next_alarm_rule != NowExceptionRule and self.next_alarm_rule != ExceptionRule:
-            NSLog('set_next_alarm %@, %@', next_alarm, rule)
-            self.next_alarm_rule = None
-            self.next_alarm = None
             NSThread.detachNewThreadSelector_toTarget_withObject_(self.setNextAlarmThread_, self, (next_alarm, rule))
         else:
             NSLog('ignored set_next_alarm, %s' % self.next_alarm_rule)
@@ -265,8 +265,8 @@ class Waker_AppDelegate(NSObject, kvc):
                 self.set_next_alarm()
                 return
             if datetime.now() > self.next_alarm:
-                self.play_alarm()
                 self.set_next_alarm()
+                self.play_alarm()
         self.update_menu_preview()
         self.alarmWindowTime.setStringValue_(NSDate.date().descriptionWithCalendarFormat_timeZone_locale_('%H:%M', None, None))
         if self.large_type_window is not None:
