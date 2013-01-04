@@ -22,6 +22,8 @@ remote_playpause = 16
 ExceptionRule = 'Exception'
 NowExceptionRule = 'User triggered'
 
+# TODO: Replace super user privileged operations with non-deprecated APIs: http://developer.apple.com/library/mac/#samplecode/SMJobBless/Introduction/Intro.html
+
 # -- COOL FEATURES --
 # Use any connected microphones to check if the alarm is actually playing in the room. If not, play the backup alarm over the built in speakers.
 # RESEARCH: calling phone numbers as alarm. Coupled with a custom ring tone this becomes very useful. Can lead to a bunch of other features like you have to enter a code to say you are awake otherwise it will keep calling. With voice synth and interpretation this can be especially cool.
