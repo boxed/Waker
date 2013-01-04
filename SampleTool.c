@@ -10,10 +10,10 @@
 #define kAppKey "com.kodare.Waker"
 
 void PrintParams(
-				 AuthorizationRef			auth,
-				 const void *                userData,
+				 __unused AuthorizationRef			auth,
+				 __unused const void *                userData,
 				 CFDictionaryRef				request,
-				 CFMutableDictionaryRef      response,
+				 __unused CFMutableDictionaryRef      response,
 				 aslclient                   asl,
 				 aslmsg                      aslMsg)
 {
@@ -44,7 +44,7 @@ void PrintParams(
 /////////////////////////////////////////////////////////////////
 static OSStatus DoSetWakeup(
 	AuthorizationRef			auth,
-    const void *                userData,
+    __unused const void *                userData,
 	CFDictionaryRef				request,
 	CFMutableDictionaryRef      response,
     aslclient                   asl,
@@ -82,7 +82,7 @@ static OSStatus DoSetWakeup(
 
 static OSStatus DoCancelWakeup(
 							AuthorizationRef			auth,
-							const void *                userData,
+							__unused const void *                userData,
 							CFDictionaryRef				request,
 							CFMutableDictionaryRef      response,
 							aslclient                   asl,
@@ -119,12 +119,12 @@ static OSStatus DoCancelWakeup(
 }
 
 static OSStatus SleepSystem(
-							   AuthorizationRef			auth,
-							   const void *                userData,
-							   CFDictionaryRef				request,
-							   CFMutableDictionaryRef      response,
-							   aslclient                   asl,
-							   aslmsg                      aslMsg
+							   __unused AuthorizationRef			auth,
+							   __unused const void *                userData,
+							   __unused CFDictionaryRef				request,
+							   __unused CFMutableDictionaryRef      response,
+							   __unused aslclient                   asl,
+							   __unused aslmsg                      aslMsg
 							   )
 {	
 	io_connect_t fb = IOPMFindPowerManagement(MACH_PORT_NULL); 
@@ -150,7 +150,7 @@ static const BASCommandProc kWakerCommandProcs[] = {
     NULL
 };
 
-int main(int argc, char **argv)
+int main(__unused int argc, __unused char **argv)
 {
     // Go directly into BetterAuthorizationSampleLib code.
 	

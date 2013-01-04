@@ -373,7 +373,7 @@ static void QueueCallbackFunction(void* target,  IOReturn result, void* refcon, 
 		
 		if (((int)event.elementCookie)!=5) {
 			sumOfValues+=event.value;
-			[cookieString appendString:[NSString stringWithFormat:@"%u_", event.elementCookie]];
+			[cookieString appendString:[NSString stringWithFormat:@"%u_", (unsigned int)event.elementCookie]];
 		}
 	}
 

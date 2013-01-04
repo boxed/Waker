@@ -371,7 +371,7 @@ class Waker_AppDelegate(NSObject, kvc):
         if self.alarmWindow.isVisible():
             NSLog('Warning! alarm already active but tried to start it anyway')
         self.alarmWindow.orderFrontRegardless()
-        self.alarmWindow.toggleFullScreen_(self)
+#self.alarmWindow.toggleFullScreen_(self)
         # TODO: update the day titles and texts
         def events_as_string(calendar):
             return '\n'.join([x.title() for x in events_of_day(calendar.year, calendar.month, calendar.day)])

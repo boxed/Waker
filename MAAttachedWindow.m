@@ -74,13 +74,13 @@
     return self;
 }
 
-- (void)hide:(id)sender
+- (void)hide:(__unused id)sender
 {
     [_window removeChildWindow:self];
     [self orderOut:self];
 }
 
-- (void)show:(id)sender
+- (void)show:(__unused id)sender
 {
     [_window addChildWindow:self ordered:NSWindowAbove];
 
@@ -831,7 +831,7 @@
 # pragma mark Notification handlers
 
 
-- (void)windowDidResize:(NSNotification *)note
+- (void)windowDidResize:(__unused NSNotification *)note
 {
     [self _redisplay];
 }

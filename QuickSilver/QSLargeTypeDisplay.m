@@ -132,7 +132,7 @@ NSWindow* QSShowLargeType( NSString *number ) {
     return self;
 }
 
--(IBAction) copy:(id)sender {
+-(IBAction)copy:(__unused id)sender {
     //if (![[self firstResponder] respondsToSelector: @selector(stringValue)]) return;
     //      QSLog(@"copy,%@",[self initialFirstResponder]);
     NSPasteboard *pb = [NSPasteboard generalPasteboard];
@@ -147,14 +147,14 @@ NSWindow* QSShowLargeType( NSString *number ) {
  
  }
  */
-- (BOOL) canBecomeKeyWindow { return YES; }
+- (BOOL)canBecomeKeyWindow { return YES; }
 
-- (void) keyDown:(NSEvent *)theEvent {
+- (void)keyDown:(__unused NSEvent*)theEvent {
     //[[self animator] setAlphaValue:0]; # need to wait until the animation is complete before close to get animation, but delegate didn't work
     [self close];
 }
 
-- (void) resignKeyWindow {
+- (void)resignKeyWindow {
     [super resignKeyWindow];
     
     if([self isVisible]) {

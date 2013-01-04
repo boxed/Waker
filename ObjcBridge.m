@@ -352,7 +352,7 @@ static AuthorizationRef gAuth = NULL;
 	
 	if (!AudioHardwareServiceHasProperty(outputDeviceID, &propertyAOPA))
 	{
-		NSLog(@"No volume returned for device 0x%0x", outputDeviceID);
+		NSLog(@"No volume returned for device 0x%0x", (unsigned int)outputDeviceID);
 		return 0.0;
 	}
 	
@@ -362,7 +362,7 @@ static AuthorizationRef gAuth = NULL;
 	
 	if (status)
 	{
-		NSLog(@"No volume returned for device 0x%0x", outputDeviceID);
+		NSLog(@"No volume returned for device 0x%0x", (unsigned int)outputDeviceID);
 		return 0.0;
 	}
 	
@@ -410,7 +410,7 @@ static AuthorizationRef gAuth = NULL;
 	
 	if (!AudioHardwareServiceHasProperty(outputDeviceID, &propertyAOPA))
 	{
-		NSLog(@"Device 0x%0x does not support volume control", outputDeviceID);
+		NSLog(@"Device 0x%0x does not support volume control", (unsigned int)outputDeviceID);
 		return;
 	}
 	
@@ -420,7 +420,7 @@ static AuthorizationRef gAuth = NULL;
 	
 	if (status || canSetVolume == NO)
 	{
-		NSLog(@"Device 0x%0x does not support volume control", outputDeviceID);
+		NSLog(@"Device 0x%0x does not support volume control", (unsigned int)outputDeviceID);
 		return;
 	}
 	
@@ -438,7 +438,7 @@ static AuthorizationRef gAuth = NULL;
 		
 		if (status)
 		{
-			NSLog(@"Unable to set volume for device 0x%0x", outputDeviceID);
+			NSLog(@"Unable to set volume for device 0x%0x", (unsigned int)outputDeviceID);
 		}
 		
 		// make sure we're not muted
@@ -448,7 +448,7 @@ static AuthorizationRef gAuth = NULL;
 		
 		if (!AudioHardwareServiceHasProperty(outputDeviceID, &propertyAOPA))
 		{
-			NSLog(@"Device 0x%0x does not support muting", outputDeviceID);
+			NSLog(@"Device 0x%0x does not support muting", (unsigned int)outputDeviceID);
 			return;
 		}
 		
@@ -458,7 +458,7 @@ static AuthorizationRef gAuth = NULL;
 		
 		if (status || !canSetMute)
 		{
-			NSLog(@"Device 0x%0x does not support muting", outputDeviceID);
+			NSLog(@"Device 0x%0x does not support muting", (unsigned int)outputDeviceID);
 			return;
 		}
 		
@@ -467,7 +467,7 @@ static AuthorizationRef gAuth = NULL;
 	
 	if (status)
 	{
-		NSLog(@"Unable to set volume for device 0x%0x", outputDeviceID);
+		NSLog(@"Unable to set volume for device 0x%0x", (unsigned int)outputDeviceID);
 	}
 	
 }
