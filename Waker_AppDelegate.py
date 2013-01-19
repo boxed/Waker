@@ -76,6 +76,7 @@ class Waker_AppDelegate(NSObject, kvc):
     
     exceptionWindow = IBOutlet()
     exceptionWindowInput = IBOutlet()
+    exceptionWindowOutput = IBOutlet()
     
     aboutWindow = IBOutlet()
     
@@ -506,6 +507,12 @@ class Waker_AppDelegate(NSObject, kvc):
         self.exceptionWindow.orderFrontRegardless()
         NSApplication.sharedApplication().activateIgnoringOtherApps_(True)
         self.exceptionWindow.fieldEditor_forObject_(YES, self.exceptionWindowInput).setSelectedRange_(NSRange(12, 100))
+        self.exceptionWindowOutput.setStringValue_('')
+    
+    @IBAction
+    def controlTextDidChange_(self, notification):
+        if notification.object() == self.exceptionWindowInput:
+            self.exceptionWindowOutput.setStringValue_(self.parseExceptionInput())
 
     @IBAction
     def showAboutWindow_(self, sender):
@@ -513,6 +520,20 @@ class Waker_AppDelegate(NSObject, kvc):
         self.aboutWindow.makeKeyAndOrderFront_(sender)
         self.aboutWindow.orderFrontRegardless()
         NSApplication.sharedApplication().activateIgnoringOtherApps_(True)
+    
+    def parseExceptionInput(self):
+        try:
+            if self.exceptionWindowInput.stringValue() == 'now':
+                return 'now'
+            else:
+                date = NSDateToDatetime(NSDateFromString(self.exceptionWindowInput.stringValue())).replace(tzinfo=None)
+                date_diff = date  - datetime.datetime.now()
+                hours, remainder = divmod(date_diff.seconds, 3600)
+                minutes, seconds = divmod(remainder, 60)
+                date_diff_string = '%s d %sh %sm %ss' % (date_diff.days, hours, minutes, seconds)
+                return '%s\n%s' % (date, date_diff_string)
+        except DidNotUnderstandException:
+            return "I'm sorry, I didn't understand that"
     
     @IBAction
     def setException_(self, sender):
@@ -525,7 +546,6 @@ class Waker_AppDelegate(NSObject, kvc):
                 self.next_alarm_rule = tmp
                 self.next_alarm = tmp2
             else:
-                NSLog('parse user typed exception')
                 self.next_alarm_rule = None
                 self.set_next_alarm(NSDateToDatetime(NSDateFromString(self.exceptionWindowInput.stringValue())).replace(tzinfo=None), ExceptionRule)
                 NSLog('new alarm time %@', self.next_alarm)
