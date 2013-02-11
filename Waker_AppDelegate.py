@@ -213,6 +213,8 @@ class Waker_AppDelegate(NSObject, kvc):
 
     def set_next_alarm(self, next_alarm=None, rule=None):
         NSLog('set_next_alarm %@, %@', next_alarm, rule)
+        import traceback
+        traceback.print_stack()
         self.next_alarm_rule = None
         self.next_alarm = None
         if self.next_alarm_rule != NowExceptionRule and self.next_alarm_rule != ExceptionRule:
@@ -263,13 +265,14 @@ class Waker_AppDelegate(NSObject, kvc):
     def timer(self):
         from datetime import datetime
         if self.next_alarm:
-            if datetime.now() > self.next_alarm+timedelta(hours=2):
-                NSLog('missed the alarm slot by more than 2 hours, skipping')
-                self.set_next_alarm()
-                return
             if datetime.now() > self.next_alarm:
-                self.set_next_alarm()
+                if datetime.now() > self.next_alarm+timedelta(minutes=30):
+                    NSLog('missed the alarm slot by more than 30 minutes, skipping')
+                    self.set_next_alarm()
+                    return
                 self.play_alarm()
+            if datetime.now()-timedelta(minutes=5) > self.next_alarm:
+                self.set_next_alarm()
         self.update_menu_preview()
         self.alarmWindowTime.setStringValue_(NSDate.date().descriptionWithCalendarFormat_timeZone_locale_('%H:%M', None, None))
         if self.large_type_window is not None:
@@ -532,7 +535,7 @@ class Waker_AppDelegate(NSObject, kvc):
                 minutes, seconds = divmod(remainder, 60)
                 date_diff_string = '%s d %sh %sm %ss' % (date_diff.days, hours, minutes, seconds)
                 return '%s\n%s' % (date, date_diff_string)
-        except DidNotUnderstandException:
+        except (DidNotUnderstandException, KeyError):
             return "I'm sorry, I didn't understand that"
     
     @IBAction

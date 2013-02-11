@@ -4631,6 +4631,14 @@ IiBmcm9tIG11c29wZW4uY29tA</string>
 					<int key="connectionID">1184</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">setException:</string>
+						<reference key="source" ref="239162545"/>
+						<reference key="destination" ref="984535660"/>
+					</object>
+					<int key="connectionID">1187</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="984535660"/>
@@ -7455,7 +7463,7 @@ IiBmcm9tIG11c29wZW4uY29tA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1186</int>
+			<int key="maxID">1187</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
