@@ -1,4 +1,4 @@
-Kodare
+Waker
 ======
 
 Waker is the alarm program that knows what you're up to and sets the time intelligently. Just fill in your *calendar*, set some *rules* so Waker knows how to interpret your wishes and now you can have the alarm know that you're on vacation and not bug you with an alarm at all. But as soon as you get back to work it jumps automatically back to your old schedule.
