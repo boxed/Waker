@@ -23,10 +23,10 @@ NSTimeInterval failDate=0;
 
 - (void)getSelection:(NSPasteboard *)pboard
             userData:(NSString *)userData
-               error:(NSString **)error
+               error:(__unused NSString **)error
 {
     NSLog(@"Get Selection: %@ %d",userData,[userData characterAtIndex:0]);
-    resultPboard=[pboard retain];
+    resultPboard=pboard;
 }
 
 //- (void)performService:(NSPasteboard *)pboard
@@ -54,7 +54,7 @@ NSTimeInterval failDate=0;
     }
     //      QSLog(@"got %@",resultPboard);
     //[NSApp setServicesProvider:oldServicesProvider];
-    id result=[resultPboard autorelease];
+    id result=resultPboard;
     resultPboard=nil;
     return result;
 }
@@ -63,27 +63,25 @@ NSTimeInterval failDate=0;
 - (void)dealloc
 {
     QSLog(@"release");
-    [resultPboard release];
-    [super dealloc];
 }
 
 - (void)invokeService
 {
-    NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
-    pid_t pid=[[[[NSWorkspace sharedWorkspace]activeApplication]objectForKey:@"NSApplicationProcessIdentifier"]intValue];
-    AXUIElementRef app=AXUIElementCreateApplication (pid);
-    
-    //      NDProcess *proc=[NDProcess frontProcess];
-    
-    //BOOL carbon=[proc isCarbon];
-    
-    AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)55, true ); //Command
-    //      if (carbon) AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)56, true ); //Shift
-    AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)53, true ); //Escape
-    AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)53, false ); //Escape
-    //      if (carbon) AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)56, false ); //Shift
-    AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)55, true ); //Command
-    [pool release];
+    @autoreleasepool {
+        pid_t pid=[[[[NSWorkspace sharedWorkspace]activeApplication]objectForKey:@"NSApplicationProcessIdentifier"]intValue];
+        AXUIElementRef app=AXUIElementCreateApplication (pid);
+        
+        //      NDProcess *proc=[NDProcess frontProcess];
+        
+        //BOOL carbon=[proc isCarbon];
+        
+        AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)55, true ); //Command
+        //      if (carbon) AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)56, true ); //Shift
+        AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)53, true ); //Escape
+        AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)53, false ); //Escape
+        //      if (carbon) AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)56, false ); //Shift
+        AXUIElementPostKeyboardEvent (app,(CGCharCode)0, (CGKeyCode)55, true ); //Command
+    }
 }
 
 +(id)currentSelection{
@@ -97,13 +95,13 @@ NSTimeInterval failDate=0;
         
         NSPasteboard *pb=nil;
         
-        if ([NSDate timeIntervalSinceReferenceDate]-failDate > 3.0)
-            pb=[self getSelectionFromFrontApp];
-        
-        if (!pb){
-            failDate=[NSDate timeIntervalSinceReferenceDate];
-            return nil;
-        }
+//        if ([NSDate timeIntervalSinceReferenceDate]-failDate > 3.0)
+//            pb=[self getSelectionFromFrontApp];
+//        
+//        if (!pb){
+//            failDate=[NSDate timeIntervalSinceReferenceDate];
+//            return nil;
+//        }
         return pb;
 //    }
 //    return [QSObject objectWithString:@"No Selection"]; //[QSObject nullObject];

@@ -32,7 +32,7 @@ NSWindow* QSShowLargeType( NSString *number ) {
     
     float displayWidth = NSWidth( screenRect ) * 11 / 12 - 2 * EDGEINSET;
     NSRange fullRange = NSMakeRange( 0, [number length] );
-    NSMutableAttributedString *formattedNumber = [[[NSMutableAttributedString alloc] initWithString:number] autorelease];
+    NSMutableAttributedString *formattedNumber = [[NSMutableAttributedString alloc] initWithString:number];
     int size;
     NSSize textSize;
     NSFont *textFont;
@@ -46,20 +46,20 @@ NSWindow* QSShowLargeType( NSString *number ) {
     [formattedNumber addAttribute:NSFontAttributeName value:[NSFont boldSystemFontOfSize:size] range:fullRange];
     [formattedNumber addAttribute:NSForegroundColorAttributeName value:textColor range:fullRange];
     
-    NSMutableParagraphStyle *style = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     if ([number rangeOfString:@"\n"].location == NSNotFound && [number rangeOfString:@"\r"].location == NSNotFound)
         [style setAlignment:NSCenterTextAlignment];
     [style setLineBreakMode: NSLineBreakByWordWrapping];
     
     [formattedNumber addAttribute:NSParagraphStyleAttributeName value:style range:fullRange];
     
-    NSShadow *textShadow = [[[NSShadow alloc] init] autorelease];
+    NSShadow *textShadow = [[NSShadow alloc] init];
     [textShadow setShadowOffset:NSMakeSize( 5, -5 )];
     [textShadow setShadowBlurRadius:10];
     [textShadow setShadowColor:[NSColor colorWithDeviceWhite:0 alpha:0.64]];
     [formattedNumber addAttribute:NSShadowAttributeName value:textShadow range:fullRange];
     
-    NSTextView *textView = [[[NSTextView alloc] initWithFrame:NSMakeRect( 0, 0, displayWidth, 0 )] autorelease];
+    NSTextView *textView = [[NSTextView alloc] initWithFrame:NSMakeRect( 0, 0, displayWidth, 0 )];
     [textView setEditable:NO];
     [textView setSelectable:NO];
     //      [numberView setBezeled:NO];
@@ -74,7 +74,7 @@ NSWindow* QSShowLargeType( NSString *number ) {
     NSLayoutManager *layoutManager = [textView layoutManager];
     unsigned numberOfLines, index, numberOfGlyphs = [layoutManager numberOfGlyphs];
     NSRange lineRange;
-    float height;
+    float height = 0;
     for( numberOfLines = 0, index = 0; index < numberOfGlyphs; numberOfLines++ ) {
         NSRect rect = [layoutManager lineFragmentRectForGlyphAtIndex:index
                                                       effectiveRange:&lineRange];
@@ -105,7 +105,7 @@ NSWindow* QSShowLargeType( NSString *number ) {
     //[largeTypeWindow setDelegate:self];
     //[largeTypeWindow setNextResponder:self];
     
-    QSBezelBackgroundView *content = [[[NSClassFromString(@"QSBezelBackgroundView") alloc] initWithFrame:NSZeroRect] autorelease];
+    QSBezelBackgroundView *content = [[NSClassFromString(@"QSBezelBackgroundView") alloc] initWithFrame:NSZeroRect];
     [content setRadius:32];
     [content setColor:backColor];
     [content setGlassStyle:QSGlossControl];
@@ -124,7 +124,7 @@ NSWindow* QSShowLargeType( NSString *number ) {
 }
 
 @implementation QSVanishingWindow
-- (id) initWithContentRect:(NSRect)contentRect styleMask:(unsigned int)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
+- (id) initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
     self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
     if( self ) {
         [self setReleasedWhenClosed:YES];

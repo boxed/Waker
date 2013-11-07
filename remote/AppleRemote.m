@@ -80,7 +80,7 @@ const char* AppleRemoteDeviceName = "AppleIRController";
 					kr = IOServiceAddInterestNotification(notifyPort,
 														  entry,
 														  kIOBusyInterest, 
-														  &IOREInterestCallback, self, &eventSecureInputNotification );
+														  &IOREInterestCallback, (__bridge void *)(self), &eventSecureInputNotification );
 					if (kr != KERN_SUCCESS) {				
 						NSLog(@"Error when installing EventSecureInput Notification");
 						IONotificationPortDestroy(notifyPort);
@@ -97,26 +97,15 @@ const char* AppleRemoteDeviceName = "AppleIRController";
 	return self;
 }
 
-- (void)dealloc
-{
-	IONotificationPortDestroy(notifyPort);
-	notifyPort = NULL;
-	IOObjectRelease (eventSecureInputNotification);
-	eventSecureInputNotification = MACH_PORT_NULL;		
-	
-	[super dealloc];
+- (void)dealloc {
+    if (notifyPort != NULL) {
+        IONotificationPortDestroy(notifyPort);
+        notifyPort = NULL;
+        IOObjectRelease (eventSecureInputNotification);
+        eventSecureInputNotification = MACH_PORT_NULL;
+    }
 }
 
-- (void)finalize
-{
-	IONotificationPortDestroy(notifyPort);	
-	notifyPort = NULL;
-	// Although IOObjectRelease is not documented as thread safe, I was assured at WWDC09 that it is.	
-	IOObjectRelease (eventSecureInputNotification);
-	eventSecureInputNotification = MACH_PORT_NULL;
-	
-	[super finalize];
-}
 
 - (void) setCookieMappingInDictionary: (NSMutableDictionary*) _cookieToButtonMapping	{
 
@@ -217,7 +206,7 @@ const char* AppleRemoteDeviceName = "AppleIRController";
 		io_object_t matchingService = 0, foundService = 0;
 		BOOL finalMatch = NO;
 		
-		while (matchingService = IOIteratorNext(hidObjectIterator))
+		while ((matchingService = IOIteratorNext(hidObjectIterator)))
 		{
 			if (!finalMatch)
 			{
@@ -231,9 +220,9 @@ const char* AppleRemoteDeviceName = "AppleIRController";
 					}
 				}
 				
-				if (className = IORegistryEntryCreateCFProperty((io_registry_entry_t)matchingService, CFSTR("IOClass"), kCFAllocatorDefault, 0))
+				if ((className = IORegistryEntryCreateCFProperty((io_registry_entry_t)matchingService, CFSTR("IOClass"), kCFAllocatorDefault, 0)))
 				{
-					if ([(NSString *)className isEqual:[NSString stringWithUTF8String:[self remoteControlDeviceName]]])
+					if ([(__bridge NSString *)className isEqual:[NSString stringWithUTF8String:[self remoteControlDeviceName]]])
 					{
 						if (foundService)
 						{
@@ -271,7 +260,7 @@ const char* AppleRemoteDeviceName = "AppleIRController";
 	if (root != MACH_PORT_NULL) {
 		CFArrayRef arrayRef = IORegistryEntrySearchCFProperty(root, kIOServicePlane, CFSTR("IOConsoleUsers"), NULL, kIORegistryIterateRecursively);
 		if (arrayRef != NULL) {
-			NSArray* array = (NSArray*)arrayRef;
+			NSArray* array = (__bridge NSArray*)arrayRef;
 			unsigned int i;
 			for(i=0; i < [array count]; i++) {
 				NSDictionary* dict = [array objectAtIndex:i];
@@ -309,7 +298,7 @@ static void IOREInterestCallback(void *			refcon,
 	(void)messageArgument;
 	
 	// With garbage collection, such a cast is dangerous because the refcon parameter is not strong.  That means that, unless someone has a strong reference somewhere, the AppleRemote may have already been finalized.  But it should be pretty safe in this case, since if the AppleRemote is finalized, the callback is cancelled and should never be invoked.
-	AppleRemote* remote = (AppleRemote*)refcon;
+	AppleRemote* remote = (__bridge AppleRemote*)refcon;
 	
 	[remote dealWithSecureEventInputChange];
 }

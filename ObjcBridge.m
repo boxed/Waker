@@ -100,10 +100,10 @@ static AuthorizationRef gAuth = NULL;
                CFAbsoluteTimeGetCurrent()+60-inAbsoluteTime);
         */
         CFDateRef targetDate = CFDateCreate(NULL, inAbsoluteTime); // in one mins
-        NSDate* foo = (NSDate*)targetDate;
+        NSDate* foo = (__bridge_transfer NSDate*)targetDate;
         NSLog(@"Wake computer at: %@", [foo description]);
         
-        // Create our request.  Note that NSDictionary is toll-free bridged to CFDictionary, so 
+        // Create our request.  Note that NSDictionary is toll-free bridged to CFDictionary, so
         // we can use an NSDictionary as our request.  Also, if the "Force failure" checkbox is 
         // checked, we use the wrong command ID to deliberately cause an "unknown command" error 
         // so that we can test that code path.
@@ -123,8 +123,8 @@ static AuthorizationRef gAuth = NULL;
         err = BASExecuteRequestInHelperTool(
             gAuth, 
             kWakerCommandSet, 
-            (CFStringRef) bundleID, 
-            (CFDictionaryRef) request, 
+            (__bridge CFStringRef) bundleID, 
+            (__bridge CFDictionaryRef) request, 
             &response
         );
         
@@ -133,7 +133,7 @@ static AuthorizationRef gAuth = NULL;
         if ( (err != noErr) && (err != userCanceledErr) ) {
             int alertResult;
             
-            failCode = BASDiagnoseFailure(gAuth, (CFStringRef) bundleID);
+            failCode = BASDiagnoseFailure(gAuth, (__bridge CFStringRef) bundleID);
             
             // At this point we tell the user that something has gone wrong and that we need 
             // to authorize in order to fix it.  Ideally we'd use failCode to describe the type of 
@@ -144,7 +144,7 @@ static AuthorizationRef gAuth = NULL;
             if ( alertResult == NSAlertDefaultReturn ) {
                 // Try to fix things.
                 
-                err = BASFixFailure(gAuth, (CFStringRef) bundleID, CFSTR("InstallTool"), CFSTR("HelperTool"), failCode);
+                err = BASFixFailure(gAuth, (__bridge CFStringRef) bundleID, CFSTR("InstallTool"), CFSTR("HelperTool"), failCode);
                 if (err != noErr)
                 {
                     NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to fix failure: %ld.\n", (long) err], nil, nil, nil);
@@ -156,8 +156,8 @@ static AuthorizationRef gAuth = NULL;
                     err = BASExecuteRequestInHelperTool(
                                                         gAuth, 
                                                         kWakerCommandSet, 
-                                                        (CFStringRef) bundleID, 
-                                                        (CFDictionaryRef) request, 
+                                                        (__bridge CFStringRef) bundleID,
+                                                        (__bridge CFDictionaryRef) request,
                                                         &response
                                                         );
                     if (err != noErr)
@@ -228,8 +228,8 @@ static AuthorizationRef gAuth = NULL;
 	err = BASExecuteRequestInHelperTool(
 										gAuth, 
 										kWakerCommandSet, 
-										(CFStringRef) bundleID, 
-										(CFDictionaryRef) request, 
+										(__bridge CFStringRef) bundleID,
+										(__bridge CFDictionaryRef) request,
 										&response
 										);
 	
@@ -241,7 +241,7 @@ static AuthorizationRef gAuth = NULL;
     if ( (err != noErr) && (err != userCanceledErr) ) {
         int alertResult;
         
-        failCode = BASDiagnoseFailure(gAuth, (CFStringRef) bundleID);
+        failCode = BASDiagnoseFailure(gAuth, (__bridge CFStringRef) bundleID);
 		
         // At this point we tell the user that something has gone wrong and that we need 
         // to authorize in order to fix it.  Ideally we'd use failCode to describe the type of 
@@ -252,7 +252,7 @@ static AuthorizationRef gAuth = NULL;
         if ( alertResult == NSAlertDefaultReturn ) {
             // Try to fix things.
             
-            err = BASFixFailure(gAuth, (CFStringRef) bundleID, CFSTR("InstallTool"), CFSTR("HelperTool"), failCode);
+            err = BASFixFailure(gAuth, (__bridge CFStringRef) bundleID, CFSTR("InstallTool"), CFSTR("HelperTool"), failCode);
 			if (err != noErr)
 			{
 				NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to fix failure: %ld.\n", (long) err], nil, nil, nil);
@@ -264,8 +264,8 @@ static AuthorizationRef gAuth = NULL;
                 err = BASExecuteRequestInHelperTool(
 													gAuth, 
 													kWakerCommandSet, 
-													(CFStringRef) bundleID, 
-													(CFDictionaryRef) request, 
+													(__bridge CFStringRef) bundleID,
+													(__bridge CFDictionaryRef) request, 
 													&response
 													);
 				if (err != noErr)
@@ -574,7 +574,8 @@ static AuthorizationRef gAuth = NULL;
 	/* Release our resources */
 	IOObjectRelease(curObj);
 	IOObjectRelease(iter);
-	CFRelease((CFTypeRef)properties);
+    if (properties != NULL)
+        CFRelease((CFTypeRef)properties);
 	return tHandle;
 }
 

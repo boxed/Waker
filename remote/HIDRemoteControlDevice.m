@@ -91,7 +91,6 @@
 
 - (id) initWithDelegate: (id) _remoteControlDelegate {	
 	if ([[self class] isRemoteAvailable] == NO) {
-		[super dealloc];
 		self = nil;
 	} else if ( (self = [super initWithDelegate: _remoteControlDelegate]) ) {
 		openInExclusiveMode = YES;
@@ -115,8 +114,7 @@
 - (void) dealloc {
 	[self removeNotifcationObserver];
 	[self stopListening:self];
-	[cookieToButtonMapping release]; cookieToButtonMapping = nil;
-	[super dealloc];
+	 cookieToButtonMapping = nil;
 }
 
 - (void) sendRemoteButtonEvent: (RemoteControlEventIdentifier) event pressedDown: (BOOL) pressedDown {
@@ -207,7 +205,6 @@ cleanup:
 	}
 	
 	if (allCookies != nil) {
-		[allCookies autorelease];
 		allCookies = nil;
 	}
 	
@@ -356,30 +353,30 @@ static void QueueCallbackFunction(void* target,  IOReturn result, void* refcon, 
 		NSLog(@"QueueCallbackFunction called with invalid target!");
 		return;
 	}
-	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
 	
-	HIDRemoteControlDevice* remote = (HIDRemoteControlDevice*)target;	
-	IOHIDEventStruct event;	
-	AbsoluteTime 	 zeroTime = {0,0};
-	NSMutableString* cookieString = [NSMutableString string];
-	SInt32			 sumOfValues = 0;
-	while (result == kIOReturnSuccess)
-	{
-		result = (*[remote queue])->getNextEvent([remote queue], &event, zeroTime, 0);		
-		if ( result != kIOReturnSuccess )
-			continue;
-	
-		//printf("%u %d %p\n", event.elementCookie, event.value, event.longValue);		
+		HIDRemoteControlDevice* remote = (__bridge HIDRemoteControlDevice*)target;
+		IOHIDEventStruct event;	
+		AbsoluteTime 	 zeroTime = {0,0};
+		NSMutableString* cookieString = [NSMutableString string];
+		SInt32			 sumOfValues = 0;
+		while (result == kIOReturnSuccess)
+		{
+			result = (*[remote queue])->getNextEvent([remote queue], &event, zeroTime, 0);		
+			if ( result != kIOReturnSuccess )
+				continue;
 		
-		if (((int)event.elementCookie)!=5) {
-			sumOfValues+=event.value;
-			[cookieString appendString:[NSString stringWithFormat:@"%u_", (unsigned int)event.elementCookie]];
+			//printf("%u %d %p\n", event.elementCookie, event.value, event.longValue);		
+			
+			if (((int)event.elementCookie)!=5) {
+				sumOfValues+=event.value;
+				[cookieString appendString:[NSString stringWithFormat:@"%u_", (unsigned int)event.elementCookie]];
+			}
 		}
-	}
 
-	[remote handleEventWithCookieString: cookieString sumOfValues: sumOfValues];
+		[remote handleEventWithCookieString: cookieString sumOfValues: sumOfValues];
 	
-	[pool release];
+	}
 }
 
 @implementation HIDRemoteControlDevice (IOKitMethods)
@@ -445,13 +442,13 @@ static void QueueCallbackFunction(void* target,  IOReturn result, void* refcon, 
 		*/
 		allCookies = [[NSMutableArray alloc] init];
 		
-		NSEnumerator *elementsEnumerator = [(NSArray*)elements objectEnumerator];
+		NSEnumerator *elementsEnumerator = [(__bridge NSArray*)elements objectEnumerator];
 		
 		while ( (element = [elementsEnumerator nextObject]) ) {						
 			//Get cookie
 			object = [element valueForKey: @kIOHIDElementCookieKey ];
 			if (object == nil || ![object isKindOfClass:[NSNumber class]]) continue;
-			if (object == 0 || CFGetTypeID(object) != CFNumberGetTypeID()) continue;
+			if (object == 0 || CFGetTypeID((__bridge CFTypeRef)(object)) != CFNumberGetTypeID()) continue;
 			cookie = (IOHIDElementCookie) [object longValue];
 			
 			//Get usage
@@ -498,7 +495,7 @@ static void QueueCallbackFunction(void* target,  IOReturn result, void* refcon, 
 				// add callback for async events			
 				ioReturnValue = (*queue)->createAsyncEventSource(queue, &eventSource);			
 				if (ioReturnValue == KERN_SUCCESS) {
-					ioReturnValue = (*queue)->setEventCallout(queue,QueueCallbackFunction, self, NULL);
+					ioReturnValue = (*queue)->setEventCallout(queue,QueueCallbackFunction, (__bridge void *)(self), NULL);
 					if (ioReturnValue == KERN_SUCCESS) {
 						CFRunLoopAddSource(CFRunLoopGetCurrent(), eventSource, kCFRunLoopDefaultMode);
 						

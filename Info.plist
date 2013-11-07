@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>waker.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.kodare.waker</string>
+	<string>net.kodare.waker</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>

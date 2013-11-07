@@ -7,7 +7,6 @@
 
 - (void)dealloc {
     [self unbind:@"isGlass"];
-    [super dealloc];
 }
 
 - (void)bindColors {
@@ -101,11 +100,10 @@
  NSRectFillListWithColors(&rects[0] , &colors[0] , index);
  }
  */
-- (NSColor *)color { return [[color retain] autorelease];  }
+- (NSColor *)color { return color;  }
 
 - (void)setColor:(NSColor *)newColor {
-    [color release];
-    color = [[newColor colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
+    color = [newColor colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
     [self setNeedsDisplay:YES];
 }
 

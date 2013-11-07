@@ -66,7 +66,7 @@ typedef enum _RemoteControlEventIdentifier {
 
 @interface NSObject(RemoteControlDelegate)
 
-- (void) sendRemoteButtonEvent: (RemoteControlEventIdentifier) event pressedDown: (BOOL) pressedDown remoteControl: (RemoteControl*) remoteControl;
+- (IBAction) sendRemoteButtonEvent: (RemoteControlEventIdentifier) event pressedDown: (BOOL) pressedDown remoteControl: (RemoteControl*) remoteControl;
 
 @end
 

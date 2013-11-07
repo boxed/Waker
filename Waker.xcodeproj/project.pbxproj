@@ -14,16 +14,11 @@
 		AE0EF22F111DA83E00BF7528 /* menu_item_inverted.png in Resources */ = {isa = PBXBuildFile; fileRef = AE0EF22D111DA83E00BF7528 /* menu_item_inverted.png */; };
 		AE0EF230111DA83E00BF7528 /* menu_item.png in Resources */ = {isa = PBXBuildFile; fileRef = AE0EF22E111DA83E00BF7528 /* menu_item.png */; };
 		AE0EF232111DA85700BF7528 /* waker.icns in Resources */ = {isa = PBXBuildFile; fileRef = AE0EF231111DA85700BF7528 /* waker.icns */; };
-		AE0EF256111DAD5100BF7528 /* Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE0EF255111DAD5100BF7528 /* Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3 */; };
 		AE14D535105581C100A21E6F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14D534105581C100A21E6F /* IOKit.framework */; };
-		AE14D55D1055927100A21E6F /* main.py in Resources */ = {isa = PBXBuildFile; fileRef = AE14D55C1055927100A21E6F /* main.py */; };
-		AE14D56D1055930D00A21E6F /* Waker_AppDelegate.py in Resources */ = {isa = PBXBuildFile; fileRef = AE14D56C1055930D00A21E6F /* Waker_AppDelegate.py */; };
 		AE14D575105594BE00A21E6F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE14D574105594BE00A21E6F /* MainMenu.xib */; };
-		AE14D57B105595BF00A21E6F /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14D57A105595BF00A21E6F /* Python.framework */; };
 		AE14D57F1055967300A21E6F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14D57E1055967300A21E6F /* AppKit.framework */; };
 		AE14D6941056D30900A21E6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE14D6931056D30900A21E6F /* main.m */; };
 		AE14D69D1056D3F200A21E6F /* ObjcBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AE14D69C1056D3F200A21E6F /* ObjcBridge.m */; };
-		AE1D0CB710584A5D00ABD45A /* waker.py in Resources */ = {isa = PBXBuildFile; fileRef = AE1D0CB610584A5D00ABD45A /* waker.py */; };
 		AE2276D7107FD376000751A1 /* NSBezierPath_BLTRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2276CA107FD376000751A1 /* NSBezierPath_BLTRExtensions.m */; };
 		AE2276D8107FD376000751A1 /* NSColor_QSModifications.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2276CC107FD376000751A1 /* NSColor_QSModifications.m */; };
 		AE2276D9107FD376000751A1 /* NSUserDefaults_BLTRExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2276CE107FD376000751A1 /* NSUserDefaults_BLTRExtensions.m */; };
@@ -37,20 +32,22 @@
 		AE3B0D1012E4E4310064BCB1 /* AppleRemote.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3B0D0B12E4E4300064BCB1 /* AppleRemote.m */; };
 		AE3B0D1112E4E4310064BCB1 /* HIDRemoteControlDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3B0D0D12E4E4300064BCB1 /* HIDRemoteControlDevice.m */; };
 		AE3B0D1212E4E4310064BCB1 /* RemoteControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3B0D0F12E4E4300064BCB1 /* RemoteControl.m */; };
-		AE3F8DBE105C2FF9006B64F8 /* from_curia.py in Resources */ = {isa = PBXBuildFile; fileRef = AE3F8DBD105C2FF8006B64F8 /* from_curia.py */; };
 		AE430DFA12BE0BF000D1F8C3 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14D534105581C100A21E6F /* IOKit.framework */; };
 		AE53EBCC12D7B92600CE0181 /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE53EBCB12D7B92600CE0181 /* left_arrow.png */; };
 		AE53EBCE12D7B9F400CE0181 /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE53EBCD12D7B9F400CE0181 /* right_arrow.png */; };
 		AE53F0C312D9D8C200CE0181 /* RoundCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AE53F0C212D9D8C200CE0181 /* RoundCloseButton.m */; };
 		AE53F0CC12D9D95200CE0181 /* hud_titlebar-close-dark.tiff in Resources */ = {isa = PBXBuildFile; fileRef = AE53F0CA12D9D95200CE0181 /* hud_titlebar-close-dark.tiff */; };
 		AE53F14D12D9E48C00CE0181 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AE53F14C12D9E48C00CE0181 /* MAAttachedWindow.m */; };
-		AE85845A108668550094157B /* transformers.py in Resources */ = {isa = PBXBuildFile; fileRef = AE858459108668550094157B /* transformers.py */; };
-		AE9C9E1510925D1800F05042 /* fuzzy_dict.py in Resources */ = {isa = PBXBuildFile; fileRef = AE9C9E1410925D1800F05042 /* fuzzy_dict.py */; };
-		AEA1A04314B25683002E00D5 /* appscript-1.0.0-py2.7-macosx-10.7-intel.egg in Resources */ = {isa = PBXBuildFile; fileRef = AEA1A04214B25683002E00D5 /* appscript-1.0.0-py2.7-macosx-10.7-intel.egg */; };
-		AEB850F815B2E0A8008F1821 /* tunes.py in Resources */ = {isa = PBXBuildFile; fileRef = AEB850F715B2E0A8008F1821 /* tunes.py */; };
+		AE8353561823E3D600885485 /* waker.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8353551823E3D600885485 /* waker.m */; };
+		AE83535A1823F3BA00885485 /* NSDate+NSDate_Humane.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8353591823F3BA00885485 /* NSDate+NSDate_Humane.m */; };
+		AE83535E1826AE1000885485 /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83535D1826AE1000885485 /* CalendarStore.framework */; };
+		AEA5B7DD18299372003BD23E /* backup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEA5B7DC18299372003BD23E /* backup.mp3 */; };
+		AEA5B7DF182AE3C3003BD23E /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA5B7DE182AE3C3003BD23E /* iTunesLibrary.framework */; };
+		AEA7DCA71820379500470F2E /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DCA61820379500470F2E /* CalendarView.m */; };
+		AEA7DCAA1822F38600470F2E /* transformers.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DCA91822F38600470F2E /* transformers.m */; };
+		AEA7DCAC1823BD9600470F2E /* Waker_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DCAB1823BD9600470F2E /* Waker_AppDelegate.m */; };
 		AEBA352A12DBD63100ECE48E /* white waker.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA352912DBD63100ECE48E /* white waker.png */; };
 		AEBA353612DBD8F600ECE48E /* shading.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA353512DBD8F600ECE48E /* shading.png */; };
-		AECCB0A610B0BC9D007F9A32 /* CalendarView.py in Resources */ = {isa = PBXBuildFile; fileRef = AECCB0A510B0BC9D007F9A32 /* CalendarView.py */; };
 		AECDA00814F92664006CA324 /* NSButton+TextColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AECDA00714F92664006CA324 /* NSButton+TextColor.m */; };
 		AEFD66381081276F004D71CE /* waker.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = AEFD66371081276F004D71CE /* waker.xcdatamodel */; };
 		E42F4A740B13443B00A50F72 /* WakerPrompts.strings in Resources */ = {isa = PBXBuildFile; fileRef = E42F4A730B13443B00A50F72 /* WakerPrompts.strings */; };
@@ -105,17 +102,12 @@
 		AE0EF22D111DA83E00BF7528 /* menu_item_inverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_item_inverted.png; sourceTree = "<group>"; };
 		AE0EF22E111DA83E00BF7528 /* menu_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_item.png; sourceTree = "<group>"; };
 		AE0EF231111DA85700BF7528 /* waker.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = waker.icns; sourceTree = "<group>"; };
-		AE0EF255111DAD5100BF7528 /* Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3"; sourceTree = "<group>"; };
 		AE14D534105581C100A21E6F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		AE14D55C1055927100A21E6F /* main.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
-		AE14D56C1055930D00A21E6F /* Waker_AppDelegate.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Waker_AppDelegate.py; sourceTree = "<group>"; };
 		AE14D574105594BE00A21E6F /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
-		AE14D57A105595BF00A21E6F /* Python.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; name = Python.framework; path = /System/Library/Frameworks/Python.framework; sourceTree = "<absolute>"; };
 		AE14D57E1055967300A21E6F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		AE14D6931056D30900A21E6F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE14D69B1056D3F200A21E6F /* ObjcBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcBridge.h; sourceTree = "<group>"; };
 		AE14D69C1056D3F200A21E6F /* ObjcBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcBridge.m; sourceTree = "<group>"; };
-		AE1D0CB610584A5D00ABD45A /* waker.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = waker.py; sourceTree = "<group>"; };
 		AE2276C9107FD376000751A1 /* NSBezierPath_BLTRExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBezierPath_BLTRExtensions.h; sourceTree = "<group>"; };
 		AE2276CA107FD376000751A1 /* NSBezierPath_BLTRExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBezierPath_BLTRExtensions.m; sourceTree = "<group>"; };
 		AE2276CB107FD376000751A1 /* NSColor_QSModifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColor_QSModifications.h; sourceTree = "<group>"; };
@@ -139,7 +131,6 @@
 		AE3B0D0D12E4E4300064BCB1 /* HIDRemoteControlDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIDRemoteControlDevice.m; sourceTree = "<group>"; };
 		AE3B0D0E12E4E4300064BCB1 /* RemoteControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteControl.h; sourceTree = "<group>"; };
 		AE3B0D0F12E4E4300064BCB1 /* RemoteControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteControl.m; sourceTree = "<group>"; };
-		AE3F8DBD105C2FF8006B64F8 /* from_curia.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = from_curia.py; sourceTree = "<group>"; };
 		AE53EBCB12D7B92600CE0181 /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
 		AE53EBCD12D7B9F400CE0181 /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
 		AE53F0C112D9D8C200CE0181 /* RoundCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundCloseButton.h; sourceTree = "<group>"; };
@@ -147,13 +138,21 @@
 		AE53F0CA12D9D95200CE0181 /* hud_titlebar-close-dark.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "hud_titlebar-close-dark.tiff"; sourceTree = "<group>"; };
 		AE53F14B12D9E48C00CE0181 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		AE53F14C12D9E48C00CE0181 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
-		AE858459108668550094157B /* transformers.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = transformers.py; sourceTree = "<group>"; };
-		AE9C9E1410925D1800F05042 /* fuzzy_dict.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = fuzzy_dict.py; sourceTree = "<group>"; };
-		AEA1A04214B25683002E00D5 /* appscript-1.0.0-py2.7-macosx-10.7-intel.egg */ = {isa = PBXFileReference; lastKnownFileType = file; path = "appscript-1.0.0-py2.7-macosx-10.7-intel.egg"; sourceTree = "<group>"; };
-		AEB850F715B2E0A8008F1821 /* tunes.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tunes.py; sourceTree = "<group>"; };
+		AE8353551823E3D600885485 /* waker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = waker.m; sourceTree = "<group>"; };
+		AE8353571823EECA00885485 /* waker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = waker.h; sourceTree = "<group>"; };
+		AE8353581823F3BA00885485 /* NSDate+NSDate_Humane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NSDate_Humane.h"; sourceTree = "<group>"; };
+		AE8353591823F3BA00885485 /* NSDate+NSDate_Humane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDate_Humane.m"; sourceTree = "<group>"; };
+		AE83535B182532E600885485 /* transformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transformers.h; sourceTree = "<group>"; };
+		AE83535C18253A9F00885485 /* Waker_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Waker_AppDelegate.h; sourceTree = "<group>"; };
+		AE83535D1826AE1000885485 /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
+		AEA5B7DC18299372003BD23E /* backup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backup.mp3; sourceTree = "<group>"; };
+		AEA5B7DE182AE3C3003BD23E /* iTunesLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iTunesLibrary.framework; path = ../../../../Library/Frameworks/iTunesLibrary.framework; sourceTree = "<group>"; };
+		AEA7DCA61820379500470F2E /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
+		AEA7DCA818203BA500470F2E /* CalendarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
+		AEA7DCA91822F38600470F2E /* transformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = transformers.m; sourceTree = "<group>"; };
+		AEA7DCAB1823BD9600470F2E /* Waker_AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waker_AppDelegate.m; sourceTree = "<group>"; };
 		AEBA352912DBD63100ECE48E /* white waker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white waker.png"; sourceTree = "<group>"; };
 		AEBA353512DBD8F600ECE48E /* shading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shading.png; sourceTree = "<group>"; };
-		AECCB0A510B0BC9D007F9A32 /* CalendarView.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = CalendarView.py; sourceTree = "<group>"; };
 		AECDA00614F92664006CA324 /* NSButton+TextColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSButton+TextColor.h"; sourceTree = "<group>"; };
 		AECDA00714F92664006CA324 /* NSButton+TextColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSButton+TextColor.m"; sourceTree = "<group>"; };
 		AEFD66371081276F004D71CE /* waker.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = waker.xcdatamodel; sourceTree = "<group>"; };
@@ -189,9 +188,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA5B7DF182AE3C3003BD23E /* iTunesLibrary.framework in Frameworks */,
+				AE83535E1826AE1000885485 /* CalendarStore.framework in Frameworks */,
 				E4F1F3560B0DED94003CDB5F /* Security.framework in Frameworks */,
 				E4F1F2FE0B0DED0C003CDB5F /* Cocoa.framework in Frameworks */,
-				AE14D57B105595BF00A21E6F /* Python.framework in Frameworks */,
 				AE14D57F1055967300A21E6F /* AppKit.framework in Frameworks */,
 				AE2276F9107FD4D7000751A1 /* AudioToolbox.framework in Frameworks */,
 				AE430DFA12BE0BF000D1F8C3 /* IOKit.framework in Frameworks */,
@@ -204,27 +204,31 @@
 		08FB7794FE84155DC02AAC07 /* BetterAuthorizationSample */ = {
 			isa = PBXGroup;
 			children = (
+				AEA5B7DE182AE3C3003BD23E /* iTunesLibrary.framework */,
+				AE83535D1826AE1000885485 /* CalendarStore.framework */,
+				AE8353581823F3BA00885485 /* NSDate+NSDate_Humane.h */,
+				AE8353591823F3BA00885485 /* NSDate+NSDate_Humane.m */,
 				AECDA00614F92664006CA324 /* NSButton+TextColor.h */,
 				AECDA00714F92664006CA324 /* NSButton+TextColor.m */,
-				AECCB0A510B0BC9D007F9A32 /* CalendarView.py */,
-				AE9C9E1410925D1800F05042 /* fuzzy_dict.py */,
-				AE3F8DBD105C2FF8006B64F8 /* from_curia.py */,
+				AEA7DCA61820379500470F2E /* CalendarView.m */,
+				AEA7DCA818203BA500470F2E /* CalendarView.h */,
 				AEFD66371081276F004D71CE /* waker.xcdatamodel */,
-				AE14D55C1055927100A21E6F /* main.py */,
 				AE14D6931056D30900A21E6F /* main.m */,
 				AE14D69B1056D3F200A21E6F /* ObjcBridge.h */,
 				AE14D69C1056D3F200A21E6F /* ObjcBridge.m */,
 				845767000ADC312500D69CBB /* SampleTool.c */,
 				E4F1F1950B0DD65D003CDB5F /* SampleCommon.h */,
 				E4F1F1940B0DD65D003CDB5F /* SampleCommon.c */,
-				AE858459108668550094157B /* transformers.py */,
-				AE1D0CB610584A5D00ABD45A /* waker.py */,
-				AE14D56C1055930D00A21E6F /* Waker_AppDelegate.py */,
+				AEA7DCA91822F38600470F2E /* transformers.m */,
+				AE83535B182532E600885485 /* transformers.h */,
+				AE8353551823E3D600885485 /* waker.m */,
+				AE8353571823EECA00885485 /* waker.h */,
+				AEA7DCAB1823BD9600470F2E /* Waker_AppDelegate.m */,
+				AE83535C18253A9F00885485 /* Waker_AppDelegate.h */,
 				AE53F0C112D9D8C200CE0181 /* RoundCloseButton.h */,
 				AE53F0C212D9D8C200CE0181 /* RoundCloseButton.m */,
 				AE53F14B12D9E48C00CE0181 /* MAAttachedWindow.h */,
 				AE53F14C12D9E48C00CE0181 /* MAAttachedWindow.m */,
-				AEB850F715B2E0A8008F1821 /* tunes.py */,
 				AE3B0D0912E4E4300064BCB1 /* remote */,
 				AE2276C8107FD376000751A1 /* QuickSilver */,
 				AE14D576105594D100A21E6F /* Resources */,
@@ -252,7 +256,6 @@
 			children = (
 				09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */,
 				84D6DDDB0AD302A2001E6F67 /* Security.framework */,
-				AE14D57A105595BF00A21E6F /* Python.framework */,
 				AE14D57E1055967300A21E6F /* AppKit.framework */,
 				E4F1F2FD0B0DED0C003CDB5F /* Cocoa.framework */,
 			);
@@ -272,7 +275,7 @@
 		AE14D576105594D100A21E6F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AEA1A04214B25683002E00D5 /* appscript-1.0.0-py2.7-macosx-10.7-intel.egg */,
+				AEA5B7DC18299372003BD23E /* backup.mp3 */,
 				AE385CD412E38B00007DC86A /* alarm_close.png */,
 				AE385CE612E38DE9007DC86A /* alarm_close_pushed.png */,
 				AEBA353512DBD8F600ECE48E /* shading.png */,
@@ -280,7 +283,6 @@
 				AE53F0CA12D9D95200CE0181 /* hud_titlebar-close-dark.tiff */,
 				AE53EBCD12D7B9F400CE0181 /* right_arrow.png */,
 				AE53EBCB12D7B92600CE0181 /* left_arrow.png */,
-				AE0EF255111DAD5100BF7528 /* Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3 */,
 				AE0EF231111DA85700BF7528 /* waker.icns */,
 				AE0EF22D111DA83E00BF7528 /* menu_item_inverted.png */,
 				AE0EF22E111DA83E00BF7528 /* menu_item.png */,
@@ -385,6 +387,9 @@
 /* Begin PBXProject section */
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
 			buildConfigurationList = 1DEB924B08733DCA0010E9CD /* Build configuration list for PBXProject "Waker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -413,27 +418,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E42F4A740B13443B00A50F72 /* WakerPrompts.strings in Resources */,
-				AE14D55D1055927100A21E6F /* main.py in Resources */,
-				AE14D56D1055930D00A21E6F /* Waker_AppDelegate.py in Resources */,
 				AE14D575105594BE00A21E6F /* MainMenu.xib in Resources */,
-				AE1D0CB710584A5D00ABD45A /* waker.py in Resources */,
-				AE3F8DBE105C2FF9006B64F8 /* from_curia.py in Resources */,
-				AE85845A108668550094157B /* transformers.py in Resources */,
-				AE9C9E1510925D1800F05042 /* fuzzy_dict.py in Resources */,
-				AECCB0A610B0BC9D007F9A32 /* CalendarView.py in Resources */,
 				AE0EF22F111DA83E00BF7528 /* menu_item_inverted.png in Resources */,
 				AE0EF230111DA83E00BF7528 /* menu_item.png in Resources */,
 				AE0EF232111DA85700BF7528 /* waker.icns in Resources */,
-				AE0EF256111DAD5100BF7528 /* Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto.mp3 in Resources */,
 				AE53EBCC12D7B92600CE0181 /* left_arrow.png in Resources */,
 				AE53EBCE12D7B9F400CE0181 /* right_arrow.png in Resources */,
+				AEA5B7DD18299372003BD23E /* backup.mp3 in Resources */,
 				AE53F0CC12D9D95200CE0181 /* hud_titlebar-close-dark.tiff in Resources */,
 				AEBA352A12DBD63100ECE48E /* white waker.png in Resources */,
 				AEBA353612DBD8F600ECE48E /* shading.png in Resources */,
 				AE385CD512E38B00007DC86A /* alarm_close.png in Resources */,
 				AE385CE712E38DE9007DC86A /* alarm_close_pushed.png in Resources */,
-				AEA1A04314B25683002E00D5 /* appscript-1.0.0-py2.7-macosx-10.7-intel.egg in Resources */,
-				AEB850F815B2E0A8008F1821 /* tunes.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,13 +463,18 @@
 				AE14D6941056D30900A21E6F /* main.m in Sources */,
 				AE14D69D1056D3F200A21E6F /* ObjcBridge.m in Sources */,
 				AE2276D7107FD376000751A1 /* NSBezierPath_BLTRExtensions.m in Sources */,
+				AEA7DCAC1823BD9600470F2E /* Waker_AppDelegate.m in Sources */,
+				AEA7DCA71820379500470F2E /* CalendarView.m in Sources */,
 				AE2276D8107FD376000751A1 /* NSColor_QSModifications.m in Sources */,
 				AE2276D9107FD376000751A1 /* NSUserDefaults_BLTRExtensions.m in Sources */,
 				AE2276DA107FD376000751A1 /* QSBezelBackgroundView.m in Sources */,
 				AE2276DB107FD376000751A1 /* QSGlobalSelectionProvider.m in Sources */,
 				AE2276DC107FD376000751A1 /* QSLargeTypeDisplay.m in Sources */,
+				AE8353561823E3D600885485 /* waker.m in Sources */,
+				AEA7DCAA1822F38600470F2E /* transformers.m in Sources */,
 				AE2276DD107FD376000751A1 /* QSShading.m in Sources */,
 				AEFD66381081276F004D71CE /* waker.xcdatamodel in Sources */,
+				AE83535A1823F3BA00885485 /* NSDate+NSDate_Humane.m in Sources */,
 				AE53F0C312D9D8C200CE0181 /* RoundCloseButton.m in Sources */,
 				AE53F14D12D9E48C00CE0181 /* MAAttachedWindow.m in Sources */,
 				AE3B0D1012E4E4310064BCB1 /* AppleRemote.m in Sources */,
@@ -513,10 +514,6 @@
 		1DEB924C08733DCA0010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -531,6 +528,7 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
@@ -541,10 +539,6 @@
 		1DEB924D08733DCA0010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = YES;
@@ -579,7 +573,6 @@
 		845767AE0ADC474C00D69CBB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				PRODUCT_NAME = HelperTool;
 				SDKROOT = macosx;
 			};
@@ -596,7 +589,6 @@
 		E449EC6D0B619E02009E190A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				PRODUCT_NAME = InstallTool;
 				SDKROOT = macosx;
 			};
@@ -621,9 +613,15 @@
 		E48AC8230C72046E000ED1FA /* Debug64 */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					/Library/Frameworks/iTunesLibrary.framework,
+				);
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = Waker;
-				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug64;
@@ -631,10 +629,6 @@
 		E48AC8240C72046E000ED1FA /* Debug64 */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc64,
-					x86_64,
-				);
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -659,9 +653,15 @@
 		E4F1F2C20B0DECA3003CDB5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					/Library/Frameworks/iTunesLibrary.framework,
+				);
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = Waker;
-				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -669,9 +669,15 @@
 		E4F1F2C30B0DECA3003CDB5F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					/Library/Frameworks/iTunesLibrary.framework,
+				);
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = Waker;
-				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
