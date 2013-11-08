@@ -247,14 +247,17 @@ static void set_user_default(NSString* key, NSObject* value) {
     }
     [self update_menu_preview];
     [self->_alarmWindowTime setStringValue:[[NSDate date] descriptionWithCalendarFormat:@"%H:%M" timeZone:nil locale:nil]];
-    if ((self->_large_type_window != nil)) {
+    /*if ((self->_large_type_window != nil)) {
         NSLog(@"cancel large type");
         [self->_large_type_window close];
         self->_large_type_window = nil;
-    }
+    }*/
 }
 
 - (void)play_alarm {
+    if (_music_files_player) {
+        return;
+    }
     [self->_bridge setVolume:0];
     [self show_alarm_window];
     
@@ -389,7 +392,7 @@ static NSString* events_as_string(NSDate* calendar) {
         // display next alarm time and delay some time to allow the user to see the message
         self->_just_woke = FALSE;
         //TODO: NSWindow* foo = [self->_bridge QSShowLargeType:@"Next alarm: %s" % str(relative_date_formatting(self->_next_alarm))];
-        NSWindow* foo = [self->_bridge QSShowLargeType:[NSString stringWithFormat:@"Next alarm: %@", self->_next_alarm]];
+        /*NSWindow* foo = [self->_bridge QSShowLargeType:[NSString stringWithFormat:@"Next alarm: %@", self->_next_alarm]];
         NSLog(@"delaying sleep...");
         for (int i = 0; i != 5; i++) {
             if (self->_just_woke || [self->_bridge lidClosed]) {
@@ -399,7 +402,7 @@ static NSString* events_as_string(NSDate* calendar) {
             [[NSRunLoop currentRunLoop] runUntilDate:[[NSDate date] dateWithOffsetDays:0 hours:0 minutes:0 seconds:1]];
         }
         self->_large_type_window = foo;
-        NSLog(@"done with onSleep");
+        NSLog(@"done with onSleep");*/
     }
 }
 

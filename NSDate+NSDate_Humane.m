@@ -35,7 +35,9 @@
 }
 
 - (NSUInteger)ordinal {
-    return [[[NSCalendar currentCalendar] components:NSWeekdayOrdinalCalendarUnit fromDate:self] weekdayOrdinal];
+    return [[NSCalendar currentCalendar]  ordinalityOfUnit:NSDayCalendarUnit
+                                                    inUnit:NSYearCalendarUnit
+                                                   forDate:self];
 }
 
 - (NSUInteger)weekday {
