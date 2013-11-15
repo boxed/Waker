@@ -101,6 +101,56 @@ static void set_user_default(NSString* key, NSObject* value) {
     //self->_show_alarm_window()
     //self->_showFirstRunWindow()
     //self->_openWaker_(self)
+    [self setupAirplay];
+}
+
+- (void)setupAirplay {
+    // From: http://joris.kluivers.nl/blog/2012/07/25/per-application-airplay-in-mountain-lion/
+    AudioObjectPropertyAddress addr;
+    UInt32 propsize;
+    
+    // target all available audio devices
+    addr.mSelector = kAudioHardwarePropertyDevices;
+    addr.mScope = kAudioObjectPropertyScopeWildcard;
+    addr.mElement = kAudioObjectPropertyElementWildcard;
+    
+    // get size of available data
+    AudioObjectGetPropertyDataSize(kAudioObjectSystemObject, &addr, 0, NULL, &propsize);
+    
+    int nDevices = propsize / sizeof(AudioDeviceID);
+    AudioDeviceID *devids = malloc(propsize);
+    
+    // get actual device id array data
+    AudioObjectGetPropertyData(kAudioObjectSystemObject, &addr, 0, NULL, &propsize, devids);
+    
+    // target device transport type property
+    addr.mSelector = kAudioDevicePropertyTransportType;
+    addr.mScope = kAudioObjectPropertyScopeGlobal;
+    addr.mElement = kAudioObjectPropertyElementMaster;
+    
+    unsigned int transportType = 0;
+    propsize = sizeof(transportType);
+    for (int i=0; i < nDevices; i++) {
+        AudioObjectGetPropertyData(devids[i], &addr, 0, NULL, &propsize, &transportType);
+        
+        if (kAudioDeviceTransportTypeAirPlay == transportType) {
+            // Found AirPlay audio device
+            AudioObjectPropertyAddress addr;
+            
+            // target the data source property
+            addr.mSelector = kAudioDevicePropertyDataSource;
+            addr.mScope = kAudioDevicePropertyScopeOutput;
+            addr.mElement = kAudioObjectPropertyElementMaster;
+            
+            UInt32 sourceID;
+            
+            AudioObjectSetPropertyData(devids[i], &addr, 0, NULL, sizeof(UInt32), &sourceID);
+            self->_audioDeviceID = devids[i];
+            break;
+        }
+    }
+    
+    free(devids);
 }
 
 - (void)applicationWillBecomeActive:(__unused id)aNotification {
@@ -261,6 +311,8 @@ static void set_user_default(NSString* key, NSObject* value) {
     [self->_bridge setVolume:0];
     [self show_alarm_window];
     
+    _music_files = [@[] mutableCopy];
+    
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     NSURL *directoryURL = [NSURL fileURLWithPath:[@"~/Music/" stringByStandardizingPath]]; // URL pointing to the directory you want to browse
     
@@ -273,37 +325,51 @@ static void set_user_default(NSString* key, NSObject* value) {
                                              // Return YES if the enumeration should continue after the error.
                                              return YES;
                                          }];
-    _music_files = [@[] mutableCopy];
     for (NSURL *url in enumerator) {
         NSString* ext = [url pathExtension];
         if ([ext isEqualToString:@"mp3"]) {
             [_music_files addObject:url];
         }
     }
+    _music_files_player_index = 0;
     if (_music_files.count) {
         [_music_files shuffle];
-        _music_files_player_index = 0;
-        
-        _music_files_player = [[NSSound alloc] initWithContentsOfURL:_music_files[0] byReference:YES];
-        _music_files_player.delegate = self;
     }
     else {
         NSLog(@"backup alarm!");
-        _music_files_player = [NSSound soundNamed:@"backup"];
-        _music_files_player.delegate = self;
+        NSURL* backupAlarm = [[NSBundle mainBundle] URLForResource:@"backup" withExtension:@"mp3"];
+        [_music_files addObject:backupAlarm];
     }
-    [_music_files_player play];
+    [self nextSong];
     
     [self fadeInVolume];
+    [self setNextAlarm];
 }
 
 // NSSoundDelegate
 - (void)sound:(__unused NSSound *)sound didFinishPlaying:(__unused BOOL)finishedPlaying {
     if (_music_files.count) {
-        _music_files_player_index++;
-        _music_files_player = [[NSSound alloc] initWithContentsOfURL:_music_files[_music_files_player_index] byReference:YES];
-        [_music_files_player play];
     }
+}
+
+- (void)nextSong {
+    _music_files_player_index++;
+    
+    if (_music_files_player_index >= _music_files.count) {
+        _music_files_player_index = 0;
+    }
+    
+    _music_files_player = [[NSSound alloc] initWithContentsOfURL:_music_files[_music_files_player_index] byReference:YES];
+    /*if (_audioDeviceID) {
+        
+        UInt32 size = sizeof(CFStringRef);
+        CFStringRef str = NULL;
+        AudioDeviceGetProperty(_audioDeviceID,  0, 0, kAudioDevicePropertyDeviceUID, &size, &str);
+        
+        [_music_files_player setPlaybackDeviceIdentifier:(__bridge NSString*)str];
+    }*/
+    _music_files_player.delegate = self;
+    [_music_files_player play];
 }
 
 - (void)snooze {
@@ -546,6 +612,7 @@ static NSString* events_as_string(NSDate* calendar) {
     [_backup_alarm stop];
     _music_files = nil;
     [_music_files_player stop];
+    _music_files_player = nil;
 }
 
 - (IBAction)openWaker:(id)sender {

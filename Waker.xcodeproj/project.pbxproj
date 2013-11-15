@@ -48,6 +48,7 @@
 		AEA7DCAC1823BD9600470F2E /* Waker_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DCAB1823BD9600470F2E /* Waker_AppDelegate.m */; };
 		AEBA352A12DBD63100ECE48E /* white waker.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA352912DBD63100ECE48E /* white waker.png */; };
 		AEBA353612DBD8F600ECE48E /* shading.png in Resources */ = {isa = PBXBuildFile; fileRef = AEBA353512DBD8F600ECE48E /* shading.png */; };
+		AEBA86C5182F86F800ED272E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA86C4182F86F800ED272E /* CoreAudio.framework */; };
 		AECDA00814F92664006CA324 /* NSButton+TextColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AECDA00714F92664006CA324 /* NSButton+TextColor.m */; };
 		AEFD66381081276F004D71CE /* waker.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = AEFD66371081276F004D71CE /* waker.xcdatamodel */; };
 		E42F4A740B13443B00A50F72 /* WakerPrompts.strings in Resources */ = {isa = PBXBuildFile; fileRef = E42F4A730B13443B00A50F72 /* WakerPrompts.strings */; };
@@ -153,6 +154,8 @@
 		AEA7DCAB1823BD9600470F2E /* Waker_AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waker_AppDelegate.m; sourceTree = "<group>"; };
 		AEBA352912DBD63100ECE48E /* white waker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white waker.png"; sourceTree = "<group>"; };
 		AEBA353512DBD8F600ECE48E /* shading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shading.png; sourceTree = "<group>"; };
+		AEBA86C2182F86DC00ED272E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		AEBA86C4182F86F800ED272E /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		AECDA00614F92664006CA324 /* NSButton+TextColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSButton+TextColor.h"; sourceTree = "<group>"; };
 		AECDA00714F92664006CA324 /* NSButton+TextColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSButton+TextColor.m"; sourceTree = "<group>"; };
 		AEFD66371081276F004D71CE /* waker.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = waker.xcdatamodel; sourceTree = "<group>"; };
@@ -188,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEBA86C5182F86F800ED272E /* CoreAudio.framework in Frameworks */,
 				AEA5B7DF182AE3C3003BD23E /* iTunesLibrary.framework in Frameworks */,
 				AE83535E1826AE1000885485 /* CalendarStore.framework in Frameworks */,
 				E4F1F3560B0DED94003CDB5F /* Security.framework in Frameworks */,
@@ -204,6 +208,8 @@
 		08FB7794FE84155DC02AAC07 /* BetterAuthorizationSample */ = {
 			isa = PBXGroup;
 			children = (
+				AEBA86C4182F86F800ED272E /* CoreAudio.framework */,
+				AEBA86C2182F86DC00ED272E /* CoreMedia.framework */,
 				AEA5B7DE182AE3C3003BD23E /* iTunesLibrary.framework */,
 				AE83535D1826AE1000885485 /* CalendarStore.framework */,
 				AE8353581823F3BA00885485 /* NSDate+NSDate_Humane.h */,

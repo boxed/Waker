@@ -1491,13 +1491,13 @@ Exceptions allow you to change the behavior of just the next alarm but keep the 
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" id="1166">
                             <font key="font" metaFont="system"/>
-                            <string key="title">Copyright 2011 Anders Hovmöller
+                            <string key="title">Copyright 2013 Anders Hovmöller
 
 Includes code from QuickSilver by Blacktree.
 Includes "RemoteControlWrapper" by Martin Kahr.
 Includes "MAAttachedWindow" code by Matt Gemmell.
 Includes code from "BetterAuthorizationSample" by Apple.
-Includes "Sonata No. 5 in C Minor, Op. 10 No. 1 - II. Adagio molto" from musopen.com</string>
+Includes "Nocturne op.9 No.2" by Chopin from musopen.org</string>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>

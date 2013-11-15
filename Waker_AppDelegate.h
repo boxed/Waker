@@ -27,6 +27,7 @@
     NSMutableArray* _music_files;
     NSSound* _music_files_player;
     int _music_files_player_index;
+    AudioDeviceID _audioDeviceID;
 }
 
 @property IBOutlet NSWindow* aboutWindow;

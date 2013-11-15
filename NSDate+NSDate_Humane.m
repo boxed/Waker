@@ -188,7 +188,7 @@
             s = [NSString stringWithFormat:@"%@%d s ", s, (int)diff];
         }
         
-        if (self < reference_date) { // in the past
+        if ([self earlierThan:reference_date]) {
             s = [NSString stringWithFormat:@"%@ago", s];
         }
         
@@ -205,11 +205,11 @@
         return [NSString stringWithFormat:@"tomorrow at %@", [formatter stringFromDate:self]];
     }
     else if (self.year != reference_date.year) {
-        [formatter setDateFormat:[@"dd MM yyyy %@" stringByAppendingString:time_formatting]];
+        [formatter setDateFormat:[@"yyyy-MM-dd " stringByAppendingString:time_formatting]];
         return [formatter stringFromDate:self];
     }
     else {
-        [formatter setDateFormat:[@"dd MM %@" stringByAppendingString:time_formatting]];
+        [formatter setDateFormat:[@"yyyy-MM-dd " stringByAppendingString:time_formatting]];
         return [formatter stringFromDate:self];
     }
 }

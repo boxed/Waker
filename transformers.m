@@ -1,4 +1,4 @@
-#import "transformers.h"
+ #import "transformers.h"
 
 NSDate* NSDateFromString(NSString* str) {
     if ([str hasPrefix:@"in "]) {
@@ -7,19 +7,31 @@ NSDate* NSDateFromString(NSString* str) {
         NSRegularExpression* re = [NSRegularExpression regularExpressionWithPattern:@"in (\\d+)\\s*(.*)" options:NSRegularExpressionCaseInsensitive error:&error];
         NSTextCheckingResult* m = [re firstMatchInString:str options:0 range:NSMakeRange(0, str.length)];
         if (m) {
-            NSRange numRange = [m rangeAtIndex:0];
-            NSRange unitRange = [m rangeAtIndex:1];
+            NSRange numRange = [m rangeAtIndex:1];
+            NSRange unitRange = [m rangeAtIndex:2];
             float num = [[str substringWithRange:numRange] floatValue];
             NSString* unit = [str substringWithRange:unitRange];
             NSDictionary* lookup = @{
                 @"second": @1,
+                @"seconds": @1,
+                @"secs": @1,
+                @"s": @1,
                 @"minute": @60,
+                @"min": @60,
+                @"mins": @60,
+                @"m": @60,
+                @"hours": @(60*60),
                 @"hour": @(60*60),
-                @"day": @(60*60*24)
+                @"h": @(60*60),
+                @"days": @(60*60*24),
+                @"day": @(60*60*24),
+                @"d": @(60*60*24),
                 };
-            return [[NSDate date] dateWithOffsetDays:0 hours:0 minutes:0 seconds:num * [lookup[unit] intValue]];
+            if (lookup[unit] != nil) {
+                return [[NSDate date] dateWithOffsetDays:0 hours:0 minutes:0 seconds:num * [lookup[unit] intValue]];
+            }
         }
-        [[DidNotUnderstandException alloc] raise];
+//        [[DidNotUnderstandException alloc] raise];
     }
     NSDate* date = [NSDate dateWithNaturalLanguageString:str];
     // TODO: now convert it to GMT for the internal processing
