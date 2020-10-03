@@ -674,7 +674,7 @@ bar</string>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="828">
                         <rect key="frame" x="464" y="343" width="37" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="right_arrow" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="829">
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSGoRightTemplate" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="829">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -685,7 +685,7 @@ bar</string>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="830">
                         <rect key="frame" x="8" y="343" width="37" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="left_arrow" imagePosition="only" alignment="center" state="on" inset="2" id="831">
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSGoBackTemplate" imagePosition="only" alignment="center" state="on" inset="2" id="831">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -1527,10 +1527,10 @@ Includes "Nocturne op.9 No.2" by Chopin from musopen.org</string>
         </window>
     </objects>
     <resources>
+        <image name="NSGoBackTemplate" width="9" height="12"/>
+        <image name="NSGoRightTemplate" width="9" height="12"/>
         <image name="alarm_close" width="50" height="50"/>
         <image name="alarm_close_pushed" width="50" height="50"/>
-        <image name="left_arrow" width="12" height="11"/>
-        <image name="right_arrow" width="12" height="11"/>
         <image name="shading" width="1" height="40"/>
         <image name="waker" width="512" height="512"/>
         <image name="white waker" width="512" height="253"/>
