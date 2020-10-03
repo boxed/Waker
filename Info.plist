@@ -34,6 +34,8 @@
 	<string>Copyright © 2011, Anders Hovmöller</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Calendar is read to set alarms intelligently based on for example vacations</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

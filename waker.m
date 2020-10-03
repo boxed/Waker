@@ -3,7 +3,18 @@
 #import "waker.h"
 #import "NSDate+NSDate_Humane.h"
 #import "Waker_AppDelegate.h"
+#import "EventKit/EventKit.h"
 
+EKEventStore *_store = nil;
+
+EKEventStore* get_store() {
+    if (_store == nil) {
+        _store = [[EKEventStore alloc] initWithAccessToEntityTypes:EKEntityTypeEvent];
+        [_store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable __strong error){
+        }];
+    }
+    return _store;
+}
 
 @implementation AlarmTimeAndRule
 
@@ -53,51 +64,47 @@ NSDictionary* get_month_to_string(void) {
 }
 
 NSArray* events_of_day(NSUInteger year, NSUInteger month, NSUInteger day) {
-//    CalCalendarStore* store = [CalCalendarStore defaultCalendarStore];
-//    NSDate* date = [NSDate dateWithYear:year month:month day:day];
-//    NSDate* startDate = [date dateWithOffsetDays:0 hours:0 minutes:0 seconds:1];
-//    NSDate* endDate = [date dateWithOffsetDays:1 hours:0 minutes:0 seconds:-1];
-//    NSArray* calendars = [store calendars];
-//    NSPredicate* allEventsPredicate = [CalCalendarStore eventPredicateWithStartDate:startDate endDate:endDate calendars:calendars];
-//    NSArray* events = [store eventsWithPredicate:allEventsPredicate];
-//    //print 'events of', day
-//    //print unicode(events).encode('ascii', 'ignore')
-//    return events;
-    return @[];
+    NSDate* date = [NSDate dateWithYear:year month:month day:day];
+    NSDate* startDate = [date dateWithOffsetDays:0 hours:0 minutes:0 seconds:1];
+    NSDate* endDate = [date dateWithOffsetDays:1 hours:0 minutes:0 seconds:-1];
+    EKEventStore *store = get_store();
+    NSArray* calendars = [store calendarsForEntityType:EKEntityTypeEvent];
+    NSPredicate* allEventsPredicate = [store predicateForEventsWithStartDate:startDate endDate:endDate calendars:calendars];
+    NSArray* events = [store eventsMatchingPredicate:allEventsPredicate];
+    return events;
 }
 
 BOOL matches_rule(NSArray* events, NSDate* date, NSManagedObject* rule) {
     if ([rule predicate] == nil) {
         return YES;
     }
-    @try {
-        NSNumber* day_of_week = get_weekday_to_string()[[NSNumber numberWithInt:[date weekday]]];
-        NSMutableDictionary* foo = [@{} mutableCopy];
-        [foo setValue:day_of_week forKey:@"day"];
-        NSString* predicate = [rule predicate];
+    NSNumber* day_of_week = get_weekday_to_string()[[NSNumber numberWithInt:[date weekday]]];
+    NSMutableDictionary* foo = [@{} mutableCopy];
+    [foo setValue:day_of_week forKey:@"day"];
+    NSString* predicate = [rule predicate];
+    if ([[NSPredicate predicateWithFormat:predicate] evaluateWithObject:foo]) {
+        return YES;
+    }
+    for (EKEvent* event in events) {
+        if (event.title)
+            [foo setValue:event.title forKey:@"title"];
+        if (event.location)
+            [foo setValue:event.location forKey:@"location"];
+        if (event.notes)
+            [foo setValue:event.notes forKey:@"notes"];
+        if (event.URL)
+            [foo setValue:event.URL forKey:@"url"];
+        
         if ([[NSPredicate predicateWithFormat:predicate] evaluateWithObject:foo]) {
             return YES;
         }
-        for (CalEvent* event in events) {
-            if ([event title])
-                [foo setValue:[event title] forKey:@"title"];
-            if ([event location])
-                [foo setValue:[event location] forKey:@"location"];
-            if ([event notes])
-                [foo setValue:[event notes] forKey:@"notes"];
-            if ([event url])
-                [foo setValue:[event url] forKey:@"url"];
-            
-            if ([[NSPredicate predicateWithFormat:predicate] evaluateWithObject:foo]) {
-                return YES;
-            }
-        }
-        return [[NSPredicate predicateWithFormat:[rule predicate]] evaluateWithObject:@{@"day": day_of_week}];
     }
-    @catch (id) {
-        NSLog(@"Warning: matches_rule failed, ignoring...");
-        return NO;
-    }
+    return [[NSPredicate predicateWithFormat:[rule predicate]] evaluateWithObject:@{@"day": day_of_week}];
+//    }
+//    @catch (id) {
+//        NSLog(@"Warning: matches_rule failed, ignoring...");
+//        return NO;
+//    }
 }
 
 NSManagedObject* get_rule(id<Settings> settings, NSUInteger year, NSUInteger month, NSUInteger day) {

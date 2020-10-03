@@ -432,8 +432,14 @@ static NSString* events_as_string(NSDate* calendar) {
     self->_statusItem = [statusBar statusItemWithLength:37];
     [self->_statusItem setMenu:self->_statusBarMenu];
     [self->_statusItem setHighlightMode:TRUE];
-    [self->_statusItem setImage:[NSImage imageNamed:@"menu_item.png"]];
-    [self->_statusItem setAlternateImage:[NSImage imageNamed:@"menu_item_inverted.png"]];
+    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    if (osxMode == nil) {
+        // light mode
+        [self->_statusItem setImage:[NSImage imageNamed:@"menu_item.png"]];
+    }
+    else {
+        [self->_statusItem setImage:[NSImage imageNamed:@"menu_item_inverted.png"]];
+    }
 }
 
 - (void)update_menu_preview {

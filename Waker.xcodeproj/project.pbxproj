@@ -41,6 +41,7 @@
 		AE8353561823E3D600885485 /* waker.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8353551823E3D600885485 /* waker.m */; };
 		AE83535A1823F3BA00885485 /* NSDate+NSDate_Humane.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8353591823F3BA00885485 /* NSDate+NSDate_Humane.m */; };
 		AE83535E1826AE1000885485 /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83535D1826AE1000885485 /* CalendarStore.framework */; };
+		AE9730B22528E92F00403679 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9730B12528E92F00403679 /* EventKit.framework */; };
 		AEA5B7DD18299372003BD23E /* backup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEA5B7DC18299372003BD23E /* backup.mp3 */; };
 		AEA5B7DF182AE3C3003BD23E /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA5B7DE182AE3C3003BD23E /* iTunesLibrary.framework */; };
 		AEA7DCA71820379500470F2E /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DCA61820379500470F2E /* CalendarView.m */; };
@@ -146,6 +147,7 @@
 		AE83535B182532E600885485 /* transformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transformers.h; sourceTree = "<group>"; };
 		AE83535C18253A9F00885485 /* Waker_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Waker_AppDelegate.h; sourceTree = "<group>"; };
 		AE83535D1826AE1000885485 /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
+		AE9730B12528E92F00403679 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		AEA5B7DC18299372003BD23E /* backup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backup.mp3; sourceTree = "<group>"; };
 		AEA5B7DE182AE3C3003BD23E /* iTunesLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iTunesLibrary.framework; path = ../../../../Library/Frameworks/iTunesLibrary.framework; sourceTree = "<group>"; };
 		AEA7DCA61820379500470F2E /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEBA86C5182F86F800ED272E /* CoreAudio.framework in Frameworks */,
+				AE9730B22528E92F00403679 /* EventKit.framework in Frameworks */,
 				AEA5B7DF182AE3C3003BD23E /* iTunesLibrary.framework in Frameworks */,
 				AE83535E1826AE1000885485 /* CalendarStore.framework in Frameworks */,
 				E4F1F3560B0DED94003CDB5F /* Security.framework in Frameworks */,
@@ -243,6 +246,7 @@
 				19C28FBDFE9D53C911CA2CBB /* Products */,
 				AE14D534105581C100A21E6F /* IOKit.framework */,
 				AE2276F8107FD4D7000751A1 /* AudioToolbox.framework */,
+				AE9730B02528E92E00403679 /* Frameworks */,
 			);
 			name = BetterAuthorizationSample;
 			sourceTree = "<group>";
@@ -331,6 +335,14 @@
 				AE3B0D0F12E4E4300064BCB1 /* RemoteControl.m */,
 			);
 			path = remote;
+			sourceTree = "<group>";
+		};
+		AE9730B02528E92E00403679 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE9730B12528E92F00403679 /* EventKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
