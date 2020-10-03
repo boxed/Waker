@@ -84,9 +84,8 @@ static AuthorizationRef gAuth = NULL;
 
 - (bool)setWakeup:(CFAbsoluteTime)inAbsoluteTime
 {
-    OSStatus        err = !noErr;
-    @synchronized(self)
-    {
+    __block OSStatus        err = !noErr;
+    dispatch_sync(dispatch_get_main_queue(), ^{
         NSString *      bundleID;
         NSDictionary *  request;
         CFDictionaryRef response;
@@ -139,6 +138,7 @@ static AuthorizationRef gAuth = NULL;
             // to authorize in order to fix it.  Ideally we'd use failCode to describe the type of 
             // error to the user.
             
+            
             alertResult = NSRunAlertPanel(@"Needs Install", @"Waker needs to install the wake up tool", nil, nil, nil);
             
             if ( alertResult == NSAlertDefaultReturn ) {
@@ -147,28 +147,28 @@ static AuthorizationRef gAuth = NULL;
                 err = BASFixFailure(gAuth, (__bridge CFStringRef) bundleID, CFSTR("InstallTool"), CFSTR("HelperTool"), failCode);
                 if (err != noErr)
                 {
-                    NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to fix failure: %ld.\n", (long) err], nil, nil, nil);
+                    NSRunAlertPanel(@"Error", @"%@", [NSString stringWithFormat:@"Failed to fix failure: %ld.\n", (long) err], nil, nil, nil);
                 }
                 
                 // If the fix went OK, retry the request.
                 
                 if (err == noErr) {
                     err = BASExecuteRequestInHelperTool(
-                                                        gAuth, 
-                                                        kWakerCommandSet, 
+                                                        gAuth,
+                                                        kWakerCommandSet,
                                                         (__bridge CFStringRef) bundleID,
                                                         (__bridge CFDictionaryRef) request,
                                                         &response
                                                         );
                     if (err != noErr)
                     {
-                        NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to execute request in helper: %ld.\n", (long) err], nil, nil, nil);
+                        NSRunAlertPanel(@"Error", @"%@", [NSString stringWithFormat:@"Failed to execute request in helper: %ld.\n", (long) err], nil, nil, nil);
                     }
                 }
             } else {
                 err = userCanceledErr;
             }
-        }	
+        }
         
         // If the above went OK, it means that the IPC to the helper tool worked.  We 
         // now have to check the response dictionary to see if the command's execution 
@@ -179,7 +179,7 @@ static AuthorizationRef gAuth = NULL;
             err = BASGetErrorFromResponse(response);
             if (err != noErr)
             {
-                NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to get response error: %ld.\n", (long) err], nil, nil, nil);
+                NSRunAlertPanel(@"Error", @"%@", [NSString stringWithFormat:@"Failed to get response error: %ld.\n", (long) err], nil, nil, nil);
             }
         }
         else
@@ -189,13 +189,13 @@ static AuthorizationRef gAuth = NULL;
         // Log our results.
         if (err == noErr) {
         } else {
-            NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed with error %ld.\n", (long) err], nil, nil, nil);
+            NSRunAlertPanel(@"Error", @"%@", [NSString stringWithFormat:@"Failed with error %ld.\n", (long) err], nil, nil, nil);
         }
         
         if (response != NULL) {
             CFRelease(response);
         }        
-    }
+    });
     return err == noErr;
 }
 

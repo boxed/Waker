@@ -161,7 +161,9 @@ NSDictionary* month_to_string(void) {
     @autoreleasepool {
         self->loadingThread = [NSThread currentThread];
         self->loading = true;
-        [self->progress startAnimation:self];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self->progress startAnimation:self];
+        });
         
         int year = [[params objectAtIndex:0] intValue];
         int month = [[params objectAtIndex:1] intValue];
@@ -177,15 +179,17 @@ NSDictionary* month_to_string(void) {
                         //print 'another loading thread detected, bailing'
                         return;
                     }
-                    NSString* key = date_to_key(year, month, day);
-                    Waker_AppDelegate* app_delegate = (Waker_AppDelegate*)[[NSApplication sharedApplication] delegate];
-                    NSManagedObject* rule = get_rule(app_delegate, year, month, day);
-                    if (rule == nil) {
-                        [self->cache removeObjectForKey:key];
-                    }
-                    else {
-                        [self->cache setObject:rule forKey:key];
-                    }
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        NSString* key = date_to_key(year, month, day);
+                        Waker_AppDelegate* app_delegate = (Waker_AppDelegate*)[[NSApplication sharedApplication] delegate];
+                        NSManagedObject* rule = get_rule(app_delegate, year, month, day);
+                        if (rule == nil) {
+                            [self->cache removeObjectForKey:key];
+                        }
+                        else {
+                            [self->cache setObject:rule forKey:key];
+                        }
+                    });
                 }
             }
         }
