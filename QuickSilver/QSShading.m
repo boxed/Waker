@@ -24,7 +24,8 @@
  */
 
 
-static void QSColorFade(void *info, const float *in, float *out){
+//  (*)(void * _Nullable, const double * _Nonnull, double * _Nonnull)')
+static void QSColorFade(void * _Nullable info, const float * _Nonnull in, float * _Nonnull out ){
     float v=*in;
     float *colors=info;
     int i;
@@ -48,7 +49,7 @@ void QSFillRectWithGradientFromEdge(NSRect rect,NSColor *start,NSColor *end,NSRe
     
     
     components = 1 + CGColorSpaceGetNumberOfComponents(colorspace);
-    CGFunctionRef function=CGFunctionCreate(colors, 1, domain, components,range, &callbacks);
+    CGFunctionRef function=CGFunctionCreate(colors, 1, (const CGFloat * _Nullable)domain, components, (const CGFloat * _Nullable)range, &callbacks);
     
     CGPoint startPoint = {0, 0},endPoint = {0, 0};
     

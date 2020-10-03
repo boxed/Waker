@@ -178,8 +178,14 @@ NSDictionary* month_to_string(void) {
                         return;
                     }
                     NSString* key = date_to_key(year, month, day);
-                    NSManagedObject* rule = get_rule((Waker_AppDelegate*)[[NSApplication sharedApplication] delegate], year, month, day);
-                    [self->cache setObject:rule forKey:key];
+                    Waker_AppDelegate* app_delegate = (Waker_AppDelegate*)[[NSApplication sharedApplication] delegate];
+                    NSManagedObject* rule = get_rule(app_delegate, year, month, day);
+                    if (rule == nil) {
+                        [self->cache removeObjectForKey:key];
+                    }
+                    else {
+                        [self->cache setObject:rule forKey:key];
+                    }
                 }
             }
         }
