@@ -32,7 +32,7 @@ static NSArray* monthcalendar(int year, int month) {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate* monthDate = [calendar dateFromComponents:comps];
     
-    NSRange r = [calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:monthDate];
+    NSRange r = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:monthDate];
     int number_of_days_in_month = r.length;
     int weekday = [monthDate weekday];
     NSMutableArray* result = [@[] mutableCopy];
@@ -214,7 +214,7 @@ NSDictionary* month_to_string(void) {
     NSSize cell_size = NSMakeSize(in_rect.size.width / 7, in_rect.size.height / month_calendar.count);
     // week titles
     NSMutableParagraphStyle* centeredParagraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [centeredParagraphStyle setAlignment:NSCenterTextAlignment];
+    [centeredParagraphStyle setAlignment:NSTextAlignmentCenter];
     for (NSNumber* x in @[@0, @1, @2, @3, @4, @5, @6]) {
         NSString* day = [weekday_to_string() objectForKey:x];
         NSRect rect = NSMakeRect(

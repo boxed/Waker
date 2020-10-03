@@ -39,7 +39,7 @@
 	NSMutableArray*		   allCookies;
 	NSMutableDictionary*   cookieToButtonMapping;
 	
-	__strong CFRunLoopSourceRef	   eventSource;
+    CFRunLoopSourceRef	   eventSource;
 	
 	BOOL openInExclusiveMode;
 	BOOL processesBacklog;	

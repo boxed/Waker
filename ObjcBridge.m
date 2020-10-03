@@ -255,7 +255,7 @@ static AuthorizationRef gAuth = NULL;
             err = BASFixFailure(gAuth, (__bridge CFStringRef) bundleID, CFSTR("InstallTool"), CFSTR("HelperTool"), failCode);
 			if (err != noErr)
 			{
-				NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to fix failure: %ld.\n", (long) err], nil, nil, nil);
+                NSRunAlertPanel(@"Error", @"%@", [NSString stringWithFormat:@"Failed to fix failure: %ld.\n", (long) err], nil, nil, nil);
 			}
 			
             // If the fix went OK, retry the request.
@@ -270,7 +270,7 @@ static AuthorizationRef gAuth = NULL;
 													);
 				if (err != noErr)
 				{
-					NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to execute request in helper: %ld.\n", (long) err], nil, nil, nil);
+                    NSRunAlertPanel(@"Error", @"%@", [NSString stringWithFormat:@"Failed to execute request in helper: %ld.\n", (long) err], nil, nil, nil);
 				}
             }
         } else {
@@ -287,7 +287,7 @@ static AuthorizationRef gAuth = NULL;
         err = BASGetErrorFromResponse(response);
 		if (err != noErr)
 		{
-			NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed to get response error: %ld.\n", (long) err], nil, nil, nil);
+            NSRunAlertPanel(@"Error", @"%@", [NSString stringWithFormat:@"Failed to get response error: %ld.\n", (long) err], nil, nil, nil);
 		}
     }
 	else
@@ -297,7 +297,7 @@ static AuthorizationRef gAuth = NULL;
     // Log our results.
     if (err == noErr) {
     } else {
-		NSRunAlertPanel(@"Error", [NSString stringWithFormat:@"Failed with error %ld.\n", (long) err], nil, nil, nil);
+        NSRunAlertPanel(@"Error", @"%@", [NSString stringWithFormat:@"Failed with error %ld.\n", (long) err], nil, nil, nil);
     }
     
     if (response != NULL) {

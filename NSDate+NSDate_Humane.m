@@ -11,38 +11,38 @@
 @implementation NSDate (NSDate_Humane)
 
 - (NSUInteger)year {
-    return [[[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:self] year];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:self] year];
 }
 
 - (NSUInteger)month {
-    return [[[NSCalendar currentCalendar] components:NSMonthCalendarUnit fromDate:self] month];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:self] month];
 }
 
 - (NSUInteger)day {
-    return [[[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self] day];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:self] day];
 }
 
 - (NSUInteger)hour {
-    return [[[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:self] hour];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:self] hour];
 }
 
 - (NSUInteger)minute {
-    return [[[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:self] minute];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitMinute fromDate:self] minute];
 }
 
 - (NSUInteger)second {
-    return [[[NSCalendar currentCalendar] components:NSSecondCalendarUnit fromDate:self] second];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self] second];
 }
 
 - (NSUInteger)ordinal {
-    return [[NSCalendar currentCalendar]  ordinalityOfUnit:NSDayCalendarUnit
-                                                    inUnit:NSYearCalendarUnit
+    return [[NSCalendar currentCalendar]  ordinalityOfUnit:NSCalendarUnitDay
+                                                    inUnit:NSCalendarUnitYear
                                                    forDate:self];
 }
 
 - (NSUInteger)weekday {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    int weekday = [[calendar components:NSWeekdayCalendarUnit fromDate:self] weekday]-2; // -2 because cocoa APIs are stupid and counts sunday as 1, while monday as 0 is the only thing that makes sense
+    int weekday = [[calendar components:NSCalendarUnitWeekday fromDate:self] weekday]-2; // -2 because cocoa APIs are stupid and counts sunday as 1, while monday as 0 is the only thing that makes sense
     if (weekday == -1) {
         weekday = 6;
     }
@@ -114,7 +114,7 @@
     NSTimeInterval delta = [self timeIntervalSinceDate:now] * -1.0;
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger units = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit);
+    NSUInteger units = (NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond);
     NSDateComponents *components = [calendar components:units fromDate:self toDate:now options:0];
     
     NSString *relativeString;
@@ -164,7 +164,7 @@
 //        time_formatting = @"%H:%M:%S";
 //    }
 //    else
-    if (abs([self ordinal] - [reference_date ordinal]) <= 1) {
+    if (([self ordinal] - [reference_date ordinal]) <= 1) {
         time_formatting = @"HH:mm";
     }
     
@@ -175,7 +175,7 @@
             s = [NSString stringWithFormat:@"in %@", s];
         }
         
-        diff = abs(diff);
+        diff = fabs(diff);
         if (diff >= 60*60) {
             int hours = diff/60/60;
             s = [NSString stringWithFormat:@"%@%d h ", s, hours];
