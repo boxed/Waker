@@ -9,6 +9,8 @@
 #import "transformers.h"
 #import "waker.h"
 
+BOOL isDarkMode(void);
+
 @interface Waker_AppDelegate : NSObject<Settings, NSSoundDelegate> {
     NSSound* _backup_alarm;
     NSManagedObjectContext* _managedObjectContext;

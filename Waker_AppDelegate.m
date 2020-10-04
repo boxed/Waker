@@ -14,6 +14,12 @@ static NSString* NowExceptionRule = @"User triggered";
 // RESEARCH: calling phone numbers as alarm. Coupled with a custom ring tone this becomes very useful. Can lead to a bunch of other features like you have to enter a code to say you are awake otherwise it will keep calling. With voice synth and interpretation this can be especially cool.
 // RESEARCH: home automation integration
 
+BOOL isDarkMode(void) {
+    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    return osxMode != nil;
+}
+
+
 @interface NSMutableArray (Shuffling)
 - (void)shuffle;
 @end
@@ -244,13 +250,14 @@ static void set_user_default(NSString* key, NSObject* value) {
         [[NSThread currentThread] setName:@"fadeInVolumeThread"];
         NSLog(@"fadeInVolume");
         float volume = 0;
-        float step = 0.005;
         float target = [get_user_default(@"system_volume") floatValue];
+        float step = target/1000.0;
         while (TRUE) {
             if (![self->_alarmWindow isVisible]) {
                 break;
             }
-            sleep(0.1);
+            [NSThread sleepForTimeInterval:0.1f];
+            NSLog(@"fade in");
             [self->_bridge setVolume:volume];
             volume += step;
             if (volume >= target) {
@@ -445,13 +452,13 @@ static NSString* events_as_string(NSDate* calendar) {
     self->_statusItem = [statusBar statusItemWithLength:37];
     [self->_statusItem setMenu:self->_statusBarMenu];
     [self->_statusItem setHighlightMode:TRUE];
-    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
-    if (osxMode == nil) {
-        // light mode
-        [self->_statusItem setImage:[NSImage imageNamed:@"menu_item.png"]];
+
+    if (isDarkMode) {
+        [self->_statusItem setImage:[NSImage imageNamed:@"menu_item_inverted.png"]];
     }
     else {
-        [self->_statusItem setImage:[NSImage imageNamed:@"menu_item_inverted.png"]];
+        // light mode
+        [self->_statusItem setImage:[NSImage imageNamed:@"menu_item.png"]];
     }
 }
 

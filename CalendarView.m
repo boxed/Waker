@@ -226,6 +226,8 @@ NSDictionary* month_to_string(void) {
     }
     in_rect.size.height -= 5;
     // day data
+    NSColor *todayColor = isDarkMode()? [NSColor colorWithWhite:1.0 alpha:0.2] : [NSColor colorWithDeviceRed:0.9 green:0.9 blue:1 alpha:1];
+    NSColor *otherDayColor = isDarkMode() ? [NSColor colorWithWhite:1.0 alpha:0.05] : [NSColor colorWithWhite:0.0 alpha:0.05];
     for (int y = 0; y != month_calendar.count; y++) {
         NSArray* week = [month_calendar objectAtIndex:y];
         for (int x = 0; x != week.count; x++) {
@@ -238,7 +240,7 @@ NSDictionary* month_to_string(void) {
                                          cell_size.height);
                 rect = NSInsetRect(rect, 2, 2);
                 BOOL is_today = year == now.year && month == now.month && day == now.day;
-                fillRect(rect, is_today? [NSColor colorWithDeviceRed:0.9 green:0.9 blue:1 alpha:1] : [NSColor whiteColor]);
+                fillRect(rect, is_today? todayColor : otherDayColor);
                 NSString* key = date_to_key(year, month, day);
                 NSManagedObject* item = [self->cache objectForKey:key];
                 if (item == nil) {
@@ -248,19 +250,19 @@ NSDictionary* month_to_string(void) {
 
                 rect.origin.x += 3;
                 rect.size.width -= 3;
-                [[NSString stringWithFormat:@"%d", day] drawInRect:rect withAttributes:@{NSForegroundColorAttributeName: [NSColor grayColor]}];
+                [[NSString stringWithFormat:@"%d", day] drawInRect:rect withAttributes:@{NSForegroundColorAttributeName: [NSColor textColor]}];
                 rect.origin.x += 2;
                 rect.size.height -= 14;
                 if (item != nil) {
                     if (([item name] != nil)) {
-                        [[NSString stringWithString:[item name]] drawInRect:rect withAttributes:@{NSParagraphStyleAttributeName: centeredParagraphStyle}];
+                        [[NSString stringWithString:[item name]] drawInRect:rect withAttributes:@{NSParagraphStyleAttributeName: centeredParagraphStyle, NSForegroundColorAttributeName: [NSColor textColor]}];
                     }
                     if ([item time] != nil) {
                         rect.size.height -= 38;
                         rect.size.width -= 4;
                         rect.origin.y += 21;
                         NSFont* font = [NSFont fontWithName:@"Geneva" size:MIN(rect.size.height - 4, rect.size.width / 3)];
-                        NSDictionary* attributes = @{NSFontAttributeName: font, NSParagraphStyleAttributeName: centeredParagraphStyle};
+                        NSDictionary* attributes = @{NSFontAttributeName: font, NSParagraphStyleAttributeName: centeredParagraphStyle, NSForegroundColorAttributeName: [NSColor textColor]};
                         NSString* timeString = [NSString stringWithString:[item time]];
                         NSSize size = [timeString sizeWithAttributes:attributes];
                         rect.origin.y -= rect.size.height / 2 - size.height / 2;
