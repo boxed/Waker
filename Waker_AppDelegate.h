@@ -15,6 +15,8 @@
     NSManagedObjectModel* _managedObjectModel;
     NSPersistentStoreCoordinator* _persistentStoreCoordinator;
     
+    NSTimer* autoSaveTimer;
+    
     RemoteControl* _remote_control;
     BOOL _disableModelChangedUpdates;
     NSDate* _next_alarm;

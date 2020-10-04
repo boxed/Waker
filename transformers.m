@@ -214,7 +214,7 @@ NSInteger NSColorToInt(NSColor* color) {
 
 - (id)reverseTransformedValue:(id)value {
     //print 'disable2', value, type(value)
-    if (value == nil) {
+    if (value == nil || [value  isEqual: @NO]) {
         return @"8:00";
     }
     return nil;

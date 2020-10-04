@@ -43,7 +43,6 @@
 		AE83535E1826AE1000885485 /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83535D1826AE1000885485 /* CalendarStore.framework */; };
 		AE9730B22528E92F00403679 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9730B12528E92F00403679 /* EventKit.framework */; };
 		AEA5B7DD18299372003BD23E /* backup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEA5B7DC18299372003BD23E /* backup.mp3 */; };
-		AEA5B7DF182AE3C3003BD23E /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA5B7DE182AE3C3003BD23E /* iTunesLibrary.framework */; };
 		AEA7DCA71820379500470F2E /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DCA61820379500470F2E /* CalendarView.m */; };
 		AEA7DCAA1822F38600470F2E /* transformers.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DCA91822F38600470F2E /* transformers.m */; };
 		AEA7DCAC1823BD9600470F2E /* Waker_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DCAB1823BD9600470F2E /* Waker_AppDelegate.m */; };
@@ -149,7 +148,6 @@
 		AE83535D1826AE1000885485 /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
 		AE9730B12528E92F00403679 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		AEA5B7DC18299372003BD23E /* backup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backup.mp3; sourceTree = "<group>"; };
-		AEA5B7DE182AE3C3003BD23E /* iTunesLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iTunesLibrary.framework; path = ../../../../Library/Frameworks/iTunesLibrary.framework; sourceTree = "<group>"; };
 		AEA7DCA61820379500470F2E /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
 		AEA7DCA818203BA500470F2E /* CalendarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
 		AEA7DCA91822F38600470F2E /* transformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = transformers.m; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 			files = (
 				AEBA86C5182F86F800ED272E /* CoreAudio.framework in Frameworks */,
 				AE9730B22528E92F00403679 /* EventKit.framework in Frameworks */,
-				AEA5B7DF182AE3C3003BD23E /* iTunesLibrary.framework in Frameworks */,
 				AE83535E1826AE1000885485 /* CalendarStore.framework in Frameworks */,
 				E4F1F3560B0DED94003CDB5F /* Security.framework in Frameworks */,
 				E4F1F2FE0B0DED0C003CDB5F /* Cocoa.framework in Frameworks */,
@@ -213,7 +210,6 @@
 			children = (
 				AEBA86C4182F86F800ED272E /* CoreAudio.framework */,
 				AEBA86C2182F86DC00ED272E /* CoreMedia.framework */,
-				AEA5B7DE182AE3C3003BD23E /* iTunesLibrary.framework */,
 				AE83535D1826AE1000885485 /* CalendarStore.framework */,
 				AE8353581823F3BA00885485 /* NSDate+NSDate_Humane.h */,
 				AE8353591823F3BA00885485 /* NSDate+NSDate_Humane.m */,

@@ -1,7 +1,5 @@
 #import "Waker_AppDelegate.h"
 #import "NSDate+NSDate_Humane.h"
-#import <iTunesLibrary/ITLibrary.h>
-#import <iTunesLibrary/ITLibMediaItem.h>
 
 static int remote_up = 2;
 static int remote_down = 4;
@@ -102,6 +100,12 @@ static void set_user_default(NSString* key, NSObject* value) {
     //self->_showFirstRunWindow()
     //self->_openWaker_(self)
     [self setupAirplay];
+    
+    self->autoSaveTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 repeats:TRUE block:^(NSTimer * _Nonnull __unused timer) {
+        if ([self->_managedObjectContext hasChanges]) {
+            [self saveAction:self];
+        }
+    }];
 }
 
 - (void)setupAirplay {
@@ -314,7 +318,11 @@ static void set_user_default(NSString* key, NSObject* value) {
     _music_files = [@[] mutableCopy];
     
     NSFileManager *fileManager = [[NSFileManager alloc] init];
-    NSURL *directoryURL = [NSURL fileURLWithPath:[@"~/Music/" stringByStandardizingPath]]; // URL pointing to the directory you want to browse
+    NSURL *directoryURL = [NSURL fileURLWithPath:[@"~/Music/Waker/" stringByStandardizingPath]];
+    NSError* err = nil;
+    if ([directoryURL checkResourceIsReachableAndReturnError:&err] == NO) {
+        directoryURL = [NSURL fileURLWithPath:[@"~/Music/" stringByStandardizingPath]];
+    }
     
     NSDirectoryEnumerator *enumerator = [fileManager
                                          enumeratorAtURL:directoryURL
@@ -327,7 +335,7 @@ static void set_user_default(NSString* key, NSObject* value) {
                                          }];
     for (NSURL *url in enumerator) {
         NSString* ext = [url pathExtension];
-        if ([ext isEqualToString:@"mp3"]) {
+        if ([ext isEqualToString:@"mp3"] || [ext isEqualToString:@"m4a"]) {
             [_music_files addObject:url];
         }
     }
@@ -384,7 +392,12 @@ static void set_user_default(NSString* key, NSObject* value) {
 }
 
 static NSString* events_as_string(NSDate* calendar) {
-    return [events_of_day(calendar.year, calendar.month, calendar.day) componentsJoinedByString:@"\n"];
+    NSArray *events = events_of_day(calendar.year, calendar.month, calendar.day);
+    NSMutableArray *titles = [NSMutableArray arrayWithCapacity:events.count];
+    [events enumerateObjectsUsingBlock:^(id obj, NSUInteger __unused idx, BOOL __unused *stop) {
+        [titles addObject:[obj title]];
+    }];
+    return [titles componentsJoinedByString:@"\n"];
 }
 
 - (void)show_alarm_window {
@@ -479,13 +492,14 @@ static NSString* events_as_string(NSDate* calendar) {
 }
 
 - (NSManagedObject*)new_rule {
-    [self->_managedObjectContext lock];
-    [[self->_managedObjectContext undoManager] beginUndoGrouping];
-    [[self->_managedObjectContext undoManager] setActionName:@"new rule"];
-    NSManagedObject* obj = [NSEntityDescription insertNewObjectForEntityForName:@"Rule" inManagedObjectContext:self->_managedObjectContext];
-    [obj setName:@"unnamed"];
-    [[self->_managedObjectContext undoManager] endUndoGrouping];
-    [self->_managedObjectContext unlock];
+    NSManagedObject* __block obj = nil;
+    [self->_managedObjectContext performBlockAndWait:^{
+        [[self->_managedObjectContext undoManager] beginUndoGrouping];
+        [[self->_managedObjectContext undoManager] setActionName:@"new rule"];
+        obj = [NSEntityDescription insertNewObjectForEntityForName:@"Rule" inManagedObjectContext:self->_managedObjectContext];
+        [obj setName:@"unnamed"];
+        [[self->_managedObjectContext undoManager] endUndoGrouping];
+    }];
     return obj;
 }
 
@@ -499,43 +513,43 @@ static NSString* events_as_string(NSDate* calendar) {
 }
 
 - (IBAction)firstRunCreateDefaultRules:(__unused id)sender {
-//    int minutes = 60;
-//    int hours = 60 * minutes;
     self->_disableModelChangedUpdates = TRUE;
-    [self->_managedObjectContext lock];
-    [[self->_managedObjectContext undoManager] beginUndoGrouping];
-    [[self->_managedObjectContext undoManager] setActionName:@"default rules"];
-    NSManagedObject* abroad = [self new_rule];
-    //obj = NSManagedObject.initWithEntity_insertIntoManagedObjectContext_(self->_managedObjectContext().entitiesByName()['Rule'], self->_managedObjectContext())
-    [abroad setName:@"Abroad"];
-    [abroad setPredicate:@"title BEGINSWITH[cd] \"abroad\""];
-    [abroad setPriority:@1];
-    [abroad setColor:@1507165];
-    NSManagedObject* vacation = [self new_rule];
-    [vacation setName:@"Vacation"];
-    [vacation setPredicate:@"title CONTAINS[cd] \"vacation\""];
-    [vacation setPriority:@2];
-    [vacation setTime:@"11:00"];
-    [vacation setColor:@1507165];
-    NSManagedObject* workday = [self new_rule];
-    [workday setName:@"Workday"];
-    [workday setPredicate:@"day !=[c] \"Sunday\" AND day !=[c] \"Saturday\""];
-    [workday setPriority:@3];
-    [workday setTime:@"07:00"];
-    [workday setColor:@10201855];
-    NSManagedObject* weekend = [self new_rule];
-    [weekend setName:@"Weekend"];
-    [weekend setPredicate:@"day ==[c] \"Saturday\" OR day ==[c] \"Sunday\""];
-    [weekend setPriority:@4];
-    [weekend setTime:@"10:00"];
-    [weekend setColor:@16735087];
-    [[self->_managedObjectContext undoManager] endUndoGrouping];
-    [self->_managedObjectContext unlock];
-    set_user_default(@"first_run", @FALSE);
-    [self->_firstRunWindow close];
-    self->_disableModelChangedUpdates = FALSE;
-    [self openWaker:self];
-    [self objectModelChanged];
+    [self->_managedObjectContext performBlock:^{
+        [[self->_managedObjectContext undoManager] beginUndoGrouping];
+        [[self->_managedObjectContext undoManager] setActionName:@"default rules"];
+        NSManagedObject* abroad = [self new_rule];
+        [abroad setName:@"Abroad"];
+        [abroad setPredicate:@"title BEGINSWITH[cd] \"abroad\""];
+        [abroad setPriority:@1];
+        [abroad setColor:@1507165];
+        NSManagedObject* vacation = [self new_rule];
+        [vacation setName:@"Vacation"];
+        [vacation setPredicate:@"title CONTAINS[cd] \"vacation\""];
+        [vacation setPriority:@2];
+        [vacation setTime:@"11:00"];
+        [vacation setColor:@1507165];
+        NSManagedObject* workday = [self new_rule];
+        [workday setName:@"Workday"];
+        [workday setPredicate:@"day !=[c] \"Sunday\" AND day !=[c] \"Saturday\""];
+        [workday setPriority:@3];
+        [workday setTime:@"07:00"];
+        [workday setColor:@10201855];
+        NSManagedObject* weekend = [self new_rule];
+        [weekend setName:@"Weekend"];
+        [weekend setPredicate:@"day ==[c] \"Saturday\" OR day ==[c] \"Sunday\""];
+        [weekend setPriority:@4];
+        [weekend setTime:@"10:00"];
+        [weekend setColor:@16735087];
+        [[self->_managedObjectContext undoManager] endUndoGrouping];
+        set_user_default(@"first_run", @FALSE);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self->_firstRunWindow close];
+        });
+        self->_disableModelChangedUpdates = FALSE;
+        [self openWaker:self];
+        [self objectModelChanged];
+    }];
+
 }
 
 - (IBAction)firstRunNoDefaultRules:(__unused id)sender {
@@ -622,11 +636,13 @@ static NSString* events_as_string(NSDate* calendar) {
 }
 
 - (IBAction)openWaker:(id)sender {
-    [self->_window makeKeyAndOrderFront:sender];
-    [self->_window orderFrontRegardless];
-    [self->_window makeFirstResponder:self->_createNewRuleButton];
-    [[NSApplication sharedApplication] activateIgnoringOtherApps:TRUE];
-    [self update_tip_window];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->_window makeKeyAndOrderFront:sender];
+        [self->_window orderFrontRegardless];
+        [self->_window makeFirstResponder:self->_createNewRuleButton];
+        [[NSApplication sharedApplication] activateIgnoringOtherApps:TRUE];
+        [self update_tip_window];
+    });
 }
 
 - (IBAction)addRule:(__unused id)sender {
@@ -703,9 +719,12 @@ static NSString* events_as_string(NSDate* calendar) {
     }
     NSPersistentStoreCoordinator* coordinator = [self persistentStoreCoordinator];
     if (coordinator) {
-        self->_managedObjectContext = [[NSManagedObjectContext alloc] init];
+        self->_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         [self->_managedObjectContext setPersistentStoreCoordinator:coordinator];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(objectModelChanged) name:NSManagedObjectContextObjectsDidChangeNotification object:self->_managedObjectContext];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(objectModelChanged)
+                                                     name:NSManagedObjectContextObjectsDidChangeNotification
+                                                   object:self->_managedObjectContext];
     }
     return self->_managedObjectContext;
 }
@@ -719,10 +738,10 @@ static NSString* events_as_string(NSDate* calendar) {
     if (!self->_disableModelChangedUpdates) {
         NSLog(@"objectModelChangedAsync:");
         // empty edit rule cache and tell it to reload
-        /*[self->_previewCalendarView refresh];
+        [self->_previewCalendarView refresh];
         [self update_tip_window];
         [self setNextAlarm];
-        [self->_createNewRuleButton setEnabled:TRUE];*/
+        [self->_createNewRuleButton setEnabled:TRUE];
     }
 }
 

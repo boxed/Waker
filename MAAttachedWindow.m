@@ -126,7 +126,6 @@
         [self setAlphaValue:1.0];
         [self setOpaque:NO];
         [self setHasShadow:YES];
-        [self useOptimizedDrawing:YES];
         
         // Set up some sensible defaults for display.
         _MABackgroundColor = [MAATTACHEDWINDOW_DEFAULT_BACKGROUND_COLOR copy];
