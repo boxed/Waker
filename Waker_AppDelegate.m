@@ -257,7 +257,6 @@ static void set_user_default(NSString* key, NSObject* value) {
                 break;
             }
             [NSThread sleepForTimeInterval:0.1f];
-            NSLog(@"fade in");
             [self->_bridge setVolume:volume];
             volume += step;
             if (volume >= target) {
@@ -364,6 +363,7 @@ static void set_user_default(NSString* key, NSObject* value) {
 // NSSoundDelegate
 - (void)sound:(__unused NSSound *)sound didFinishPlaying:(__unused BOOL)finishedPlaying {
     if (_music_files.count) {
+        [self nextSong];
     }
 }
 
