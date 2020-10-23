@@ -161,7 +161,7 @@ AlarmTimeAndRule* get_next_alarm_time_and_rule(id<Settings> settings, NSDate* in
     }
     // TODO: prevent infinite loops here
     NSDate* lookahead_limit = [reference_date dateWithOffsetDays:3*30 hours:0 minutes:0 seconds:0];
-    while ([reference_date earlierThan:lookahead_limit] && (result->next_alarm == nil || [result->next_alarm earlierThan:in_reference_date])) {
+    while ([reference_date earlierThan:lookahead_limit] && (result == nil || result->next_alarm == nil || [result->next_alarm earlierThan:in_reference_date])) {
         reference_date = [reference_date dateWithOffsetDays:1 hours:0 minutes:0 seconds:0];
         result = get_alarm_time_and_rule(settings, reference_date.year, reference_date.month, reference_date.day);
     }
