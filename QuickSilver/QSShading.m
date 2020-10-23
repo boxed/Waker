@@ -51,7 +51,7 @@ void QSFillRectWithGradientFromEdge(NSRect rect,NSColor *start,NSColor *end,NSRe
     components = 1 + CGColorSpaceGetNumberOfComponents(colorspace);
     CGFunctionRef function=CGFunctionCreate(colors, 1, (const CGFloat * _Nullable)domain, components, (const CGFloat * _Nullable)range, &callbacks);
     
-    CGPoint startPoint = {0, 0},endPoint = {0, 0};
+    CGPoint startPoint, endPoint;
     
     switch (startEdge){
         case NSMaxYEdge: startPoint=CGPointMake(0,NSMaxY(rect));endPoint=CGPointMake(0,NSMinY(rect));break;
