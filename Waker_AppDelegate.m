@@ -249,15 +249,19 @@ static void set_user_default(NSString* key, NSObject* value) {
     @autoreleasepool {
         [[NSThread currentThread] setName:@"fadeInVolumeThread"];
         NSLog(@"fadeInVolume");
-        float volume = 0;
+        float volume = 0.01;
         float target = [get_user_default(@"system_volume") floatValue];
         float step = target/1000.0;
         while (TRUE) {
             if (![self->_alarmWindow isVisible]) {
                 break;
             }
-            [NSThread sleepForTimeInterval:0.1f];
             [self->_bridge setVolume:volume];
+            [NSThread sleepForTimeInterval:0.1f];
+            if (fabs([self->_bridge volume] - volume) > 0.01) {
+                // The user is fiddling with the volume, don't step on their fingers
+                break;
+            }
             volume += step;
             if (volume >= target) {
                 break;
