@@ -184,7 +184,7 @@ NSDictionary* month_to_string(void) {
                         Waker_AppDelegate* app_delegate = (Waker_AppDelegate*)[[NSApplication sharedApplication] delegate];
                         NSManagedObject* rule = get_rule(app_delegate, year, month, day);
                         if (rule == nil) {
-                            [self->cache removeObjectForKey:key];
+                            [self->cache setObject:@"no rule" forKey:key];
                         }
                         else {
                             [self->cache setObject:rule forKey:key];
@@ -244,6 +244,9 @@ NSDictionary* month_to_string(void) {
                 NSString* key = date_to_key(year, month, day);
                 NSManagedObject* item = [self->cache objectForKey:key];
                 if (item == nil) {
+                    continue;
+                }
+                if (item == @"no rule") {
                     continue;
                 }
                 fillRect(NSMakeRect(rect.origin.x, rect.origin.y, rect.size.width, 20), IntToNSColor([[item color] intValue]));

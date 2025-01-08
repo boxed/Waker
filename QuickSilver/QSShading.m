@@ -25,7 +25,7 @@
 
 
 //  (*)(void * _Nullable, const double * _Nonnull, double * _Nonnull)')
-static void QSColorFade(void * _Nullable info, const float * _Nonnull in, float * _Nonnull out ){
+static void QSColorFade(void * _Nullable info, const double * _Nonnull in, double * _Nonnull out ){
     float v=*in;
     float *colors=info;
     int i;

@@ -9,8 +9,9 @@ EKEventStore *_store = nil;
 
 EKEventStore* get_store() {
     if (_store == nil) {
-        _store = [[EKEventStore alloc] initWithAccessToEntityTypes:EKEntityTypeEvent];
-        [_store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable __strong error){
+        _store = [[EKEventStore alloc] init];
+        [_store requestFullAccessToEventsWithCompletion:^(BOOL granted, NSError * _Nullable error) {
+            printf("asd", granted, error);
         }];
     }
     return _store;
@@ -75,6 +76,9 @@ NSArray* events_of_day(NSUInteger year, NSUInteger month, NSUInteger day) {
 }
 
 BOOL matches_rule(NSArray* events, NSDate* date, NSManagedObject* rule) {
+    if ([events count] == 0) {
+        return NO;
+    }
     if ([rule predicate] == nil) {
         return YES;
     }
