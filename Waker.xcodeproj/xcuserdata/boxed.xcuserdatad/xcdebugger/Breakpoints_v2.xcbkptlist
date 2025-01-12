@@ -30,8 +30,8 @@
             filePath = "CalendarView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "-drawRect:"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "CalendarView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "-drawRect:"
             landmarkType = "7">
          </BreakpointContent>

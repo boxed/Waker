@@ -245,11 +245,7 @@ NSDictionary* month_to_string(void) {
                 fillRect(rect, is_today? todayColor : otherDayColor);
                 NSString* key = date_to_key(year, month, day);
                 NSManagedObject* item = [self->cache objectForKey:key];
-                rect.origin.x += 3;
-                rect.size.width -= 3;
-                [[NSString stringWithFormat:@"%d", day] drawInRect:rect withAttributes:@{NSForegroundColorAttributeName: [NSColor textColor]}];
-                rect.origin.x += 2;
-                rect.size.height -= 14;
+                [[NSString stringWithFormat:@"%d", day] drawInRect:NSMakeRect(rect.origin.x + 3, rect.origin.y, rect.size.width -3, rect.size.height) withAttributes:@{NSForegroundColorAttributeName: [NSColor textColor]}];
 
                 if (item == nil) {
                     continue;
