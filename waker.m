@@ -76,9 +76,6 @@ NSArray* events_of_day(NSUInteger year, NSUInteger month, NSUInteger day) {
 }
 
 BOOL matches_rule(NSArray* events, NSDate* date, NSManagedObject* rule) {
-    if ([events count] == 0) {
-        return NO;
-    }
     if ([rule predicate] == nil) {
         return YES;
     }
@@ -99,8 +96,13 @@ BOOL matches_rule(NSArray* events, NSDate* date, NSManagedObject* rule) {
         if (event.URL)
             [foo setValue:event.URL forKey:@"url"];
         
-        if ([[NSPredicate predicateWithFormat:predicate] evaluateWithObject:foo]) {
-            return YES;
+        @try {
+            if ([[NSPredicate predicateWithFormat:predicate] evaluateWithObject:foo]) {
+                return YES;
+            }
+        }
+        @catch (NSException* e) {
+            return NO;
         }
     }
     return [[NSPredicate predicateWithFormat:[rule predicate]] evaluateWithObject:@{@"day": day_of_week}];

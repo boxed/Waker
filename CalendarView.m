@@ -184,6 +184,7 @@ NSDictionary* month_to_string(void) {
                         Waker_AppDelegate* app_delegate = (Waker_AppDelegate*)[[NSApplication sharedApplication] delegate];
                         NSManagedObject* rule = get_rule(app_delegate, year, month, day);
                         if (rule == nil) {
+                            printf("...");
                             [self->cache setObject:@"no rule" forKey:key];
                         }
                         else {
@@ -199,6 +200,7 @@ NSDictionary* month_to_string(void) {
 }
 
 - (void)drawRect:(NSRect)in_rect {
+    in_rect = [self safeAreaRect];
     NSDate* now = [NSDate new];
 
     int year = self->_year;
@@ -243,34 +245,33 @@ NSDictionary* month_to_string(void) {
                 fillRect(rect, is_today? todayColor : otherDayColor);
                 NSString* key = date_to_key(year, month, day);
                 NSManagedObject* item = [self->cache objectForKey:key];
-                if (item == nil) {
-                    continue;
-                }
-                if (item == @"no rule") {
-                    continue;
-                }
-                fillRect(NSMakeRect(rect.origin.x, rect.origin.y, rect.size.width, 20), IntToNSColor([[item color] intValue]));
-
                 rect.origin.x += 3;
                 rect.size.width -= 3;
                 [[NSString stringWithFormat:@"%d", day] drawInRect:rect withAttributes:@{NSForegroundColorAttributeName: [NSColor textColor]}];
                 rect.origin.x += 2;
                 rect.size.height -= 14;
-                if (item != nil) {
-                    if (([item name] != nil)) {
-                        [[NSString stringWithString:[item name]] drawInRect:rect withAttributes:@{NSParagraphStyleAttributeName: centeredParagraphStyle, NSForegroundColorAttributeName: [NSColor textColor]}];
-                    }
-                    if ([item time] != nil) {
-                        rect.size.height -= 38;
-                        rect.size.width -= 4;
-                        rect.origin.y += 21;
-                        NSFont* font = [NSFont fontWithName:@"Geneva" size:MIN(rect.size.height - 4, rect.size.width / 3)];
-                        NSDictionary* attributes = @{NSFontAttributeName: font, NSParagraphStyleAttributeName: centeredParagraphStyle, NSForegroundColorAttributeName: [NSColor textColor]};
-                        NSString* timeString = [NSString stringWithString:[item time]];
-                        NSSize size = [timeString sizeWithAttributes:attributes];
-                        rect.origin.y -= rect.size.height / 2 - size.height / 2;
-                        [[NSString stringWithString:timeString] drawInRect:rect withAttributes:attributes];
-                    }
+
+                if (item == nil) {
+                    continue;
+                }
+                if ([item isEqual: @"no rule"]) {
+                    continue;
+                }
+
+                fillRect(NSMakeRect(rect.origin.x, rect.origin.y, rect.size.width, 20), IntToNSColor([[item color] intValue]));
+                if (([item name] != nil)) {
+                    [[NSString stringWithString:[item name]] drawInRect:rect withAttributes:@{NSParagraphStyleAttributeName: centeredParagraphStyle, NSForegroundColorAttributeName: [NSColor textColor]}];
+                }
+                if ([item time] != nil) {
+                    rect.size.height -= 38;
+                    rect.size.width -= 4;
+                    rect.origin.y += 21;
+                    NSFont* font = [NSFont fontWithName:@"Geneva" size:MIN(rect.size.height - 4, rect.size.width / 3)];
+                    NSDictionary* attributes = @{NSFontAttributeName: font, NSParagraphStyleAttributeName: centeredParagraphStyle, NSForegroundColorAttributeName: [NSColor textColor]};
+                    NSString* timeString = [NSString stringWithString:[item time]];
+                    NSSize size = [timeString sizeWithAttributes:attributes];
+                    rect.origin.y -= rect.size.height / 2 - size.height / 2;
+                    [[NSString stringWithString:timeString] drawInRect:rect withAttributes:attributes];
                 }
             }
         }
